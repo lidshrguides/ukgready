@@ -88,9 +88,11 @@
   footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
   footer strong { color: rgba(255,255,255,0.9); }
   @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+.back-bar{background:var(--navy-dark);padding:10px 24px;display:flex;align-items:center;}.back-bar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:white;}
 </style>
 </head>
 <body>
+<div class="back-bar"><a href="index.html">← All Guides</a></div>
 
 <header>
   <div class="logo-badge"><span class="dot"></span> UKG Ready Training · United States</div>
@@ -260,6 +262,45 @@
     <div class="alert-box" style="margin-top:0;">
       <span class="alert-icon">💡</span>
       <div>Follow up with any employee who remains below 100% after their first week. Both the employee and manager must complete their respective checklist tasks before it will show as fully complete.</div>
+    </div>
+  </section>
+
+  <section class="section" id="position-critical">
+    <div class="section-label"><span class="bar"></span> ⚠️ Critical — Read This</div>
+    <h2>Position and Compensation: Do Not Skip These Steps</h2>
+    <p class="sub">Two of the most common onboarding errors — both of which cause major downstream problems. Every new hire must have both confirmed before onboarding is complete.</p>
+
+    <div class="alert-box red" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🚫</span>
+      <div>
+        <strong>If position or compensation is missing or wrong, do NOT proceed. Fix it before moving on.</strong>
+        <p>An incorrect or missing position will prevent the employee from appearing in Storeforce. An employee who doesn't exist in Storeforce cannot be scheduled.</p>
+      </div>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">Position Requirements</p>
+    <ol class="steps-list" style="margin-bottom:1.5rem;">
+      <li class="step"><div class="step-num">1</div><div class="step-text">
+        <strong>Position must follow the correct format</strong>
+        <span>The position must be the <strong>4 digits of the store number — followed by their job title</strong>. Example: <strong>0123 - Sales Associate</strong>. If the format is wrong, the employee will not appear in Storeforce.</span>
+      </div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text">
+        <strong>Check the "Is Primary Assignment" box</strong>
+        <span>When assigning the position, you <strong>MUST</strong> check the box that says <strong>"Is Primary Assignment."</strong> If this box is not checked, the employee will NOT show up in Storeforce — even if everything else is correct.</span>
+      </div></li>
+    </ol>
+
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">Compensation Requirements</p>
+    <ol class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-text">
+        <strong>Compensation must be entered before the employee's first pay period</strong>
+        <span>An employee without compensation entered cannot be paid correctly. Confirm pay rate, pay type (hourly or salary), and effective date are all set.</span>
+      </div></li>
+    </ol>
+
+    <div class="alert-box" style="margin-top:1.25rem;">
+      <span class="alert-icon">💡</span>
+      <div>If you are unsure whether the position or compensation was set correctly, contact <strong>hr@lids.com</strong> before the employee's first scheduled shift.</div>
     </div>
   </section>
 

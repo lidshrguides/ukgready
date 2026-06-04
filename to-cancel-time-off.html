@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr-CA">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comment réembaucher un employé – Formation UKG Ready</title>
+<title>Canceling a Time Off Request – UKG Ready Training</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.back-bar{background:var(--navy-dark);padding:10px 24px;}.back-bar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;text-decoration:none;}.back-bar a:hover{color:white;}
 .hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
 .badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);line-height:1.1;margin-bottom:16px;}
 .hero p{font-size:16px;opacity:0.75;max-width:480px;margin:0 auto;}
 .hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
 .nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
 .nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
 .nav-tabs::-webkit-scrollbar{display:none;}
 .nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
-.nav-tab:hover{color:var(--navy);border-color:var(--border);}
 .nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
 .content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
 .section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
@@ -30,91 +30,103 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
 .alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
 .alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
-.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
-.alert-danger{background:var(--red-light);border:1px solid #f5b8bc;color:#8b1a22;}
 .alert-icon{font-size:18px;flex-shrink:0;}
+.applies-badge{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:16px;}
 .steps{display:flex;flex-direction:column;}
 .step{display:flex;gap:18px;position:relative;}
 .step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
 .step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
 .step-body{padding:0 0 28px;flex:1;}
 .step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
-.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
-.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
-.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
-.step-body strong{color:var(--text);}
-.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
-.callout h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;}
-.callout p{opacity:0.75;font-size:14px;margin-bottom:16px;}
-.callout a{display:inline-block;background:white;color:var(--navy);font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px;text-decoration:none;}
-.back-bar{background:var(--navy-dark);padding:10px 24px;display:flex;align-items:center;}.back-bar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:white;}
+.step-body p{font-size:13.5px;color:var(--text-muted);}
+.scenario-tabs{display:flex;gap:8px;margin-bottom:24px;}
+.scenario-tab{padding:10px 20px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid var(--border);background:white;color:var(--text-muted);transition:all 0.2s;font-family:inherit;}
+.scenario-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+.scenario{display:none;}.scenario.active{display:block;}
 </style>
 </head>
 <body>
 <div class="back-bar"><a href="index.html">← All Guides</a></div>
 <div class="hero">
-  <div class="badge"><span class="badge-dot"></span> Formation UKG Ready</div>
-  <h1>Comment réembaucher<br>un employé</h1>
-  <p>Un guide étape par étape pour traiter les réembauches d'anciens employés dans UKG Ready</p>
+  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
+  <h1>Canceling a Time Off Request</h1>
+  <p>How to cancel a time-off request — before or after approval</p>
   <div class="hero-curve"></div>
 </div>
 <div class="nav-wrap"><div class="nav-tabs">
-  <a href="#overview" class="nav-tab active">Vue d'ensemble</a>
-  <a href="#steps" class="nav-tab">Étapes détaillées</a>
+  <a href="#overview" class="nav-tab active">Overview</a>
+  <a href="#steps" class="nav-tab">Steps</a>
 </div></div>
 <div class="content">
 
 <div class="section-card" id="overview">
-  <div class="section-label">Aperçu</div>
-  <h2>Embauche d'anciens employés</h2>
-  <p class="subtitle">Points importants à connaître avant de procéder à une réembauche.</p>
-  <div style="display:flex;flex-direction:column;gap:12px;">
-    <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>Les anciens employés <strong>DOIVENT</strong> présenter une nouvelle candidature et suivre la procédure de recrutement habituelle.</div></div>
-    <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>Lorsque vous cliquez sur <strong>Embaucher</strong>, sélectionnez le dossier de l'employé existant si vous y êtes invité. Cela permet de s'assurer que l'employé est traité comme une réembauche (et non comme un doublon).</div></div>
-  </div>
+  <div class="section-label">Overview</div>
+  <h2>Two Scenarios</h2>
+  <p class="subtitle">The process is different depending on whether your request has been approved yet.</p>
+  <div class="applies-badge">📍 Corporate and DC employees only</div>
 </div>
 
 <div class="section-card" id="steps">
-  <div class="section-label">Processus</div>
-  <h2>Étapes détaillées</h2>
-  <p class="subtitle">Suivez le processus habituel d'embauche avec ces étapes clés.</p>
-  <div class="steps">
+  <div class="section-label">Process</div>
+  <h2>How to Cancel</h2>
+  <p class="subtitle">Select your scenario below.</p>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenario('unapproved',this)">Not Yet Approved</button>
+    <button class="scenario-tab" onclick="showScenario('approved',this)">Already Approved</button>
+  </div>
 
-    <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-      <h4>Nouvelle candidature requise</h4>
-      <ul>
-        <li>L'ancien employé doit <strong>soumettre une nouvelle candidature</strong></li>
-        <li>Suivez la procédure de recrutement habituelle</li>
-      </ul>
-    </div></div>
+  <div class="scenario active" id="unapproved">
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Go to Time Off History</h4>
+        <p>Navigate to <strong>Menu ☰ &gt; My Info &gt; My Time &gt; Time Off &gt; History</strong>.</p>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Select the Date(s)</h4>
+        <p>Select the applicable date(s) for the request you want to cancel.</p>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Click the Trash Button</h4>
+        <p>Click the <strong>trash icon</strong> on the request. Once deleted, the request is immediately removed.</p>
+      </div></div>
+    </div>
+  </div>
 
-    <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
-      <h4>Sélectionner le bon dossier</h4>
-      <ul>
-        <li>Cliquez sur <strong>Embaucher</strong></li>
-        <li>Si un dossier d'employé existant s'affiche, <strong>sélectionnez-le</strong></li>
-        <li>Cela garantit que l'employé est traité comme une <strong>réembauche</strong> et non comme un doublon</li>
-      </ul>
-      <div class="alert alert-danger" style="margin-top:12px;"><span class="alert-icon">🚫</span><div>Ne créez <strong>pas</strong> un nouveau dossier si un dossier existant est disponible — cela créerait un doublon dans le système.</div></div>
-    </div></div>
-
-    <div class="step"><div class="step-num">3</div><div class="step-body">
-      <h4>Suivre le guide d'embauche</h4>
-      <ul>
-        <li>Suivez le guide <strong>Embaucher un employé</strong> comme d'habitude pour compléter le processus</li>
-      </ul>
-    </div></div>
-
+  <div class="scenario" id="approved">
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Go to Your Current Timesheet</h4>
+        <p>Navigate to <strong>Menu ☰ &gt; My Info &gt; My Time &gt; Timesheet &gt; Current Timesheet</strong>.</p>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Select Change Request</h4>
+        <p>Click <strong>Change Request</strong>.</p>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Select Cancel Time Off</h4>
+        <p>In the Change Type field, select <strong>Cancel Time Off</strong>.</p>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">4</div><div class="step-body">
+        <h4>Choose the Request to Cancel</h4>
+        <p>Select the time-off request you want to cancel.</p>
+      </div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body">
+        <h4>Click Submit</h4>
+        <p>Click <strong>Submit</strong>. Cancellation is submitted immediately and your manager will be notified.</p>
+        <div class="alert alert-warn" style="margin-top:12px;"><span class="alert-icon">⚠️</span><div>You will <strong>NOT</strong> receive a confirmation email. The cancellation is immediate once submitted.</div></div>
+      </div></div>
+    </div>
   </div>
 </div>
 
-<div class="callout">
-  <h3>Des questions sur le processus de réembauche ?</h3>
-  <p>Si vous avez des doutes sur la procédure à suivre, contactez l'équipe RH avant de procéder.</p>
-  <a href="mailto:hr@lids.com">hr@lids.com</a>
-</div>
 </div>
 <script>
+function showScenario(id, btn) {
+  document.querySelectorAll('.scenario').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.scenario-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
 const tabs=document.querySelectorAll('.nav-tab');
 const sections=document.querySelectorAll('.section-card[id]');
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const m=document.querySelector(`.nav-tab[href="#${e.target.id}"]`);if(m)m.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'});

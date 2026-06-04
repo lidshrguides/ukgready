@@ -86,12 +86,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .callout h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;}
 .callout p{opacity:0.75;font-size:14px;margin-bottom:16px;}
 .callout a{display:inline-block;background:white;color:var(--navy);font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px;text-decoration:none;}
+.back-bar{background:var(--navy-dark);padding:10px 24px;display:flex;align-items:center;}.back-bar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:white;}
 </style>
 </head>
 
 <title>How to Update Employee Compensation – UKG Ready Training</title>
 </head>
 <body>
+<div class="back-bar"><a href="index.html">← All Guides</a></div>
 <div class="hero">
   <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
   <h1>How to Update Employee<br>Compensation</h1>
@@ -122,6 +124,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
       <li>Position changes</li>
     </ul></div>
   </div>
+</div>
+
+<div class="section-card" id="hr-action-rules">
+  <div class="section-label">HR Actions — Important Rules</div>
+  <h2>Which HR Action to Submit</h2>
+  <p class="subtitle">Only submit the HR Action that matches what is actually changing. Do not submit multiple actions when one covers it.</p>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+    <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>
+      <strong>Transfer only:</strong> Use Transfer.<br>
+      <strong>Promotion only:</strong> Use Promotion.<br>
+      <strong>Transfer + Promotion:</strong> Use Promotion only — it covers both.<br>
+      <strong>Demotion only:</strong> Use Demotion.<br>
+      <strong>Demotion + Transfer:</strong> Use Demotion only — it covers both.<br>
+      <strong>Pay change only:</strong> Use Compensation Change (this guide).
+    </div></div>
+  </div>
+  <div class="alert alert-danger"><span class="alert-icon">🚫</span><div>
+    <strong>NEVER edit an existing position or compensation record.</strong> Always click <strong>+Add</strong> to add a new one. When you add a new position or compensation record, UKG Ready automatically end-dates the old one. Editing an existing record corrupts the history trail and can break downstream data.
+  </div></div>
 </div>
 
 <div class="section-card" id="access">

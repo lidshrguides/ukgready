@@ -149,9 +149,11 @@
   footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
   footer strong { color: rgba(255,255,255,0.9); }
   @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+.back-bar{background:var(--navy-dark);padding:10px 24px;display:flex;align-items:center;}.back-bar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:white;}
 </style>
 </head>
 <body>
+<div class="back-bar"><a href="index.html">← All Guides</a></div>
 
 <header>
   <div class="logo-badge"><span class="dot"></span> UKG Ready Training · United States Only</div>
@@ -189,14 +191,51 @@
 
   <!-- MANAGER RESPONSIBILITY -->
   <section class="section" id="responsibility">
-    <div class="section-label"><span class="bar"></span> Your Role</div>
-    <h2>Manager Responsibility</h2>
-    <p class="sub">As the hiring manager, you are responsible for completing these steps on or before the employee's third day of work.</p>
+    <div class="section-label"><span class="bar"></span> Step-by-Step Process</div>
+    <h2>How to Complete I-9 &amp; E-Verify</h2>
+    <p class="sub">Follow these steps in order. Must be completed within 3 business days of the employee's start date.</p>
+
+    <div class="alert-box red" style="margin-bottom:1.5rem;">
+      <span class="alert-icon">🚫</span>
+      <div><strong>Step 1 must happen before anything else.</strong> The employee uploads their documents to their To Do items in UKG Ready during onboarding. You must approve those documents first — do not move forward until this is done.</div>
+    </div>
+
     <div class="steps-list">
-      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Complete I-9 Section 2</strong><span>Review and certify the employee's identity and work authorization documents in person.</span></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Review documents in person</strong><span>You must physically examine original documents — not copies, not photos, not scans.</span></div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Submit the E-Verify case</strong><span>After completing Section 2, submit the employee's information through E-Verify in UKG Ready.</span></div></div>
-      <div class="step"><div class="step-num">!</div><div class="step-text"><strong>Complete within 3 business days of the start date</strong><span>This is a federal deadline. Missing it puts Lids at risk of compliance violations.</span></div></div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Approve the employee's uploaded documents</strong>
+          <span>The employee uploads their documents as part of onboarding To Do items. Review them and approve clearly. Once you approve, the I-9 will appear in their onboarding checklist. <em>This step must happen first.</em></span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Complete I-9 Section 2 in person</strong>
+          <span>Go to the onboarding checklist and click the I-9 item. It will take you to the I-9 page. Search for the employee's name. The status should say <strong>Employee Completed</strong>. Check the checkbox next to their name and click <strong>View</strong>. Complete Section 2, then click <strong>Sign and Verify</strong> at the top.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Review documents in person</strong>
+          <span>You must physically examine the employee's original documents — not copies, not photos, not scans. Documents must be unexpired and presented in person.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Submit E-Verify</strong>
+          <span>Go back to the onboarding checklist and click <strong>E-Verify</strong>. Click <strong>Add New</strong> and select the employee. Follow the on-screen prompts to submit the case.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">!</div>
+        <div class="step-text">
+          <strong>Complete within 3 business days of the start date</strong>
+          <span>This is a federal deadline. Missing it creates serious compliance risk for Lids and for you personally.</span>
+        </div>
+      </div>
     </div>
   </section>
 
