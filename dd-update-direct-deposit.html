@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Your Direct Deposit – UKG Ready Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero p{font-size:16px;opacity:0.75;max-width:480px;margin:0 auto;}
+.hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
+.nav-tab:hover{color:var(--navy);border-color:var(--border);}
+.nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
+.content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
+.section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;}
+.section-card h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,28px);color:var(--navy-dark);margin-bottom:6px;}
+.section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+.do-dont-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.do-dont-grid,.two-col{grid-template-columns:1fr!important;}}
+.do-box,.dont-box{border-radius:12px;padding:20px;border:1px solid;}
+.do-box{background:var(--green-light);border-color:#a7d7d2;}
+.dont-box{background:var(--red-light);border-color:#f5b8bc;}
+.do-box h3{color:var(--green);margin-bottom:12px;font-size:14px;font-weight:700;}
+.dont-box h3{color:var(--red);margin-bottom:12px;font-size:14px;font-weight:700;}
+.do-box ul,.dont-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.do-box li,.dont-box li{font-size:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.do-box li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+.dont-box li::before{content:'✕';color:var(--red);font-weight:700;flex-shrink:0;}
+.alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
+.alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
+.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
+.alert-danger{background:var(--red-light);border:1px solid #f5b8bc;color:#8b1a22;}
+.alert-success{background:var(--green-light);border:1px solid #a7d7d2;color:#1a5e54;}
+.alert-icon{font-size:18px;flex-shrink:0;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;position:relative;}
+.step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
+.step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.step-body{padding:0 0 28px;flex:1;}
+.step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
+.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
+.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+.step-body strong{color:var(--text);}
+.scenario-header{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.scenario-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.scenario-icon.blue{background:var(--accent-light);}
+.scenario-icon.green{background:var(--green-light);}
+.scenario-icon.yellow{background:var(--yellow-light);}
+.scenario-header h2{margin-bottom:0;}
+.split-example{background:linear-gradient(135deg,#f8f9ff,#f0f3ff);border:1px solid #c5d0f5;border-radius:12px;padding:20px 24px;margin-top:16px;}
+.split-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.split-row:last-child{border-bottom:none;font-weight:700;color:var(--navy-dark);}
+.split-label{color:var(--text-muted);}
+.split-amount{font-weight:600;color:var(--navy-dark);}
+.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
+.callout h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;}
+.callout p{opacity:0.75;font-size:14px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
+  <h1>Update Your<br>Direct Deposit</h1>
+  <p>How to add, split, or switch bank accounts in UKG Ready</p>
+  <div class="hero-curve"></div>
+</div>
+
+<div class="nav-wrap"><div class="nav-tabs">
+  <a href="#overview" class="nav-tab active">Overview</a>
+  <a href="#access" class="nav-tab">Accessing Direct Deposit</a>
+  <a href="#add-initial" class="nav-tab">Add Initial Account</a>
+  <a href="#add-second" class="nav-tab">Add a Second Account</a>
+  <a href="#replace" class="nav-tab">Replace / Switch Banks</a>
+  <a href="#rules" class="nav-tab">Key Rules</a>
+</div></div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div class="section-card" id="overview">
+    <div class="section-label">Overview</div>
+    <h2>Managing Your Bank Accounts</h2>
+    <p class="subtitle">All direct deposit changes are made through My Tasks in UKG Ready — not from the Direct Deposit view screen.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div><strong>Important:</strong> The Direct Deposit screen (under My Pay) is <strong>view only</strong>. All changes must be made through <strong>My Tasks → Update My Information → Add Direct Deposit</strong>.</div>
+      </div>
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>There is no Delete option.</strong> To remove or replace an account, you end-date it by setting an Active To date. See the Replace / Switch Banks section for how to do this correctly.</div>
+      </div>
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>Never change the Effective From or Active From date</strong> on an existing active account. Only set dates when you are intentionally end-dating an old account or activating a new one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESSING -->
+  <div class="section-card" id="access">
+    <div class="section-label">Navigation</div>
+    <h2>Accessing Direct Deposit</h2>
+    <p class="subtitle">Two ways to get to the Direct Deposit screen.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="two-col">
+
+      <div style="background:linear-gradient(135deg,#f0f3ff,#f8f9ff);border:1.5px solid var(--accent);border-radius:12px;padding:20px;">
+        <h3 style="font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:4px;">Dashboard <span style="font-size:11px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;font-weight:600;margin-left:6px;">Fastest</span></h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;font-style:italic;">Home → My Pay → Direct Deposits</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;font-size:13px;line-height:1.4;align-items:flex-start;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">1</div><span>Click the <strong>My Pay</strong> tile on the dashboard</span></div>
+          <div style="display:flex;gap:10px;font-size:13px;line-height:1.4;align-items:flex-start;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">2</div><span>Click <strong>Direct Deposits</strong></span></div>
+          <div style="display:flex;gap:10px;font-size:13px;line-height:1.4;align-items:flex-start;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">3</div><span>Your current accounts appear here (view only)</span></div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <h3 style="font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:4px;">Hamburger Menu</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;font-style:italic;">☰ → My Info → My Pay → Direct Deposits</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;font-size:13px;line-height:1.4;align-items:flex-start;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">1</div><span>Click the <strong>☰</strong> menu at the top left</span></div>
+          <div style="display:flex;gap:10px;font-size:13px;line-height:1.4;align-items:flex-start;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;">2</div><span>Click <strong>My Info → My Pay → Direct Deposits</strong></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ADD INITIAL -->
+  <div class="section-card" id="add-initial">
+    <div class="section-label">Scenario 1</div>
+    <div class="scenario-header">
+      <div class="scenario-icon blue">🏦</div>
+      <h2>Add Your Initial Account</h2>
+    </div>
+    <p class="subtitle">Use this if you are setting up direct deposit for the first time and have no existing accounts on file.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Navigate to My Tasks</h4>
+        <ul>
+          <li>From the home page, click <strong>My Tasks</strong></li>
+          <li>Select <strong>Update My Information</strong></li>
+          <li>Click <strong>Start</strong> next to <strong>Add Direct Deposit</strong></li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Add Your Account</h4>
+        <ul>
+          <li>Click <strong>+ Add</strong></li>
+          <li>Fill in: Name, Account Type, Account Number, Routing Number</li>
+          <li>Set Calculation Method to <strong>Entire/Remainder</strong></li>
+          <li><strong>Do not change</strong> the Active From date — it will auto-populate</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Save &amp; Submit</h4>
+        <ul>
+          <li>Click <strong>Save</strong>, then click <strong>Submit</strong></li>
+        </ul>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- ADD SECOND -->
+  <div class="section-card" id="add-second">
+    <div class="section-label">Scenario 2</div>
+    <div class="scenario-header">
+      <div class="scenario-icon green">➕</div>
+      <h2>Add a Second Account</h2>
+    </div>
+    <p class="subtitle">Use this to split your paycheck between two accounts — like sending a fixed amount to savings and the rest to checking.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Navigate to My Tasks</h4>
+        <ul>
+          <li>From the home page, click <strong>My Tasks</strong></li>
+          <li>Select <strong>Update My Information</strong></li>
+          <li>Click <strong>Start</strong> next to <strong>Add Direct Deposit</strong></li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Add the New Account</h4>
+        <ul>
+          <li>Click <strong>+ Add</strong></li>
+          <li>Fill in: Name, Account Type, Calculation Method, Account Number, Routing Number</li>
+          <li><strong>Do not change</strong> the Active From date — it will auto-populate</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Set the Calculation Method</h4>
+        <ul>
+          <li><strong>Flat $ Amount</strong> — sends a fixed dollar amount to this account first (e.g., $100 to savings)</li>
+          <li><strong>Percentage</strong> — sends a set percentage of each paycheck</li>
+          <li>Your <strong>existing main account must stay set to Entire/Remainder</strong> so the rest of your pay deposits there</li>
+        </ul>
+        <div class="split-example">
+          <p style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em;">Example: $600 Paycheck</p>
+          <div class="split-row"><span class="split-label">Account 1 — Flat $100 (new savings account)</span><span class="split-amount">$100.00</span></div>
+          <div class="split-row"><span class="split-label">Account 2 — Entire/Remainder (existing checking)</span><span class="split-amount">$500.00</span></div>
+        </div>
+      </div></div>
+
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <h4>Save &amp; Submit</h4>
+        <ul>
+          <li>Click <strong>Save</strong>, then click <strong>Submit</strong></li>
+        </ul>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- REPLACE / SWITCH -->
+  <div class="section-card" id="replace">
+    <div class="section-label">Scenario 3</div>
+    <div class="scenario-header">
+      <div class="scenario-icon yellow">🔄</div>
+      <h2>Replace / Switch Banks</h2>
+    </div>
+    <p class="subtitle">Use this when you're closing an old account and moving to a new one. Since there's no delete option, you end-date the old account and add the new one in the same submission.</p>
+
+    <div class="alert alert-info" style="margin-bottom:24px;">
+      <span class="alert-icon">💡</span>
+      <div>Both steps happen in the same submission — end-date the old account and add the new one before clicking Submit. Don't submit after each step separately.</div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Navigate to My Tasks</h4>
+        <ul>
+          <li>From the home page, click <strong>My Tasks</strong></li>
+          <li>Select <strong>Update My Information</strong></li>
+          <li>Click <strong>Start</strong> next to <strong>Add Direct Deposit</strong></li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>End-Date the Old Account</h4>
+        <ul>
+          <li>Click the <strong>⋯</strong> next to your existing account and select <strong>Edit</strong></li>
+          <li>Set the <strong>Active To</strong> date to <strong>yesterday's date</strong></li>
+          <li>Click <strong>Save</strong> — do not Submit yet</li>
+        </ul>
+        <div class="alert alert-warn" style="margin-top:12px;">
+          <span class="alert-icon">⚠️</span>
+          <div>Use <strong>yesterday's date</strong> for the Active To field. This closes the old account at end of day yesterday, so the new account is active starting today with no gap in coverage.</div>
+        </div>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Add the New Account</h4>
+        <ul>
+          <li>Click <strong>+ Add</strong></li>
+          <li>Set the <strong>Active From</strong> date to <strong>today's date</strong></li>
+          <li>Fill in: Name, Account Type, Account Number, Routing Number</li>
+          <li>Set Calculation Method to <strong>Entire/Remainder</strong></li>
+        </ul>
+        <div class="do-dont-grid" style="margin-top:14px;">
+          <div class="do-box">
+            <h3>✅ Old Account</h3>
+            <ul>
+              <li>Active To = yesterday's date</li>
+            </ul>
+          </div>
+          <div class="do-box">
+            <h3>✅ New Account</h3>
+            <ul>
+              <li>Active From = today's date</li>
+            </ul>
+          </div>
+        </div>
+      </div></div>
+
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <h4>Save &amp; Submit</h4>
+        <ul>
+          <li>Click <strong>Save</strong>, then click <strong>Submit</strong> — both changes process together</li>
+        </ul>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- KEY RULES -->
+  <div class="section-card" id="rules">
+    <div class="section-label">Reference</div>
+    <h2>Key Rules to Remember</h2>
+    <p class="subtitle">Keep these in mind any time you update direct deposit.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>There is no Delete option.</strong> To stop using an account, set an Active To date (yesterday's date) to end-date it. Then add your new account with today's date as the Active From.</div>
+      </div>
+      <div class="alert alert-danger">
+        <span class="alert-icon">🚫</span>
+        <div><strong>Never change the Effective From or Active From date</strong> on an existing active account. Only use date fields when intentionally end-dating an old account or setting up a new one.</div>
+      </div>
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div><strong>One Entire/Remainder account is always required.</strong> Every setup must have exactly one account set to Entire/Remainder — this is where the balance of your pay deposits after any flat-amount or percentage accounts are funded.</div>
+      </div>
+      <div class="alert alert-info">
+        <span class="alert-icon">📋</span>
+        <div><strong>Account order matters when splitting pay.</strong> UKG Ready processes accounts in the order listed — the flat amount or percentage account is funded first, and the Entire/Remainder account receives the rest.</div>
+      </div>
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <div><strong>Always Submit, not just Save.</strong> Saving stores your changes as a draft — nothing takes effect until you click <strong>Submit</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Questions about direct deposit?</h3>
+    <p>Reach out to your HR team if a change doesn't take effect as expected or if you need help with your bank info.</p>
+  </div>
+
+</div>
+<script>
+const tabs=document.querySelectorAll('.nav-tab');
+const sections=document.querySelectorAll('.section-card[id]');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const m=document.querySelector(`.nav-tab[href="#${e.target.id}"]`);if(m)m.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+tabs.forEach(t=>{t.addEventListener('click',e=>{e.preventDefault();document.querySelector(t.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});});
+</script>
+</body>
+</html>

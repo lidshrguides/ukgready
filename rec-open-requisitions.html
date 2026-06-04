@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Open Requisitions — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --accent: #3a7bd5;
+    --accent-glow: #5a9bf5;
+    --white: #ffffff;
+    --off-white: #f4f6fb;
+    --light-gray: #e8edf7;
+    --green: #1db954;
+    --red: #e53e3e;
+    --yellow: #f6c90e;
+    --text-body: #2d3748;
+    --text-muted: #6b7a99;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-body);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0; height: 48px;
+    background: var(--off-white);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .logo-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+  }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  header p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── NAV PILLS ── */
+  .nav-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    padding: 2rem 1rem 0;
+    max-width: 860px; margin: 0 auto;
+  }
+  .nav-pills a {
+    text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    color: var(--navy-mid);
+    background: var(--white);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    transition: all 0.18s ease;
+    letter-spacing: 0.02em;
+  }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  /* ── MAIN ── */
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  /* ── SECTION CARDS ── */
+  .section {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1.5px solid var(--light-gray);
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0 2px 12px rgba(15,31,61,0.06);
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s}
+  .section:nth-child(2){animation-delay:0.1s}
+  .section:nth-child(3){animation-delay:0.15s}
+  .section:nth-child(4){animation-delay:0.2s}
+  .section:nth-child(5){animation-delay:0.25s}
+  .section:nth-child(6){animation-delay:0.3s}
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .section .sub {
+    font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+
+  /* ── WHEN TO USE ── */
+  .use-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem;
+  }
+  .use-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .use-card .icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+
+  /* ── ACCESS OPTIONS ── */
+  .options-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media(max-width:580px){ .options-row{ grid-template-columns: 1fr; } }
+
+  .option-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 14px;
+    padding: 1.4rem 1.2rem;
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.18s;
+    cursor: default;
+  }
+  .option-card:hover { box-shadow: 0 8px 28px rgba(15,31,61,0.1); transform: translateY(-2px); }
+
+  .option-num {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--navy); color: white;
+    font-size: 0.72rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .option-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .option-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+  .option-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; }
+  .option-path {
+    margin-top: 0.75rem;
+    font-size: 0.75rem; font-weight: 600;
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 0.35rem 0.65rem;
+    display: inline-block;
+    font-family: monospace;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── STEPS ── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 12px; padding: 1rem 1.2rem;
+    transition: border-color 0.18s;
+  }
+  .step:hover { border-color: var(--accent); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-weight: 700; font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── RULES DO/DONT ── */
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  @media(max-width:560px){ .rules-grid{ grid-template-columns: 1fr; } }
+
+  .rules-col { border-radius: 14px; padding: 1.35rem 1.4rem; }
+  .rules-col.do { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .rules-col.dont { background: #fff5f5; border: 1.5px solid #fca5a5; }
+  .rules-col.optional { background: #fffbeb; border: 1.5px solid #fcd34d; }
+
+  .rules-col h4 {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 0.9rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .rules-col.do h4 { color: #166534; }
+  .rules-col.dont h4 { color: #991b1b; }
+  .rules-col.optional h4 { color: #92400e; }
+
+  .rules-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .rules-col ul li {
+    font-size: 0.87rem; display: flex; align-items: flex-start; gap: 0.6rem;
+    color: var(--text-body);
+  }
+  .rules-col ul li::before { content: ''; flex-shrink: 0; margin-top: 0.35em; }
+  .rules-col.do ul li::before { content: '✓'; color: #16a34a; font-weight: 700; font-size: 0.9rem; }
+  .rules-col.dont ul li::before { content: '✗'; color: #dc2626; font-weight: 700; font-size: 0.9rem; }
+  .rules-col.optional ul li::before { content: '◎'; color: #d97706; font-weight: 700; font-size: 0.85rem; }
+
+  .rules-optional-wrap { margin-top: 1.25rem; }
+
+  /* ── APPROVAL FLOW ── */
+  .flow {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+  .flow-step {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 14px; padding: 1rem 1.4rem;
+    width: 100%; max-width: 500px;
+    transition: all 0.18s;
+  }
+  .flow-step:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(58,123,213,0.12); }
+  .flow-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .flow-step p { font-size: 0.9rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .flow-step small { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
+  .flow-arrow {
+    font-size: 1.2rem; color: var(--accent);
+    height: 28px; display: flex; align-items: center;
+  }
+
+  .alert-box {
+    margin-top: 1.25rem;
+    background: #fef3c7; border: 1.5px solid #f59e0b;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.88rem; font-weight: 500; color: #78350f;
+  }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  /* ── MISTAKES ── */
+  .mistakes-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: #fff5f5; border: 1.5px solid #fecaca;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+  }
+  .mistake-x {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: #fee2e2; color: #dc2626; font-size: 1rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mistake-item p { font-size: 0.88rem; color: var(--text-body); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+  }
+  footer strong { color: rgba(255,255,255,0.9); }
+
+  /* ── PRINT ── */
+  @media print {
+    .nav-pills { display: none; }
+    .section { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> UKG Ready Training</div>
+  <h1>How to Open<br>Requisitions</h1>
+  <p>A step-by-step reference for opening retail job requisitions in UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Jump to section">
+  <a href="#when">When to Use</a>
+  <a href="#access">3 Ways to Access</a>
+  <a href="#open">Open a Req</a>
+  <a href="#rules">Req Rules</a>
+  <a href="#approval">After You Submit</a>
+  <a href="#mistakes">Common Mistakes</a>
+</nav>
+
+<main>
+
+  <!-- WHEN TO USE -->
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Overview</div>
+    <h2>When to Use This Guide</h2>
+    <p class="sub">Reference this guide any time you're hiring for a retail store position.</p>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="icon">📋</div>
+        <p>Opening a new retail requisition</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">👤</div>
+        <p>Hiring for Sales Help, 3rd Key, ASM, or Store Manager roles</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">✅</div>
+        <p>Checking approval status on a submitted req</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">📡</div>
+        <p>Monitoring whether a req has posted to job boards</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS OPTIONS -->
+  <section class="section" id="access">
+    <div class="section-label"><span class="bar"></span> Navigation</div>
+    <h2>3 Ways to Access Job Requisitions</h2>
+    <p class="sub">Any of these paths will get you to the same place — choose whichever feels fastest.</p>
+    <div class="options-row">
+      <div class="option-card">
+        <div class="option-num">1</div>
+        <div class="option-icon">🏠</div>
+        <h3>Recruitment Dashboard</h3>
+        <p>Start from your home screen and tap the Recruitment widget.</p>
+        <span class="option-path">Home → Recruitment → My open job requisitions</span>
+      </div>
+      <div class="option-card">
+        <div class="option-num">2</div>
+        <div class="option-icon">☰</div>
+        <h3>Menu Navigation</h3>
+        <p>Use the hamburger menu in the top left corner.</p>
+        <span class="option-path">☰ → Team → Recruitment → Job Requisitions</span>
+      </div>
+      <div class="option-card">
+        <div class="option-num">3</div>
+        <div class="option-icon">🔍</div>
+        <h3>Search Bar</h3>
+        <p>The fastest option — type and select the first result.</p>
+        <span class="option-path">Search "Job Requisitions" → Select first result</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN A REQ -->
+  <section class="section" id="open">
+    <div class="section-label"><span class="bar"></span> Step-by-Step</div>
+    <h2>Open a Retail Requisition</h2>
+    <p class="sub">Follow these steps in order after navigating to Job Requisitions.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Click Add New</strong>
+          <span>This creates a blank requisition form.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Click the search icon in the Job Requisition Template field</strong>
+          <span>This opens the template lookup window.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Search by store number only</strong>
+          <span>Type just the store number (e.g. 0001) — do not type the role name.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Select the correct position for that store</strong>
+          <span>Choose the right role (Sales Help, 3rd Key, ASM FT/PT, Store Manager, etc.).</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Click OK to override fields</strong>
+          <span>Confirm the pop-up — this will auto-fill most required fields from the template.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">6</div>
+        <div class="step-text">
+          <strong>Check Status and Visibility</strong>
+          <span>Ensure the Status is set correctly and the Visibility is configured so the req posts to the career page.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">7</div>
+        <div class="step-text">
+          <strong>Select the Background Check Package</strong>
+          <span>Scroll to the bottom and select the appropriate package: <strong>Lids Retail Management PG</strong> for US stores, or <strong>Canada Retail Management Package</strong> for Canadian stores.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- RULES -->
+  <section class="section" id="rules">
+    <div class="section-label"><span class="bar"></span> Configuration Rules</div>
+    <h2>Requisition Rules</h2>
+    <p class="sub">Most fields auto-fill from the template. Only a handful need your attention.</p>
+    <div class="rules-grid">
+      <div class="rules-col do">
+        <h4>✓ Do</h4>
+        <ul>
+          <li>Enter the correct number of openings</li>
+          <li>Check "Auto Closed When Filled"</li>
+          <li>Enter Hiring Manager 1</li>
+          <li>Add Pay Range (if required by state)</li>
+        </ul>
+      </div>
+      <div class="rules-col dont">
+        <h4>✗ Do Not</h4>
+        <ul>
+          <li>Select Evergreen</li>
+          <li>Select Remote Job</li>
+          <li>Enter anything in the Requirements or Summary section</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rules-optional-wrap">
+      <div class="rules-col optional">
+        <h4>◎ Optional</h4>
+        <ul>
+          <li>Use Visibility Dates for advance planning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROVAL FLOW -->
+  <section class="section" id="approval">
+    <div class="section-label"><span class="bar"></span> Approval Process</div>
+    <h2>What Happens After You Submit</h2>
+    <p class="sub">Once you click submit, the process is automatic — here's what to expect.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">💾</div>
+        <div>
+          <p>Click Save and Submit for Approval</p>
+          <small>Your req is saved and enters the approval queue.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">👥</div>
+        <div>
+          <p>Routes automatically to HR team</p>
+          <small>No action needed from you — HR receives it automatically.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">🟢</div>
+        <div>
+          <p>Requisition opens and posts to job boards</p>
+          <small>Once approved, the role is live and accepting applicants.</small>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <span>You will <strong>not</strong> see applicants until the requisition has been approved by HR.</span>
+    </div>
+  </section>
+
+  <!-- MISTAKES -->
+  <section class="section" id="mistakes">
+    <div class="section-label"><span class="bar"></span> Watch Out</div>
+    <h2>Common Mistakes to Avoid</h2>
+    <p class="sub">These are the most frequent errors — double-check before submitting.</p>
+    <ul class="mistakes-list">
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Selecting the wrong requisition template for the store</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Entering an incorrect number of openings</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Forgetting to check "Auto Close When Filled"</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Marking the role as Remote or Evergreen</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Entering custom text in the Requirements or Summary section</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Not checking Status and Visibility before submitting — the req won't post if these are incorrect</p>
+      </li>
+      <li class="mistake-item">
+        <div class="mistake-x">✗</div>
+        <p>Forgetting to select a Background Check Package — choose Lids Retail Management PG (US) or Canada Retail Management Package (Canada)</p>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · UKG Ready Training</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
+</footer>
+
+</body>
+</html>

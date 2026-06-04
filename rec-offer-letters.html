@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create & Send an Offer — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --accent: #3a7bd5;
+    --accent-glow: #5a9bf5;
+    --white: #ffffff;
+    --off-white: #f4f6fb;
+    --light-gray: #e8edf7;
+    --text-body: #2d3748;
+    --text-muted: #6b7a99;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-body);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0; height: 48px;
+    background: var(--off-white);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .logo-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+  }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400; letter-spacing: -0.01em; line-height: 1.15;
+    margin-bottom: 0.75rem; position: relative;
+  }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto; position: relative; }
+
+  /* ── NAV ── */
+  .nav-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    padding: 2rem 1rem 0; max-width: 900px; margin: 0 auto;
+  }
+  .nav-pills a {
+    text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    color: var(--navy-mid); background: var(--white);
+    border: 1.5px solid var(--light-gray); border-radius: 999px;
+    padding: 0.35rem 1rem; transition: all 0.18s ease; letter-spacing: 0.02em;
+  }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  /* ── MAIN ── */
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  .section {
+    background: var(--white); border-radius: 20px;
+    border: 1.5px solid var(--light-gray);
+    padding: 2.25rem 2.5rem; margin-bottom: 1.75rem;
+    box-shadow: 0 2px 12px rgba(15,31,61,0.06);
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s}
+  .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s}
+  .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s}
+  .section:nth-child(7){animation-delay:0.35s} .section:nth-child(8){animation-delay:0.4s}
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2;
+  }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+  /* ── USE GRID ── */
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .use-card {
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 14px; padding: 1.1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .use-card .icon {
+    width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+
+  /* ── STEPS ── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s;
+  }
+  .step:hover { border-color: var(--accent); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-weight: 700; font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── ALERT / TIP / NOTE BOXES ── */
+  .alert-box {
+    background: #fef3c7; border: 1.5px solid #f59e0b;
+    border-radius: 12px; padding: 1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.88rem; font-weight: 500; color: #78350f;
+    margin-top: 1.25rem;
+  }
+  .alert-box.red { background: #fff5f5; border-color: #fca5a5; color: #991b1b; }
+  .alert-box .alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+  .tip-box {
+    background: #eff6ff; border: 1.5px solid #93c5fd;
+    border-radius: 14px; padding: 1.1rem 1.3rem;
+    display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem;
+  }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+
+  /* ── TEMPLATE TABLE ── */
+  .template-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .template-table th {
+    background: var(--navy); color: white;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.6rem 1rem; text-align: left;
+  }
+  .template-table td {
+    font-size: 0.85rem; padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--light-gray); color: var(--text-body);
+  }
+  .template-table tr:last-child td { border-bottom: none; }
+  .template-table tr:nth-child(even) td { background: var(--off-white); }
+  .template-table td.role { font-weight: 600; color: var(--navy); }
+  .template-table td.template-name { font-family: monospace; font-size: 0.82rem; color: var(--accent); }
+  .canada-badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: #fef3c7; border: 1px solid #f59e0b;
+    color: #92400e; font-size: 0.7rem; font-weight: 700;
+    border-radius: 999px; padding: 0.15rem 0.55rem;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+
+  /* ── APPROVAL FLOW ── */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-step {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 14px; padding: 1rem 1.4rem;
+    width: 100%; transition: all 0.18s;
+  }
+  .flow-step:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(58,123,213,0.1); }
+  .flow-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .flow-step p { font-size: 0.9rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .flow-step small { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.25rem; line-height: 1.45; }
+  .flow-arrow { font-size: 1.2rem; color: var(--accent); height: 28px; display: flex; align-items: center; }
+
+  /* ── AFTER RESPONSE ── */
+  .response-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:560px){ .response-grid{ grid-template-columns: 1fr; } }
+  .response-card {
+    border-radius: 14px; padding: 1.2rem 1.3rem;
+  }
+  .response-card.accepted { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .response-card.declined { background: #fff5f5; border: 1.5px solid #fca5a5; }
+  .response-card h4 {
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .response-card.accepted h4 { color: #166534; }
+  .response-card.declined h4 { color: #991b1b; }
+  .response-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .response-card ul li { font-size: 0.86rem; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.4; }
+  .response-card.accepted ul li { color: #166534; }
+  .response-card.declined ul li { color: #991b1b; }
+
+  /* ── ERRORS ── */
+  .errors-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .error-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: #fff5f5; border: 1.5px solid #fecaca;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+  }
+  .error-x {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: #fee2e2; color: #dc2626; font-size: 1rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .error-item p { font-size: 0.88rem; color: var(--text-body); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.6);
+    text-align: center; font-size: 0.8rem; padding: 1.5rem;
+  }
+  footer strong { color: rgba(255,255,255,0.9); }
+
+  @media print {
+    .nav-pills { display: none; }
+    .section { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> UKG Ready Training</div>
+  <h1>How to Create &amp;<br>Send an Offer</h1>
+  <p>A step-by-step reference for creating, submitting, and assigning offer letters in UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Jump to section">
+  <a href="#when">When to Use</a>
+  <a href="#stage">Move to Offer Stage</a>
+  <a href="#create">Create the Offer</a>
+  <a href="#template">Select Template</a>
+  <a href="#finish">Finish &amp; Submit</a>
+  <a href="#approval">Approval Workflow</a>
+  <a href="#response">After Candidate Responds</a>
+  <a href="#errors">Common Errors</a>
+</nav>
+
+<main>
+
+  <!-- WHEN TO USE -->
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Overview</div>
+    <h2>When to Use This Guide</h2>
+    <p class="sub">Use this guide once you have selected a candidate and are ready to extend a formal offer.</p>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="icon">✅</div>
+        <p>A candidate has been selected for hire</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">📄</div>
+        <p>You are ready to create and send an offer letter</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVE TO OFFER STAGE -->
+  <section class="section" id="stage">
+    <div class="section-label"><span class="bar"></span> Step 1</div>
+    <h2>Move to Offer Stage</h2>
+    <p class="sub">Before creating an offer, make sure the candidate is in the correct hiring stage.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Open the candidate's application</strong>
+          <span>Navigate to the requisition, click the Applications tab, select the candidate, and click View.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Click the Offer hiring stage circle</strong>
+          <span>This moves the candidate to the Offer stage. Leave the date as-is and click OK to confirm.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- CREATE THE OFFER -->
+  <section class="section" id="create">
+    <div class="section-label"><span class="bar"></span> Step 2</div>
+    <h2>Add Offer &amp; Enter Details</h2>
+    <p class="sub">Once the candidate is in the Offer stage, create the offer from the Quick Actions panel.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Click Add Offer</strong>
+          <span>Found in the Quick Actions panel on the right side of the applicant record.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Review the pre-filled fields</strong>
+          <span>Applicant, Job Application, and Job Requisition will auto-fill — verify they are correct.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Enter the Rate</strong>
+          <span>Type the candidate's hourly pay rate in the Rate field.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Change "Per" to Hour</strong>
+          <span>The Per field may default to something other than Hour — make sure it is set to Hour before continuing.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Enter the Start Date</strong>
+          <span>Enter the candidate's intended first day of work.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- SELECT TEMPLATE -->
+  <section class="section" id="template">
+    <div class="section-label"><span class="bar"></span> Step 3</div>
+    <h2>Select the Offer Letter Template</h2>
+    <p class="sub">Use the correct template for the role and location — using the wrong one will result in an incorrect offer letter being sent to the candidate.</p>
+
+    <table class="template-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Template to Select</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="role">Assistant Store Manager (FT)</td>
+          <td class="template-name">Retail | FT | Assistant Store Manager</td>
+        </tr>
+        <tr>
+          <td class="role">Store Manager</td>
+          <td class="template-name">Retail | FT | Store Manager</td>
+        </tr>
+        <tr>
+          <td class="role">3rd Key</td>
+          <td class="template-name">Retail | PT | 3rd Key</td>
+        </tr>
+        <tr>
+          <td class="role">Assistant Store Manager (PT)</td>
+          <td class="template-name">Retail | PT | Assistant Store Manager</td>
+        </tr>
+        <tr>
+          <td class="role">Sales Help</td>
+          <td class="template-name">Retail | PT | Sales Help</td>
+        </tr>
+        <tr>
+          <td class="role">Seasonal Sales Help</td>
+          <td class="template-name">Retail | PT | Seasonal Sales Help</td>
+        </tr>
+        <tr>
+          <td class="role">Any role — Canada <span class="canada-badge">🍁 Canada</span></td>
+          <td class="template-name">Canada | Hourly</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box" style="margin-top:1.25rem;">
+      <div class="tip-icon">🍁</div>
+      <p><strong>Canadian stores:</strong> Do not use the Retail templates for Canadian employees. Always select the <strong>Canada | Hourly</strong> template regardless of role. Retail templates are for U.S. stores only.</p>
+    </div>
+
+    <ol class="steps-list" style="margin-top:1.25rem;">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Click the Offer Letter Template field</strong>
+          <span>This opens the template selection window.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Select the correct template for the role and location</strong>
+          <span>Use the table above to find the right one. Templates starting with "Retail" are U.S. only.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Click OK to override</strong>
+          <span>Confirm the pop-up to apply the template to the offer.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- FINISH & SUBMIT -->
+  <section class="section" id="finish">
+    <div class="section-label"><span class="bar"></span> Step 4</div>
+    <h2>Finish &amp; Submit the Offer</h2>
+    <p class="sub">Before submitting, always preview the offer letter to confirm all details are correct.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Preview the offer letter</strong>
+          <span>Click Preview to review the full offer letter before submitting — verify the name, rate, start date, and job title are all correct.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Click Save and Submit</strong>
+          <span>This submits the offer into the approval workflow. Do not click Submit without previewing first.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Always preview before submitting.</strong> Once submitted, the offer enters the approval workflow and cannot be easily recalled if there is an error in the details.</div>
+    </div>
+  </section>
+
+  <!-- APPROVAL WORKFLOW -->
+  <section class="section" id="approval">
+    <div class="section-label"><span class="bar"></span> What Happens Next</div>
+    <h2>Offer Approval Workflow</h2>
+    <p class="sub">Once you submit, the process is handled automatically. Here is exactly what to expect — and what you do not need to do.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">📤</div>
+        <div>
+          <p>You submit the offer</p>
+          <small>The offer enters the approval queue automatically.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">👤</div>
+        <div>
+          <p>Routes to your direct manager (Manager 1) for approval</p>
+          <small>Your manager receives a notification to review and approve or reject the offer. You do not need to follow up — the system notifies them automatically.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">📬</div>
+        <div>
+          <p>You receive an email notification with the outcome</p>
+          <small>You will be notified whether the offer was approved or rejected by your manager. If approved, you do not need to take any further action at this point.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">👥</div>
+        <div>
+          <p>HR receives a notification and assigns the offer to the candidate</p>
+          <small>Once your manager approves, HR is automatically notified and takes over — they will assign the offer to the candidate to ensure compliance and confirm every candidate receives a formal offer before hire. You do not need to assign the offer yourself.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">📩</div>
+        <div>
+          <p>You receive a final notification once the candidate responds</p>
+          <small>You will be notified when the candidate signs or declines the offer. At that point, refer to the After Candidate Responds section below for your next steps.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:1.25rem;">
+      <div class="tip-icon">💡</div>
+      <p><strong>Your role in the workflow is done after you submit.</strong> Wait for the notification that tells you the candidate has responded — HR handles everything in between.</p>
+    </div>
+  </section>
+
+  <!-- AFTER CANDIDATE RESPONDS -->
+  <section class="section" id="response">
+    <div class="section-label"><span class="bar"></span> After the Offer</div>
+    <h2>After the Candidate Responds</h2>
+    <p class="sub">Once you receive the notification that the candidate has signed or declined, here is what to do next.</p>
+    <div class="response-grid">
+      <div class="response-card accepted">
+        <h4>✓ Offer Accepted</h4>
+        <ul>
+          <li>✓ Move candidate to <strong>Initiate Background Check</strong> if a background check is required for the position</li>
+          <li>✓ Move candidate to <strong>Preboarding</strong> directly if no background check applies</li>
+        </ul>
+      </div>
+      <div class="response-card declined">
+        <h4>✗ Offer Declined</h4>
+        <ul>
+          <li>✗ Leave the candidate in the <strong>Offer stage</strong> — do not move them</li>
+          <li>✗ Do <strong>NOT</strong> move them to the Hired stage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMON ERRORS -->
+  <section class="section" id="errors">
+    <div class="section-label"><span class="bar"></span> Watch Out</div>
+    <h2>Common Errors to Avoid</h2>
+    <p class="sub">These are the most frequent mistakes when creating offers — double-check each one before submitting.</p>
+    <ul class="errors-list">
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Selecting the wrong offer letter template for the role or location</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Using a Retail template for a Canadian employee — always use Canada | Hourly</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Leaving "Per" set to something other than Hour</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Skipping the offer preview before submitting</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Entering an incorrect pay rate or start date</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Moving a candidate to the next stage before the offer is accepted</p>
+      </li>
+      <li class="error-item">
+        <div class="error-x">✗</div>
+        <p>Moving a declined candidate to the Hired stage</p>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · UKG Ready Training</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
+</footer>
+
+</body>
+</html>

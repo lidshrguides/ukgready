@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero p{font-size:16px;opacity:0.75;max-width:480px;margin:0 auto;}
+.hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
+.nav-tab:hover{color:var(--navy);border-color:var(--border);}
+.nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
+.content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
+.section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;}
+.section-card h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,3.5vw,28px);color:var(--navy-dark);margin-bottom:6px;}
+.section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+.do-dont-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.do-dont-grid,.access-grid{grid-template-columns:1fr!important;}}
+.do-box,.dont-box{border-radius:12px;padding:20px;border:1px solid;}
+.do-box{background:var(--green-light);border-color:#a7d7d2;}
+.dont-box{background:var(--red-light);border-color:#f5b8bc;}
+.do-box h3{color:var(--green);margin-bottom:12px;font-size:14px;font-weight:700;}
+.dont-box h3{color:var(--red);margin-bottom:12px;font-size:14px;font-weight:700;}
+.do-box ul,.dont-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.do-box li,.dont-box li{font-size:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.do-box li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+.dont-box li::before{content:'✕';color:var(--red);font-weight:700;flex-shrink:0;}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.access-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.access-card.recommended{border-color:var(--accent);background:linear-gradient(135deg,#f0f3ff 0%,#f8f9ff 100%);}
+.access-card h3{font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.rec-badge{font-size:11px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;font-weight:600;}
+.access-card .path{font-size:12px;color:var(--text-muted);margin-bottom:14px;font-style:italic;}
+.access-steps{display:flex;flex-direction:column;gap:7px;counter-reset:step-count;}
+.access-step{display:flex;align-items:flex-start;gap:9px;font-size:13px;counter-increment:step-count;line-height:1.4;}
+.access-step::before{content:counter(step-count);min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.access-step kbd{background:var(--navy);color:white;border-radius:4px;padding:1px 6px;font-size:11px;font-family:inherit;font-weight:600;}
+.alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
+.alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
+.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
+.alert-danger{background:var(--red-light);border:1px solid #f5b8bc;color:#8b1a22;}
+.alert-icon{font-size:18px;flex-shrink:0;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;position:relative;}
+.step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
+.step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.step-body{padding:0 0 28px;flex:1;}
+.step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
+.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
+.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+.step-body strong{color:var(--text);}
+.field-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.field-table th{background:var(--navy);color:white;padding:9px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.field-table th:first-child{border-radius:8px 0 0 0;}
+.field-table th:last-child{border-radius:0 8px 0 0;}
+.field-table td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.field-table tr:last-child td{border-bottom:none;}
+.field-table tr:nth-child(even) td{background:var(--bg);}
+.field-name{font-weight:600;color:var(--navy-dark);}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;}
+.tag-required{background:#fdecea;color:var(--red);}
+.tag-auto{background:var(--green-light);color:var(--green);}
+.tag-optional{background:#fef3e8;color:#b55b0a;}
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:14px;position:relative;}
+.tl-item:not(:last-child) .tl-line{position:absolute;left:14px;top:36px;bottom:0;width:2px;background:var(--border);}
+.tl-dot{width:30px;height:30px;border-radius:50%;background:var(--accent-light);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;position:relative;z-index:1;margin-top:2px;}
+.tl-body{padding-bottom:24px;}
+.tl-body h4{font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:3px;}
+.tl-body p{font-size:13.5px;color:var(--text-muted);}
+.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
+.callout h3{font-family:Georgia,'Times New Roman',serif;font-size:20px;margin-bottom:8px;}
+.callout p{opacity:0.75;font-size:14px;margin-bottom:16px;}
+.callout a{display:inline-block;background:white;color:var(--navy);font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px;text-decoration:none;}
+</style>
+</head>
+
+<title>Employee Self-Service Guide – UKG Ready</title>
+</head>
+<body>
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
+  <h1>Employee Self-Service<br>Guide</h1>
+  <p>How to update your personal information, direct deposit, contacts, and more in UKG Ready</p>
+  <div class="hero-curve"></div>
+</div>
+<div class="nav-wrap"><div class="nav-tabs">
+  <a href="#how-to-get-there" class="nav-tab active">How to Get There</a>
+  <a href="#personal-info" class="nav-tab">Personal Info</a>
+  <a href="#address" class="nav-tab">Address</a>
+  <a href="#direct-deposit" class="nav-tab">Direct Deposit</a>
+  <a href="#email-phone" class="nav-tab">Email / Phone</a>
+  <a href="#emergency-contacts" class="nav-tab">Emergency Contacts</a>
+  <a href="#marital-status" class="nav-tab">Marital Status</a>
+  <a href="#name" class="nav-tab">Name</a>
+  <a href="#credentials" class="nav-tab">Credentials</a>
+  <a href="#trainings" class="nav-tab">Trainings</a>
+  <a href="#i9" class="nav-tab">I-9 Documents</a>
+</div></div>
+<div class="content">
+
+  <!-- ── HOW TO GET THERE ── -->
+  <div class="section-card" id="how-to-get-there">
+    <div class="section-label">Getting Started</div>
+    <h2>How to Get There</h2>
+    <p class="subtitle">Every self-service action starts the same way. Follow these steps first, then jump to the specific action you need below.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Login to UKG Ready</h4>
+        <ul><li>Log in with your UKG Ready credentials</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Go to the Home Page</h4>
+        <ul><li>You'll land on your UKG Ready home page after logging in</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Hover Over My Tasks</h4>
+        <ul><li>Find <strong>My Tasks</strong> in the navigation and hover over it</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <h4>Click Update My Information</h4>
+        <ul><li>Select <strong>Update My Information</strong> from the dropdown</li><li>You'll see a list of self-service actions — select the one you need</li></ul>
+      </div></div>
+    </div>
+    <div class="alert alert-info" style="margin-top:4px;">
+      <span class="alert-icon">👇</span>
+      <div>Once you're on the Update My Information page, find your specific action in the sections below.</div>
+    </div>
+  </div>
+
+  <!-- ── UPDATE ALL PERSONAL INFO ── -->
+  <div class="section-card" id="personal-info">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update All Personal Information</h2>
+    <p class="subtitle">Use this action to review and update your name, address, email, preferred language, date of birth, and EEO information.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update All Personal Information</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Review &amp; Update Each Section</h4>
+        <ul>
+          <li>Review and update your information as needed — including name, address, email, preferred language, and date of birth</li>
+          <li>This action may also include <strong>EEO information</strong>, which supports reporting and compliance</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Navigate and Submit</h4>
+        <ul>
+          <li>Click <strong>Continue</strong> to move through each section</li>
+          <li>Click <strong>Submit</strong> when finished</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── UPDATE MY ADDRESS ── -->
+  <div class="section-card" id="address">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Address</h2>
+    <p class="subtitle">Use this action to update your home address. Address changes may affect your state and local tax withholding.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Address</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Enter Your Updated Address</h4>
+        <ul><li>Enter your updated home address and submit the change</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Update Tax Withholding If Needed</h4>
+        <ul>
+          <li>If your address change impacts state or local taxes, you may need to complete new tax withholding forms</li>
+          <li>Navigate to: <strong>My HR → Forms → Government Forms → Withholding → click +Add New</strong></li>
+        </ul>
+        <div class="alert alert-warn" style="margin-top:12px;">
+          <span class="alert-icon">⚠️</span>
+          <div><strong>Why this matters:</strong> Tax withholding is based on where you live and work. Updating your address ensures the correct state and local taxes are applied to your pay.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── UPDATE MY DIRECT DEPOSIT ── -->
+  <div class="section-card" id="direct-deposit">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Direct Deposit</h2>
+    <p class="subtitle">Use this action to add or update your bank account information for direct deposit.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Direct Deposit</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Add Your Bank Account</h4>
+        <ul>
+          <li>Click <strong>+Add</strong> to enter new bank account information</li>
+          <li>Enter your routing and account numbers</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Submit</h4>
+        <ul><li>Click <strong>Submit</strong> when complete</li></ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">🏦</span>
+          <div><strong>If you have more than one account, list them in this order:</strong><br>
+          <strong>Account 1:</strong> Flat $ Amount &nbsp;|&nbsp; <strong>Account 2:</strong> Entire/Remainder</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── UPDATE EMAIL/PHONE ── -->
+  <div class="section-card" id="email-phone">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Email / Phone Number</h2>
+    <p class="subtitle">Use this action to update your email address and/or phone number on file.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Email/Phone Number</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Make Your Updates</h4>
+        <ul><li>Update your email address and/or phone number as needed</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Confirm &amp; Submit</h4>
+        <ul>
+          <li>Confirm the effective date</li>
+          <li>Click <strong>Submit</strong> to save your changes</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── EMERGENCY CONTACTS ── -->
+  <div class="section-card" id="emergency-contacts">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Emergency Contacts</h2>
+    <p class="subtitle">Use this action to add or update the emergency contacts on your employee record.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Emergency Contacts</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Add a Contact</h4>
+        <ul>
+          <li>Click <strong>+Add</strong> on the right side of the screen</li>
+          <li>Check the box to select the contact type: <strong>Emergency</strong></li>
+          <li>Enter the contact's <strong>name, relationship type, phone number, and email address</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Submit</h4>
+        <ul><li>Click <strong>Submit</strong> when at least 1 contact has been entered</li></ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── MARITAL STATUS ── -->
+  <div class="section-card" id="marital-status">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Marital Status</h2>
+    <p class="subtitle">Use this action to update your marital status. You'll need to upload supporting documentation and may need to update your tax withholding.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Marital Status</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Upload Supporting Documentation</h4>
+        <ul>
+          <li>Click <strong>Upload Document</strong></li>
+          <li>Select document type: <strong>Marriage</strong></li>
+          <li>Click <strong>Submit</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Update Tax Withholding If Needed</h4>
+        <ul>
+          <li>If necessary, fill out new tax withholding forms</li>
+          <li>Navigate to: <strong>My HR → Forms → Government Forms → Withholding → click +Add New</strong></li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── UPDATE MY NAME ── -->
+  <div class="section-card" id="name">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Name</h2>
+    <p class="subtitle">Use this action to update your legal name. You'll need to upload supporting documentation and may need to update your tax withholding.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Name</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Upload Supporting Documentation</h4>
+        <ul>
+          <li>Click <strong>Upload Document</strong></li>
+          <li>Select document type: <strong>Name Change</strong></li>
+          <li>Click <strong>Submit</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Update Tax Withholding If Needed</h4>
+        <ul>
+          <li>If necessary, fill out new tax withholding forms</li>
+          <li>Navigate to: <strong>My HR → Forms → Government Forms → Withholding → click +Add New</strong></li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── CREDENTIALS ── -->
+  <div class="section-card" id="credentials">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Credentials</h2>
+    <p class="subtitle">Use this action to add or update your professional credentials and upload supporting documents.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Credentials</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Enter Your Credential Information</h4>
+        <ul>
+          <li>Enter your credential information as requested</li>
+          <li>If you do not have a document ID number, enter your <strong>Social Security number</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Upload Your Document</h4>
+        <ul>
+          <li>When uploading your document, select <strong>Employee Documents</strong> as the document type</li>
+          <li>Click <strong>Submit</strong> when finished</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── TRAININGS ── -->
+  <div class="section-card" id="trainings">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Update My Trainings / Certifications</h2>
+    <p class="subtitle">Use this action to add completed training or certification details to your employee record.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Update My Trainings/Certifications</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Add Your Training Details</h4>
+        <ul><li>Add your completed training or certification details</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Upload Documentation &amp; Submit</h4>
+        <ul>
+          <li>Upload supporting documentation if required</li>
+          <li>Click <strong>Submit</strong> when finished</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── I-9 ── -->
+  <div class="section-card" id="i9">
+    <div class="section-label">Self-Service Action</div>
+    <h2>Upload I-9 Work Authorization Documents</h2>
+    <p class="subtitle">Use this action to upload documents verifying your identity and work authorization for Form I-9.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Select the Action</h4>
+        <ul><li>On the Update My Information page, click <strong>Upload I-9 Work Authorization Documents</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Review Acceptable Documents</h4>
+        <ul>
+          <li>Before uploading, review the official <strong>USCIS List of Acceptable Documents</strong></li>
+          <li>You must upload either:<br>
+            &nbsp;&nbsp;→ <strong>One document from List A</strong><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>OR</em><br>
+            &nbsp;&nbsp;→ <strong>One document from List B AND one document from List C</strong>
+          </li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Upload Your Documents</h4>
+        <ul>
+          <li>Ensure all uploaded documents are <strong>clear, legible, and unexpired</strong></li>
+          <li>Submit once all required documents are uploaded</li>
+        </ul>
+        <div class="alert alert-danger" style="margin-top:12px;">
+          <span class="alert-icon">🚫</span>
+          <div>Do <strong>not</strong> upload expired documents. All documents must be current and valid.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Questions about a self-service action?</h3>
+    <p>If you're unsure what to enter or run into an issue, contact the HR team for assistance.</p>
+    <a href="mailto:hr@lids.com">hr@lids.com</a>
+  </div>
+
+</div>
+
+</body>
+</html>

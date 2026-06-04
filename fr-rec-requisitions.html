@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment créer des requêtes d'emploi — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a;
+    --accent: #3a7bd5; --accent-glow: #5a9bf5;
+    --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7;
+    --text-body: #2d3748; --text-muted: #6b7a99;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
+  }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s}
+  .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s}
+  .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s}
+
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+
+  .options-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media(max-width:580px){ .options-row{ grid-template-columns: 1fr; } }
+  .option-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.4rem 1.2rem; position: relative; transition: box-shadow 0.18s, transform 0.18s; }
+  .option-card:hover { box-shadow: 0 8px 28px rgba(15,31,61,0.1); transform: translateY(-2px); }
+  .option-num { position: absolute; top: 1rem; right: 1rem; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: white; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .option-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .option-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+  .option-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; }
+  .option-path { margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600; background: var(--navy); color: white; border-radius: 8px; padding: 0.35rem 0.65rem; display: inline-block; font-family: monospace; letter-spacing: 0.02em; }
+
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  @media(max-width:560px){ .rules-grid{ grid-template-columns: 1fr; } }
+  .rules-col { border-radius: 14px; padding: 1.35rem 1.4rem; }
+  .rules-col.do { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .rules-col.dont { background: #fff5f5; border: 1.5px solid #fca5a5; }
+  .rules-col.optional { background: #fffbeb; border: 1.5px solid #fcd34d; }
+  .rules-col h4 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+  .rules-col.do h4 { color: #166534; }
+  .rules-col.dont h4 { color: #991b1b; }
+  .rules-col.optional h4 { color: #92400e; }
+  .rules-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .rules-col ul li { font-size: 0.87rem; display: flex; align-items: flex-start; gap: 0.6rem; color: var(--text-body); }
+  .rules-col.do ul li::before { content: '✓'; color: #16a34a; font-weight: 700; font-size: 0.9rem; }
+  .rules-col.dont ul li::before { content: '✗'; color: #dc2626; font-weight: 700; font-size: 0.9rem; }
+  .rules-col.optional ul li::before { content: '◎'; color: #d97706; font-weight: 700; font-size: 0.85rem; }
+  .rules-optional-wrap { margin-top: 1.25rem; }
+
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-step { display: flex; align-items: center; gap: 1rem; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1rem 1.4rem; width: 100%; max-width: 500px; transition: all 0.18s; }
+  .flow-step:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(58,123,213,0.12); }
+  .flow-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .flow-step p { font-size: 0.9rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .flow-step small { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
+  .flow-arrow { font-size: 1.2rem; color: var(--accent); height: 28px; display: flex; align-items: center; }
+
+  .alert-box { margin-top: 1.25rem; background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  .mistakes-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item { display: flex; align-items: center; gap: 1rem; background: #fff5f5; border: 1.5px solid #fecaca; border-radius: 12px; padding: 0.9rem 1.2rem; }
+  .mistake-x { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: #fee2e2; color: #dc2626; font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .mistake-item p { font-size: 0.88rem; color: var(--text-body); font-weight: 500; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> Formation UKG Ready</div>
+  <h1>Comment créer des<br>requêtes d'emploi</h1>
+  <p>Guide étape par étape pour créer des requêtes d'emploi pour le commerce de détail dans UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Aller à la section">
+  <a href="#when">Quand utiliser</a>
+  <a href="#access">3 façons d'accéder</a>
+  <a href="#open">Ouvrir une requête</a>
+  <a href="#rules">Règles relatives aux requêtes</a>
+  <a href="#approval">Après l'envoi</a>
+  <a href="#mistakes">Erreurs courantes</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Aperçu</div>
+    <h2>Quand utiliser ce guide</h2>
+    <p class="sub">Consultez ce guide chaque fois que vous recrutez pour un poste en magasin.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">📋</div><p>Créer une nouvelle offre d'emploi pour le commerce de détail</p></div>
+      <div class="use-card"><div class="icon">👤</div><p>Recruter pour des postes d'associé aux ventes, de 3e clé, d'aide-gérant ou de gérant de magasin</p></div>
+      <div class="use-card"><div class="icon">✅</div><p>Vérifier le statut d'approbation d'une offre d'emploi soumise</p></div>
+      <div class="use-card"><div class="icon">📡</div><p>Vérifier si une offre d'emploi a été publiée sur les sites d'emploi</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="access">
+    <div class="section-label"><span class="bar"></span> Navigation</div>
+    <h2>3 façons d'accéder aux offres d'emploi</h2>
+    <p class="sub">Ces chemins vous mèneront tous au même endroit. Choisissez celui qui vous semble le plus rapide.</p>
+    <div class="options-row">
+      <div class="option-card">
+        <div class="option-num">1</div>
+        <div class="option-icon">🏠</div>
+        <h3>Tableau de bord Recrutement</h3>
+        <p>Commencez depuis votre écran d'accueil et cliquez sur le module Recrutement.</p>
+        <span class="option-path">Accueil → Recrutement → Mes requêtes d'emploi ouvertes</span>
+      </div>
+      <div class="option-card">
+        <div class="option-num">2</div>
+        <div class="option-icon">☰</div>
+        <h3>Navigation par menu</h3>
+        <p>Utilisez le menu hamburger situé dans le coin supérieur gauche.</p>
+        <span class="option-path">Menu → Équipe → Recrutement → Requêtes d'emploi</span>
+      </div>
+      <div class="option-card">
+        <div class="option-num">3</div>
+        <div class="option-icon">🔍</div>
+        <h3>Barre de recherche</h3>
+        <p>L'option la plus rapide : tapez et sélectionnez le premier résultat.</p>
+        <span class="option-path">Recherchez « Requêtes d'emploi » → Sélectionnez le premier résultat</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="open">
+    <div class="section-label"><span class="bar"></span> Étape par étape</div>
+    <h2>Ouvrir une requête d'emploi dans le commerce de détail</h2>
+    <p class="sub">Suivez ces étapes dans l'ordre après vous être rendu dans la section Requêtes d'emploi.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur « Ajouter nouveau »</strong>
+          <span>Cela crée un formulaire de requête vierge.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur l'icône de recherche dans le champ « Modèle de requête d'emploi »</strong>
+          <span>La fenêtre de recherche de modèles s'ouvrira.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Effectuez une recherche par numéro de magasin uniquement</strong>
+          <span>Saisissez uniquement le numéro de magasin (par exemple, 0001) ; ne saisissez pas le nom du poste.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Sélectionnez le poste correspondant à ce magasin</strong>
+          <span>Choisissez le rôle approprié (Associé aux ventes, 3e clé, Aide-gérant à temps plein/partiel, Gérant de magasin, etc.)</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Cliquez sur OK pour remplacer les champs</strong>
+          <span>Confirmez la fenêtre contextuelle. Cela remplira automatiquement la plupart des champs obligatoires à partir du modèle.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">6</div>
+        <div class="step-text">
+          <strong>Vérifiez le statut et la visibilité</strong>
+          <span>Assurez-vous que le statut est correctement défini et que la visibilité est configurée afin que la requête soit publiée sur la page carrières.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">7</div>
+        <div class="step-text">
+          <strong>Sélectionnez le forfait de vérification des antécédents</strong>
+          <span>Faites défiler vers le bas et sélectionnez le forfait approprié : <strong>Lids Retail Management PG</strong> pour les magasins américains, ou <strong>Canada Retail Management Package</strong> pour les magasins canadiens.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" id="rules">
+    <div class="section-label"><span class="bar"></span> Règles de configuration</div>
+    <h2>Règles relatives aux requêtes</h2>
+    <p class="sub">La plupart des champs sont remplis automatiquement à partir du modèle. Seuls quelques-uns nécessitent votre attention.</p>
+    <div class="rules-grid">
+      <div class="rules-col do">
+        <h4>✓ À faire</h4>
+        <ul>
+          <li>Saisissez le nombre correct de postes vacants</li>
+          <li>Cochez « Changer automatiquement l'état à Fermé et rempli... »</li>
+          <li>Saisissez le Responsable de l'embauche 1</li>
+          <li>Ajoutez la fourchette salariale (si requis par l'État/la Province)</li>
+        </ul>
+      </div>
+      <div class="rules-col dont">
+        <h4>✗ À ne pas faire</h4>
+        <ul>
+          <li>Sélectionner « Permanent » (Evergreen)</li>
+          <li>Sélectionner « Travail à distance » (Remote Job)</li>
+          <li>Saisir quoi que ce soit dans les sections « Exigences » ou « Sommaire »</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rules-optional-wrap">
+      <div class="rules-col optional">
+        <h4>◎ Facultatif</h4>
+        <ul>
+          <li>Utilisez les « Dates de visibilité » pour planifier à l'avance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="approval">
+    <div class="section-label"><span class="bar"></span> Processus d'approbation</div>
+    <h2>Que se passe-t-il après l'envoi ?</h2>
+    <p class="sub">Une fois que vous avez cliqué sur « Soumettre », le processus est automatique. Voici ce à quoi vous pouvez vous attendre.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">💾</div>
+        <div>
+          <p>Cliquez sur « Enregistrer et soumettre pour approbation »</p>
+          <small>Votre demande est enregistrée et entre dans la file d'attente d'approbation.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">👥</div>
+        <div>
+          <p>Transmission automatique à l'équipe RH</p>
+          <small>Aucune action n'est requise de votre part : les RH la reçoivent automatiquement.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">🟢</div>
+        <div>
+          <p>La requête est ouverte et publiée sur les sites d'emploi</p>
+          <small>Une fois approuvée, l'offre est en ligne et accepte les candidatures.</small>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <span>Vous ne verrez <strong>pas</strong> les candidats tant que la demande n'aura pas été approuvée par les RH.</span>
+    </div>
+  </section>
+
+  <section class="section" id="mistakes">
+    <div class="section-label"><span class="bar"></span> Attention</div>
+    <h2>Erreurs courantes à éviter</h2>
+    <p class="sub">Voici les erreurs les plus fréquentes — vérifiez bien avant de soumettre.</p>
+    <ul class="mistakes-list">
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Sélectionner le mauvais modèle de requête pour le magasin</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Saisir un nombre incorrect de postes à pourvoir</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Oublier de cocher « Changer automatiquement l'état à Fermé et rempli... »</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Marquer le poste comme « Travail à distance » ou « Permanent »</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Saisir du texte personnalisé dans la section « Exigences » ou « Sommaire »</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Ne pas vérifier le statut et la visibilité avant de soumettre — la requête ne sera pas publiée si ces paramètres sont incorrects</p></li>
+      <li class="mistake-item"><div class="mistake-x">✗</div><p>Oublier de sélectionner un forfait de vérification des antécédents — choisissez Lids Retail Management PG (États-Unis) ou Canada Retail Management Package (Canada)</p></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · Formation UKG Ready</strong> &nbsp;|&nbsp; Usage interne uniquement &nbsp;|&nbsp; Questions ? Contactez les RH
+</footer>
+
+</body>
+</html>

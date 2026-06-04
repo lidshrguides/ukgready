@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment intégrer un nouvel employé — Canada — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a; --accent: #3a7bd5; --accent-glow: #5a9bf5; --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7; --text-body: #2d3748; --text-muted: #6b7a99; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s} .section:nth-child(3){animation-delay:0.15s}
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+  .tip-box { background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem; }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  .status-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+  @media(max-width:500px){ .status-cards{ grid-template-columns: 1fr; } }
+  .status-card { border-radius: 14px; padding: 1.2rem 1.3rem; text-align: center; }
+  .status-card.complete { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .status-card.incomplete { background: #fff5f5; border: 1.5px solid #fecaca; }
+  .status-card .pct { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+  .status-card.complete .pct { color: #16a34a; }
+  .status-card.incomplete .pct { color: #dc2626; }
+  .status-card p { font-size: 0.84rem; line-height: 1.4; }
+  .status-card.complete p { color: #166534; }
+  .status-card.incomplete p { color: #991b1b; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> Formation UKG Ready · Canada</div>
+  <h1>Comment intégrer<br>un nouvel employé</h1>
+  <p>Surveiller la réalisation de la liste de contrôle d'intégration pour les magasins canadiens dans UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Aller à la section">
+  <a href="#when">Quand utiliser</a>
+  <a href="#access">Accéder aux listes de contrôle</a>
+  <a href="#status">Vérifier la complétion</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Aperçu</div>
+    <h2>Quand utiliser ce guide</h2>
+    <p class="sub">Utilisez ce guide une fois qu'un nouvel employé a été embauché dans UKG Ready et que sa liste de contrôle d'intégration lui a été attribuée.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">✅</div><p>L'employé a été embauché dans UKG Ready</p></div>
+      <div class="use-card"><div class="icon">📋</div><p>La liste de contrôle d'intégration a été attribuée au nouvel employé</p></div>
+      <div class="use-card"><div class="icon">👀</div><p>Vous souhaitez vérifier si l'employé a terminé ses tâches d'intégration</p></div>
+    </div>
+    <div class="tip-box" style="margin-top:1.25rem;">
+      <div class="tip-icon">🍁</div>
+      <p><strong>Magasins canadiens :</strong> Les formulaires I-9 et E-Verify sont des exigences fédérales américaines et ne s'appliquent pas au Canada. Votre seule action d'intégration dans UKG Ready consiste à vérifier l'achèvement de la liste de contrôle.</p>
+    </div>
+  </section>
+
+  <section class="section" id="access">
+    <div class="section-label"><span class="bar"></span> Étape 1</div>
+    <h2>Accédez au rapport de liste de contrôle</h2>
+    <p class="sub">Accédez au rapport de liste de contrôle dans UKG Ready pour consulter le statut d'intégration de toutes vos nouvelles recrues.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur ☰ Menu en haut à gauche</strong>
+          <span>Cela ouvre le menu de navigation principal.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Allez dans Équipe → RH → Listes de contrôle</strong>
+          <span>Cela ouvre le rapport de liste de contrôle où toutes les listes de contrôle des employés sont répertoriées.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Allez dans la colonne Catégorie et saisissez « Liste de contrôle d'intégration des nouvelles recrues Lids »</strong>
+          <span>Le filtrage par cette catégorie affiche toutes les listes de contrôle d'intégration des nouvelles recrues pour chaque employé que vous avez embauché.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" id="status">
+    <div class="section-label"><span class="bar"></span> Étape 2</div>
+    <h2>Vérifiez l'achèvement de la liste de contrôle</h2>
+    <p class="sub">Une fois que vous avez filtré la liste de contrôle d'intégration des nouvelles recrues Lids, vous pouvez voir le statut d'achèvement pour chaque employé.</p>
+
+    <div class="status-cards">
+      <div class="status-card complete">
+        <div class="pct">100%</div>
+        <p>Toutes les tâches ont été accomplies à la fois par l'employé et par le responsable. Aucune action supplémentaire n'est requise.</p>
+      </div>
+      <div class="status-card incomplete">
+        <div class="pct">&lt;100%</div>
+        <p>Des tâches sont encore en attente. Faites le suivi auprès de l'employé pour vous assurer qu'il achève les étapes de son intégration.</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <p>La liste de contrôle n'atteindra pas 100 % tant que l'<strong>employé</strong> n'aura pas terminé ses tâches (formulaires et accusés de réception) et que le <strong>responsable</strong> n'aura pas terminé les siennes. Faites le suivi auprès des employés qui restent en dessous de 100 % après leur première semaine.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · Formation UKG Ready · Canada</strong> &nbsp;|&nbsp; Usage interne uniquement &nbsp;|&nbsp; Questions ? Contactez les RH
+</footer>
+
+</body>
+</html>

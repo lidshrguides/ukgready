@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment lancer une vérification des antécédents et la pré-intégration — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a; --accent: #3a7bd5; --accent-glow: #5a9bf5; --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7; --text-body: #2d3748; --text-muted: #6b7a99; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 4.5vw, 2.9rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s} .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s} .section:nth-child(5){animation-delay:0.25s}
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+  .tip-box { background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem; }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  .skip-box { background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 14px; padding: 1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-bottom: 1.25rem; }
+  .skip-box .skip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .skip-box p { font-size: 0.88rem; color: #92400e; line-height: 1.5; }
+  .alert-box { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; margin-top: 1.25rem; }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .danger-box { background: #fff5f5; border: 1.5px solid #fecaca; border-radius: 14px; padding: 1.2rem 1.4rem; margin-top: 1.25rem; }
+  .danger-box h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #991b1b; margin-bottom: 0.85rem; }
+  .danger-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .danger-list li { font-size: 0.87rem; display: flex; align-items: flex-start; gap: 0.6rem; color: #7f1d1d; }
+  .danger-list li::before { content: '✗'; color: #dc2626; font-weight: 700; flex-shrink: 0; }
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-step { display: flex; align-items: flex-start; gap: 1rem; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1rem 1.4rem; width: 100%; max-width: 560px; transition: all 0.18s; }
+  .flow-step:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(58,123,213,0.12); }
+  .flow-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .flow-step p { font-size: 0.9rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+  .flow-step small { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
+  .flow-arrow { font-size: 1.2rem; color: var(--accent); height: 28px; display: flex; align-items: center; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> Formation UKG Ready</div>
+  <h1>Comment lancer une vérification<br>des antécédents et la pré-intégration</h1>
+  <p>Un guide étape par étape pour accompagner les candidats tout au long de la vérification des antécédents et jusqu'à la phase de pré-intégration</p>
+</header>
+
+<nav class="nav-pills" aria-label="Aller à la section">
+  <a href="#when">Quand utiliser</a>
+  <a href="#bgcheck">Vérification des antécédents</a>
+  <a href="#preboard">Passer à la pré-intégration</a>
+  <a href="#next">Prochaines étapes</a>
+  <a href="#reminders">Rappels essentiels</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Aperçu</div>
+    <h2>Quand utiliser ce guide</h2>
+    <p class="sub">Utilisez ce guide dès qu'un candidat a accepté votre offre.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">✅</div><p>Un candidat a accepté l'offre et est prêt à passer à l'étape suivante</p></div>
+      <div class="use-card"><div class="icon">🔍</div><p>Vous devez lancer une vérification des antécédents via UKG Ready</p></div>
+      <div class="use-card"><div class="icon">📋</div><p>Vous êtes prêt à faire passer le candidat à la phase de pré-intégration</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="bgcheck">
+    <div class="section-label"><span class="bar"></span> Étape 1 (si applicable)</div>
+    <h2>Lancement de la vérification des antécédents</h2>
+    <p class="sub">La vérification des antécédents n'est pas obligatoire pour tous les postes.</p>
+    <div class="skip-box">
+      <div class="skip-icon">⚡</div>
+      <p><strong>Vous ne voyez pas l'étape « Lancement de la vérification des antécédents » ?</strong> Ignorez cette section et passez directement à la section « Passage à la phase de pré-intégration » ci-dessous. La vérification des antécédents n'est pas obligatoire pour tous les postes.</p>
+    </div>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Ouvrez la candidature du candidat</strong>
+          <span>Accédez à l'offre d'emploi, cliquez sur l'onglet Candidatures, sélectionnez le candidat, puis cliquez sur Afficher.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur le cercle de l'étape de recrutement « Lancement de la vérification des antécédents »</strong>
+          <span>Cela fait passer le candidat à l'étape de vérification des antécédents. Laissez la date telle quelle et cliquez sur « OK » pour confirmer le changement d'étape.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Défilez vers le bas jusqu'à la section « Vérification des antécédents »</strong>
+          <span>Vous verrez une section intitulée « Vérification des antécédents » avec le forfait indiqué comme « Forfait de base + Adjudication ».</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Cliquez sur « Lancer la vérification des antécédents »</strong>
+          <span>Une fenêtre contextuelle de confirmation apparaitra : « Vous êtes sur le point d'envoyer une invitation à la vérification des antécédents à [nom du candidat]. »</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Cliquez sur « Envoyer »</strong>
+          <span>Cela envoie l'invitation à la vérification des antécédents au candidat. Il la complètera de son côté via HireRight.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" id="preboard">
+    <div class="section-label"><span class="bar"></span> Étape 2</div>
+    <h2>Passer à la pré-intégration</h2>
+    <p class="sub">Faites passer le candidat à la pré-intégration une fois la vérification des antécédents lancée, ou immédiatement si aucune vérification n'est requise.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Ouvrez la candidature du candidat</strong>
+          <span>Si vous venez de terminer l'étape de vérification des antécédents, vous êtes déjà au bon endroit.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur le cercle correspondant à l'étape de recrutement « Pré-intégration »</strong>
+          <span>Laissez la date telle quelle lorsque la fenêtre contextuelle apparait.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Cliquez sur « OK » pour confirmer le changement d'étape</strong>
+          <span>Le candidat se trouve désormais en pré-intégration et recevra automatiquement sa liste de contrôle de pré-intégration.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" id="next">
+    <div class="section-label"><span class="bar"></span> Ce qui se passe ensuite</div>
+    <h2>Prochaines étapes</h2>
+    <p class="sub">Une fois que le candidat est transféré vers la pré-intégration, le processus est automatique. Voici ce qui se passe de son côté.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">📋</div>
+        <div>
+          <p>Le candidat reçoit une liste de contrôle de pré-intégration</p>
+          <small>UKG Ready lui envoie automatiquement une liste de tâches à accomplir avant sa date d'entrée en fonction.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">📝</div>
+        <div>
+          <p>Le candidat remplit le formulaire de pré-intégration</p>
+          <small>Il doit fournir son numéro d'assurance sociale (NAS) ainsi que sa date de naissance. Ces informations sont collectées en toute sécurité via UKG Ready.</small>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-icon">🔒</div>
+        <div>
+          <p>Les informations sont soumises et stockées en toute sécurité dans UKG Ready</p>
+          <small>Cette étape est obligatoire avant que le candidat puisse être officiellement embauché. N'essayez pas de collecter ces informations en dehors d'UKG Ready.</small>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box" style="margin-top:1.25rem;">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Important :</strong> Ces informations sont requises avant que nous puissions procéder à l'embauche. Le candidat doit remplir le formulaire de pré-intégration (y compris le NAS et la date de naissance) avant de pouvoir passer à l'étape « Embauché ». Ne le faites pas passer à l'étape suivante tant que cela n'est pas fait.</div>
+    </div>
+  </section>
+
+  <section class="section" id="reminders">
+    <div class="section-label"><span class="bar"></span> Sécurité des données</div>
+    <h2>Rappels essentiels</h2>
+    <p class="sub">Le NAS fait partie des catégories d'informations personnelles les plus sensibles. Ces règles ne sont pas négociables.</p>
+    <div class="tip-box">
+      <div class="tip-icon">🔐</div>
+      <p>Le numéro d'assurance sociale (NAS) et la date de naissance sont des informations personnelles sensibles. Traitez-les avec le plus grand soin.</p>
+    </div>
+    <div class="danger-box">
+      <h4>✗ À ne jamais faire</h4>
+      <ul class="danger-list">
+        <li>Ne demandez pas le NAS ou la date de naissance en dehors d'UKG Ready — jamais verbalement, par SMS ou par courriel</li>
+        <li>Ne conservez pas ces informations dans des courriels, des fichiers personnels, des feuilles de calcul ou tout autre système en dehors d'UKG Ready</li>
+        <li>N'accédez à ces informations qu'uniquement dans le cadre du processus de recrutement — aucune autre utilisation n'est autorisée</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · Formation UKG Ready</strong> &nbsp;|&nbsp; Usage interne uniquement &nbsp;|&nbsp; Questions ? Contactez les RH
+</footer>
+
+</body>
+</html>

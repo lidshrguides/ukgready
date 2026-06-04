@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Rehire an Employee – UKG Ready Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero p{font-size:16px;opacity:0.75;max-width:500px;margin:0 auto;}
+.hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
+.nav-tab:hover{color:var(--navy);border-color:var(--border);}
+.nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
+.content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
+.section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;}
+.section-card h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,28px);color:var(--navy-dark);margin-bottom:6px;}
+.section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+.alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
+.alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
+.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
+.alert-danger{background:var(--red-light);border:1px solid #f5b8bc;color:#8b1a22;}
+.alert-icon{font-size:18px;flex-shrink:0;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;position:relative;}
+.step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
+.step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.step-body{padding:0 0 28px;flex:1;}
+.step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
+.step-body p{font-size:13.5px;color:var(--text-muted);margin-bottom:8px;line-height:1.5;}
+.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
+.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+.step-body strong{color:var(--text);}
+.step-body .alert{margin-top:12px;}
+.click-path{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0 6px;}
+.click-path kbd{background:var(--navy);color:white;border-radius:5px;padding:3px 10px;font-size:12px;font-family:inherit;font-weight:600;white-space:nowrap;}
+.click-path .arrow{color:var(--text-muted);font-size:13px;font-weight:600;}
+.phase-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:10px;}
+.phase-recruiting{background:#e8ecf8;color:var(--navy);}
+.phase-system{background:var(--green-light);color:var(--green);}
+.phase-hire{background:#fef3e8;color:#b55b0a;}
+.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
+.callout h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;}
+.callout p{opacity:0.75;font-size:14px;margin-bottom:16px;}
+.callout a{display:inline-block;background:white;color:var(--navy);font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
+  <h1>How to Rehire<br>an Employee</h1>
+  <p>A step-by-step reference for processing rehires in UKG Ready</p>
+  <div class="hero-curve"></div>
+</div>
+
+<div class="nav-wrap"><div class="nav-tabs">
+  <a href="#overview" class="nav-tab active">Overview</a>
+  <a href="#recruiting" class="nav-tab">Recruiting Steps</a>
+  <a href="#hr-actions" class="nav-tab">HR Actions: Rehire</a>
+  <a href="#complete" class="nav-tab">Complete the Hire</a>
+</div></div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div class="section-card" id="overview">
+    <div class="section-label">Overview</div>
+    <h2>How Rehires Work at Lids</h2>
+    <p class="subtitle">Rehiring a former employee follows the standard recruiting workflow — with a specific HR Actions step that happens after the background check clears.</p>
+    <div style="background:var(--navy);color:white;border-radius:12px;padding:24px 28px;">
+      <p style="font-size:13px;opacity:0.7;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">The Rehire Process at a Glance</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">①</span><span>Former employee <strong>applies, interviews, and receives an offer</strong> — exactly like a new hire.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">②</span><span><strong>Background check</strong> is initiated and must clear before proceeding.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">③</span><span>Once the background check clears, go to <strong>Employees → Manage → HR Actions</strong> and click <strong>Start</strong> next to Rehire.</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">④</span><span>Search for the employee's name, set <strong>Account Status to Active</strong>, enter the <strong>rehire date</strong>, then follow the Hire an Employee Guide for position, compensation, and all remaining steps.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECRUITING STEPS -->
+  <div class="section-card" id="recruiting">
+    <div class="section-label">Recruiting</div>
+    <h2>Recruiting Steps</h2>
+    <p class="subtitle">These steps are identical to the standard new hire process. No changes are needed for rehires at this stage.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <div class="phase-label phase-recruiting">Application</div>
+        <h4>Former Employee Applies</h4>
+        <ul>
+          <li>The former employee applies through the <strong>career portal</strong> like any other candidate.</li>
+          <li>There are no shortcuts — they must submit a full application and go through the normal process.</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <div class="phase-label phase-recruiting">Interview</div>
+        <h4>Take Them Through the Interview Process</h4>
+        <ul>
+          <li>Review the application and move the candidate through your <strong>standard recruiting workflow stages</strong>.</li>
+          <li>Conduct interviews and advance stages as you normally would for any candidate.</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <div class="phase-label phase-recruiting">Offer</div>
+        <h4>Send the Offer Letter</h4>
+        <ul>
+          <li>Once a hiring decision is made, send the <strong>offer letter through UKG Ready</strong> as normal.</li>
+          <li>Follow the standard offer letter process — no changes for rehires at this step.</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <div class="phase-label phase-recruiting">Background Check</div>
+        <h4>Initiate the Background Check</h4>
+        <ul>
+          <li>Once the offer is accepted, initiate the <strong>background check through HireRight</strong> as normal.</li>
+          <li>Wait for the background check to return a <strong>clear result</strong> before proceeding to HR Actions.</li>
+        </ul>
+        <div class="alert alert-info"><span class="alert-icon">💡</span><div>Do not proceed to the HR Actions step until the background check is complete. The rehire step in UKG Ready happens <strong>after</strong> the background check clears.</div></div>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- HR ACTIONS REHIRE -->
+  <div class="section-card" id="hr-actions">
+    <div class="section-label">HR Actions</div>
+    <h2>Processing the Rehire in UKG Ready</h2>
+    <p class="subtitle">Once the background check is complete, follow these steps to process the rehire through HR Actions.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <div class="phase-label phase-system">Navigation</div>
+        <h4>Navigate to HR Actions</h4>
+        <p>From the UKG Ready home page, follow this path:</p>
+        <div class="click-path">
+          <kbd>Employees</kbd><span class="arrow">›</span>
+          <kbd>Manage</kbd><span class="arrow"> (hover)</span><span class="arrow">›</span>
+          <kbd>HR Actions</kbd>
+        </div>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <div class="phase-label phase-system">Action</div>
+        <h4>Start the Rehire Action</h4>
+        <ul>
+          <li>Locate <strong>Rehire</strong> in the list of available HR Actions.</li>
+          <li>Click the <strong>Start</strong> button next to Rehire.</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <div class="phase-label phase-system">Search</div>
+        <h4>Search for the Employee</h4>
+        <ul>
+          <li>In the search field, <strong>type the rehire's name</strong> to pull up their existing employee record.</li>
+          <li>Select the correct employee from the search results.</li>
+        </ul>
+        <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>Make sure you are selecting the <strong>correct existing record</strong>. This links the rehire back to their prior employment history in the system.</div></div>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">4</div><div class="step-body">
+        <div class="phase-label phase-system">Account Status</div>
+        <h4>Change Account Status to Active</h4>
+        <ul>
+          <li>Locate the <strong>Account Status</strong> field.</li>
+          <li>Change the value to <strong>Active</strong>.</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-num">5</div><div class="step-body">
+        <div class="phase-label phase-system">Rehire Date</div>
+        <h4>Enter the Rehire Date</h4>
+        <ul>
+          <li>Enter the employee's <strong>rehire date</strong> in the designated date field.</li>
+          <li>Once the account status and rehire date are updated, you are ready to continue with the remaining hire steps.</li>
+        </ul>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- COMPLETE THE HIRE -->
+  <div class="section-card" id="complete">
+    <div class="section-label">Completing the Hire</div>
+    <h2>Continue as Normal</h2>
+    <p class="subtitle">After updating the account status and rehire date, all remaining steps follow the standard Hire an Employee Guide.</p>
+    <div style="background:var(--navy);color:white;border-radius:12px;padding:24px 28px;margin-bottom:20px;">
+      <p style="font-size:13px;opacity:0.7;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">What to Complete — Per the Hire an Employee Guide</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">★</span><span>Add the employee's <strong>position</strong></span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">★</span><span>Enter <strong>compensation</strong> details</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;font-size:14px;opacity:0.9;line-height:1.5;"><span style="color:var(--teal);font-size:12px;margin-top:3px;flex-shrink:0;">★</span><span>Complete all remaining required fields as outlined in the <strong>Hire an Employee Guide</strong></span></div>
+      </div>
+    </div>
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div>Everything from this point forward is identical to hiring a new employee. Refer to the <strong>Hire an Employee Guide</strong> for all remaining steps including position, compensation, and any additional required fields.</div></div>
+  </div>
+
+  <div class="callout">
+    <h3>Questions about the rehire process?</h3>
+    <p>If you're unsure whether a former employee is eligible for rehire, contact the HR team before proceeding.</p>
+    <a href="mailto:hr@lids.com">hr@lids.com</a>
+  </div>
+
+</div>
+
+<script>
+const tabs=document.querySelectorAll('.nav-tab');
+const sections=document.querySelectorAll('.section-card[id]');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const m=document.querySelector(`.nav-tab[href="#${e.target.id}"]`);if(m)m.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+tabs.forEach(t=>{t.addEventListener('click',e=>{e.preventDefault();document.querySelector(t.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});});
+</script>
+</body>
+</html>

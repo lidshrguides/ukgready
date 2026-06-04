@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Onboard an Employee — United States — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a;
+    --accent: #3a7bd5; --accent-glow: #5a9bf5;
+    --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7;
+    --text-body: #2d3748; --text-muted: #6b7a99;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
+  }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s}
+  .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s}
+  .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s}
+  .section:nth-child(7){animation-delay:0.35s} .section:nth-child(8){animation-delay:0.4s}
+
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+  .alert-box { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; margin-top: 1.25rem; }
+  .alert-box.red { background: #fff5f5; border-color: #fca5a5; color: #7f1d1d; }
+  .alert-box .alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .alert-box div { line-height: 1.55; }
+  .alert-box div p { margin-top: 0.35rem; font-weight: 400; }
+
+  .doc-req { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem; align-items: center; margin-top: 1.25rem; }
+  @media(max-width:500px){ .doc-req{ grid-template-columns: 1fr; } }
+  .doc-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; }
+  .doc-card h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.4rem; }
+  .doc-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.4; }
+  .doc-or { text-align: center; font-size: 0.85rem; font-weight: 800; color: var(--accent); }
+
+  .result-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .result-item { display: flex; align-items: flex-start; gap: 1rem; border-radius: 12px; padding: 0.9rem 1.2rem; }
+  .result-item.green { background: #f0fdf4; border: 1.5px solid #86efac; }
+  .result-item.yellow { background: #fefce8; border: 1.5px solid #fde047; }
+  .result-item.red-r { background: #fff5f5; border: 1.5px solid #fca5a5; }
+  .result-badge { font-size: 0.72rem; font-weight: 800; border-radius: 999px; padding: 0.25rem 0.75rem; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem; }
+  .result-item.green .result-badge { background: #16a34a; color: white; }
+  .result-item.yellow .result-badge { background: #ca8a04; color: white; }
+  .result-item.red-r .result-badge { background: #dc2626; color: white; }
+  .result-item p { font-size: 0.86rem; line-height: 1.45; }
+  .result-item.green p { color: #166534; }
+  .result-item.yellow p { color: #713f12; }
+  .result-item.red-r p { color: #7f1d1d; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> UKG Ready Training · United States</div>
+  <h1>How to Onboard<br>an Employee</h1>
+  <p>I-9 verification, E-Verify, and onboarding checklist monitoring — U.S. stores</p>
+</header>
+
+<nav class="nav-pills" aria-label="Jump to section">
+  <a href="#when">When to Use</a>
+  <a href="#compliance">I-9 Compliance</a>
+  <a href="#review">Review Documents</a>
+  <a href="#checklist">Open the Checklist</a>
+  <a href="#i9">Complete I-9 Section 2</a>
+  <a href="#everify">E-Verify Training</a>
+  <a href="#submit">Submit E-Verify</a>
+  <a href="#results">E-Verify Results</a>
+  <a href="#status">Checklist Status</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Overview</div>
+    <h2>When to Use This Guide</h2>
+    <p class="sub">Use this guide once the employee has been hired in UKG Ready and their onboarding checklist has been assigned.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">✅</div><p>Candidate is hired in UKG Ready</p></div>
+      <div class="use-card"><div class="icon">📬</div><p>I-9 upload notification received</p></div>
+      <div class="use-card"><div class="icon">📋</div><p>Onboarding checklist has been assigned</p></div>
+      <div class="use-card"><div class="icon">🔍</div><p>Ready to complete I-9 Section 2 and E-Verify</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="compliance">
+    <div class="section-label"><span class="bar"></span> Compliance</div>
+    <h2>I-9 Compliance Rules</h2>
+    <p class="sub">Before you touch the I-9 in UKG Ready, understand these non-negotiable rules. Violations carry federal penalties.</p>
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">!</div>
+        <div class="step-text"><strong>Must be completed on the employee's first day</strong><span>The I-9 cannot be completed before the employee's start date, and must not be delayed past day one.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">!</div>
+        <div class="step-text"><strong>Documents must be reviewed in person</strong><span>You must physically examine the original documents — not copies, not photos, not digital uploads alone.</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">!</div>
+        <div class="step-text"><strong>Employee cannot start work without a completed I-9</strong><span>This is a federal legal requirement. An employee may not begin working until I-9 Section 2 is complete.</span></div>
+      </div>
+    </div>
+    <div class="alert-box red">
+      <span class="alert-icon">🚫</span>
+      <div><strong>DO NOT complete Section 2 of the I-9 without first reviewing documents in person.</strong> Completing it remotely or based on uploaded images alone is a compliance violation.</div>
+    </div>
+  </section>
+
+  <section class="section" id="review">
+    <div class="section-label"><span class="bar"></span> Step 1</div>
+    <h2>Review Uploaded Documents</h2>
+    <p class="sub">When the employee uploads their I-9 documents, you will receive a To Do notification. This is a digital preview only — you must still verify originals in person.</p>
+    <ol class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Receive a To Do notification to review documents</strong><span>Appears in your To Do list (bell icon) or Mailbox when the employee completes their upload.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Open the approval request</strong><span>Click the To Do item to open the Approve/Reject HR Action Request for the I-9 document upload.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Click View Details → Preview</strong><span>Review what the employee uploaded. Confirm documents appear clear and legible.</span></div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-text"><strong>Confirm documents are clear, then click Approve</strong><span>Approving acknowledges the upload — it does not replace your in-person verification obligation.</span></div></li>
+    </ol>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Approving the upload is not the same as completing the I-9.</strong> Documents must still be reviewed in person when you complete I-9 Section 2.</div>
+    </div>
+  </section>
+
+  <section class="section" id="checklist">
+    <div class="section-label"><span class="bar"></span> Step 2</div>
+    <h2>Open the Employee's Checklist</h2>
+    <p class="sub">Access the employee's onboarding checklist to find and complete the I-9 task.</p>
+    <ol class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Navigate to My Checklists</strong><span>Two paths: Home Page → Mailbox → My Checklists, or click the bell (To Do) icon → My Checklists.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Locate the employee's onboarding checklist</strong><span>Find the "Lids New Hire Onboarding Checklist" assigned to this employee.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Click Open Checklist</strong><span>This opens the full checklist where you can access the I-9 task and other onboarding items.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="section" id="i9">
+    <div class="section-label"><span class="bar"></span> Step 3</div>
+    <h2>Complete I-9 Section 2</h2>
+    <p class="sub">Section 2 must be completed with the employee present and original documents in hand. Must be done within 3 business days of the employee's start date.</p>
+    <ol class="steps-list" style="margin-bottom:1.25rem;">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Open the I-9 task from the checklist</strong><span>Locate and click the I-9 task within the employee's onboarding checklist.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Review Section 1</strong><span>Verify the employee completed Section 1 with their personal information. Do not edit Section 1.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Verify original documents in person</strong><span>Physically examine the employee's original identity and work authorization documents. Do not accept copies.</span></div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-text"><strong>Complete Section 2 in UKG Ready</strong><span>Enter the document details and certify Section 2 based on what you reviewed in person.</span></div></li>
+    </ol>
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">Acceptable Documents</p>
+    <div class="doc-req">
+      <div class="doc-card"><h4>List A</h4><p>1 document from List A — establishes both identity and work authorization.<br><br>Example: U.S. Passport, Permanent Resident Card</p></div>
+      <div class="doc-or">OR</div>
+      <div class="doc-card"><h4>List B + List C</h4><p>1 from List B (identity) AND 1 from List C (work authorization).<br><br>Example: Driver's License + Social Security Card</p></div>
+    </div>
+    <div class="alert-box" style="margin-top:1.25rem;">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Documents must match — both what was uploaded AND what is presented in person.</strong><p>If the documents differ, do not complete Section 2. Contact HR before proceeding.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="everify">
+    <div class="section-label"><span class="bar"></span> Step 4</div>
+    <h2>E-Verify Training &amp; Test</h2>
+    <p class="sub">Before you can submit E-Verify cases, you must complete training and pass the test. This is a one-time requirement per user.</p>
+    <ol class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Go to My Checklists and locate the employee</strong><span>Navigate to My Checklists from your home page or To Do bell.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Select Process E-Verify</strong><span>This launches the E-Verify workflow for this employee.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Complete the E-Verify training tutorial</strong><span>Click Start Tutorial and work through the full training before submitting any cases.</span></div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-text"><strong>Pass the test with 80% or higher</strong><span>Click Start Test once you've completed the tutorial. You must score 80%+ to be authorized to submit cases.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="section" id="submit">
+    <div class="section-label"><span class="bar"></span> Step 5</div>
+    <h2>Submit E-Verify Case</h2>
+    <p class="sub">Submit after — and only after — you have completed I-9 Section 2.</p>
+    <ol class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Search for and select the employee</strong><span>Navigate to HR → Employee Maintenance → E-Verify and search for the employee.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Complete the verification form</strong><span>Fill in employee name, SSN, Date of Birth, Hire Date, citizenship status, and document type. Everything must match the completed I-9 exactly.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Click Continue</strong><span>This submits the case. The system will connect to E-Verify and return a result.</span></div></li>
+    </ol>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Always submit E-Verify after completing I-9 Section 2 — never before.</strong></div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="section-label"><span class="bar"></span> E-Verify Results</div>
+    <h2>E-Verify Results</h2>
+    <p class="sub">Once submitted, E-Verify will return one of these results. Know what each one means.</p>
+    <ul class="result-list">
+      <li class="result-item green">
+        <span class="result-badge">Employment Authorized</span>
+        <p>Identity and work authorization confirmed. No further action needed — onboarding can continue.</p>
+      </li>
+      <li class="result-item yellow">
+        <span class="result-badge">TNC</span>
+        <p><strong>Tentative Nonconfirmation</strong> — E-Verify could not confirm the information submitted. Follow the instructions displayed on screen in UKG Ready — the system will walk you through the required next steps.</p>
+      </li>
+      <li class="result-item red-r">
+        <span class="result-badge">FNC</span>
+        <p><strong>Final Nonconfirmation</strong> — E-Verify was unable to confirm work authorization after the TNC process. Follow the instructions displayed on screen in UKG Ready — the system will guide you through what to do next.</p>
+      </li>
+    </ul>
+    <div class="alert-box red" style="margin-top:1.25rem;">
+      <span class="alert-icon">🚫</span>
+      <div><strong>Do NOT take independent action on a TNC or FNC result.</strong> Read and follow all instructions displayed on screen in UKG Ready — the system will guide you through each required step.</div>
+    </div>
+  </section>
+
+  <section class="section" id="status">
+    <div class="section-label"><span class="bar"></span> Checklist Monitoring</div>
+    <h2>Onboarding Checklist Status</h2>
+    <p class="sub">Monitor checklist completion to make sure every new hire finishes their onboarding tasks. The checklist is not 100% complete until both the employee and manager complete their steps.</p>
+    <ol class="steps-list" style="margin-bottom:1.25rem;">
+      <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Go to ☰ Menu → Team → HR → Checklists</strong><span>This opens the Checklist report for all employees you manage.</span></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Go to the Category column and type "Lids New Hire Onboarding Checklist"</strong><span>This filters to show only new hire onboarding checklists across everyone you've hired.</span></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text"><strong>Check the completion percentage for each employee</strong><span>100% means all tasks are done. Anything less means the employee or manager still has outstanding items.</span></div></li>
+    </ol>
+    <div class="alert-box" style="margin-top:0;">
+      <span class="alert-icon">💡</span>
+      <div>Follow up with any employee who remains below 100% after their first week. Both the employee and manager must complete their respective checklist tasks before it will show as fully complete.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · UKG Ready Training · United States</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
+</footer>
+
+</body>
+</html>

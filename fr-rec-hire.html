@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actions RH : Embaucher un employé — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a; --accent: #3a7bd5; --accent-glow: #5a9bf5; --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7; --text-body: #2d3748; --text-muted: #6b7a99; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s} .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s} .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s} .section:nth-child(7){animation-delay:0.35s} .section:nth-child(8){animation-delay:0.4s}
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+  .use-card.nope { border-color: #fecaca; background: #fff5f5; }
+  .use-card.nope .icon { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); }
+  .use-card.nope p { color: #991b1b; }
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+  .field-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1rem; }
+  .field-table th { background: var(--navy); color: white; padding: 0.55rem 1rem; text-align: left; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .field-table th:first-child { border-radius: 10px 0 0 0; }
+  .field-table th:last-child { border-radius: 0 10px 0 0; }
+  .field-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--light-gray); vertical-align: top; }
+  .field-table tr:last-child td { border-bottom: none; }
+  .field-table tr:nth-child(even) td { background: var(--off-white); }
+  .field-table .field-name { font-weight: 600; color: var(--navy); }
+  .field-table .field-action { color: var(--text-muted); }
+  .tip-box { background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem; }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  .alert-box { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; margin-top: 1.25rem; }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .danger-box { background: #fff5f5; border: 1.5px solid #fecaca; border-radius: 14px; padding: 1.2rem 1.4rem; margin-top: 1.25rem; }
+  .danger-box h4 { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #991b1b; margin-bottom: 0.85rem; }
+  .danger-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .danger-list li { font-size: 0.87rem; display: flex; align-items: flex-start; gap: 0.6rem; color: #7f1d1d; }
+  .danger-list li::before { content: '✗'; color: #dc2626; font-weight: 700; flex-shrink: 0; }
+  .date-highlight { background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-bottom: 1.25rem; }
+  .date-highlight .dh-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .date-highlight p { font-size: 0.88rem; color: #92400e; line-height: 1.5; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> Formation UKG Ready</div>
+  <h1>Actions RH :<br>Embaucher un employé</h1>
+  <p>Guide étape par étape pour mener à bien la procédure d'embauche d'un nouvel employé de vente au détail dans UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Aller à la section">
+  <a href="#when">Quand utiliser</a>
+  <a href="#preintegration">Ouvrir la pré-intégration</a>
+  <a href="#hire">Embaucher le candidat</a>
+  <a href="#effective">Date de début en vigueur</a>
+  <a href="#employee">Informations employé</a>
+  <a href="#contact">Coordonnées</a>
+  <a href="#position">Affectation de postes</a>
+  <a href="#compensation">Rémunération de base</a>
+  <a href="#submit">Responsable et soumission</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Aperçu</div>
+    <h2>Quand utiliser ce guide</h2>
+    <p class="sub">Lors de l'embauche d'un tout nouvel employé.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">✅</div><p>L'employé n'existe pas encore dans UKG Ready</p></div>
+      <div class="use-card nope"><div class="icon">🚫</div><p><strong>NE PAS utiliser</strong> pour une réembauche — utilisez l'action RH « Réembauche »</p></div>
+      <div class="use-card nope"><div class="icon">🚫</div><p><strong>NE PAS utiliser</strong> pour les changements de poste — utilisez l'action RH « Changement de poste »</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="preintegration">
+    <div class="section-label"><span class="bar"></span> Avant de commencer</div>
+    <h2>Ouvrez le formulaire de pré-intégration</h2>
+    <p class="sub">Avant de commencer la procédure d'embauche, vous devez récupérer le numéro d'assurance sociale (NAS) et la date de naissance du candidat à partir de son formulaire de pré-intégration rempli.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur vos initiales dans le coin supérieur droit → Nouvelle fenêtre</strong>
+          <span>Cela ouvre UKG Ready dans une deuxième fenêtre de navigateur afin que vous puissiez consulter le formulaire de pré-intégration tout en remplissant le formulaire d'embauche.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Accédez au menu → Équipe → Recrutement → Liste de vérification des demandeurs</strong>
+          <span>Cela vous amène à la liste des Listes de contrôle des candidats.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Cochez la case du candidat → Cliquez sur Afficher</strong>
+          <span>Recherchez le candidat dans la liste, cochez sa case, puis cliquez sur Afficher en haut à droite.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Sélectionnez Pré-intégration</strong>
+          <span>Ouvrez la liste de contrôle de pré-intégration pour accéder au NAS et à la date de naissance du candidat. Laissez cette fenêtre ouverte, car vous en aurez besoin lors des prochaines étapes.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="danger-box">
+      <h4>✗ Important — Sécurité des données</h4>
+      <ul class="danger-list">
+        <li>Ne collectez PAS le NAS ou la date de naissance en dehors d'UKG Ready</li>
+        <li>Accédez à ces informations uniquement via le formulaire de pré-intégration dans le but de finaliser l'embauche</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="hire">
+    <div class="section-label"><span class="bar"></span> Étape 1</div>
+    <h2>Embaucher le candidat</h2>
+    <p class="sub">Revenez à la candidature du candidat et lancez l'action d'embauche à partir des Actions rapides.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Ouvrez la candidature du candidat</strong>
+          <span>Accédez à l'offre d'emploi, cliquez sur l'onglet Candidatures, sélectionnez le candidat, puis cliquez sur Afficher.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur Embaucher dans le panneau Actions rapides</strong>
+          <span>Situé à droite de la fiche du candidat.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Sélectionnez « Responsable de magasin - Embaucher l'employé »</strong>
+          <span>Cela ouvre le formulaire d'embauche. Le candidat passera automatiquement à l'étape « Embauché » une fois cette opération terminée.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" id="effective">
+    <div class="section-label"><span class="bar"></span> Règle importante</div>
+    <h2>Date de début en vigueur</h2>
+    <p class="sub">La date de début en vigueur s'applique à la fois à l'affectation de poste et à la rémunération. Cette règle doit être respectée à chaque fois.</p>
+    <div class="date-highlight">
+      <div class="dh-icon">📅</div>
+      <p><strong>Saisissez toujours la date du jour</strong> comme date de début en vigueur — elle s'applique aux sections « Poste » et « Rémunération ».<br><br><strong>IMPORTANT :</strong> Ne PAS antidater ou postdater. Utilisez toujours la date du jour, quelle que soit la date de début effective de l'employé. La date de début est saisie séparément.</p>
+    </div>
+  </section>
+
+  <section class="section" id="employee">
+    <div class="section-label"><span class="bar"></span> Étape 2</div>
+    <h2>Informations sur l'employé</h2>
+    <p class="sub">Saisissez soigneusement les informations personnelles de l'employé. Reportez-vous au formulaire de pré-intégration que vous avez ouvert précédemment pour le NAS et la date de naissance.</p>
+    <table class="field-table">
+      <thead><tr><th>Champ</th><th>Action requise</th></tr></thead>
+      <tbody>
+        <tr><td class="field-name">Date de naissance</td><td class="field-action">Saisissez-la à partir du formulaire de pré-intégration. Recopiez-la exactement.</td></tr>
+        <tr><td class="field-name">NAS (ID national principal)</td><td class="field-action">Saisissez-le à partir du formulaire de pré-intégration. Les employés canadiens fournissent leur NAS.</td></tr>
+        <tr><td class="field-name">Prénom</td><td class="field-action">Saisissez le prénom légal — doit correspondre aux documents officiels, pas un prénom de prédilection.</td></tr>
+        <tr><td class="field-name">Nom</td><td class="field-action">Saisissez le nom légal — doit correspondre aux documents officiels.</td></tr>
+        <tr><td class="field-name">Surnom/Nom de prédilection</td><td class="field-action">Facultatif : ne le saisissez que si l'employé en a fourni un.</td></tr>
+        <tr><td class="field-name">ID de l'employé</td><td class="field-action">⚠️ Laissez ce champ vide — rempli automatiquement.</td></tr>
+        <tr><td class="field-name">Nom d'utilisateur</td><td class="field-action">⚠️ Laissez ce champ vide — rempli automatiquement.</td></tr>
+        <tr><td class="field-name">Mot de passe</td><td class="field-action">⚠️ Laissez ce champ vide — rempli automatiquement.</td></tr>
+        <tr><td class="field-name">Démarré</td><td class="field-action">Saisissez la date de prise de fonction de l'employé — son premier jour de travail effectif.</td></tr>
+        <tr><td class="field-name">Langue principale</td><td class="field-action">Sélectionnez dans le menu déroulant — détermine la langue des formulaires d'intégration.</td></tr>
+      </tbody>
+    </table>
+    <div class="danger-box">
+      <h4>✗ Ne saisissez jamais ces champs</h4>
+      <ul class="danger-list">
+        <li>ID de l'employé, nom d'utilisateur et mot de passe sont remplis automatiquement — toute saisie provoquera des erreurs dans le système</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <p>Après avoir saisi toutes les informations relatives à l'employé, cliquez sur <strong>Continuer</strong> pour passer à la section suivante.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-label"><span class="bar"></span> Étape 3</div>
+    <h2>Coordonnées personnelles</h2>
+    <p class="sub">Les coordonnées personnelles du candidat devraient être préremplies à partir de sa candidature. Vérifiez-les, puis continuez.</p>
+    <table class="field-table">
+      <thead><tr><th>Champ</th><th>Action requise</th></tr></thead>
+      <tbody>
+        <tr><td class="field-name">Courriel principal</td><td class="field-action">Vérifiez qu'il est prérempli — ne le modifiez pas sauf s'il est incorrect.</td></tr>
+        <tr><td class="field-name">Téléphone cellulaire</td><td class="field-action">Vérifiez qu'il est prérempli à partir de la candidature.</td></tr>
+        <tr><td class="field-name">Code</td><td class="field-action">Sélectionnez le code du pays : États-Unis = +1 / Canada = +1 (sélectionnez spécifiquement « Canada » dans le menu déroulant).</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <p>Après avoir vérifié les coordonnées, cliquez sur <strong>Continuer</strong> pour passer aux Informations professionnelles.</p>
+    </div>
+  </section>
+
+  <section class="section" id="position">
+    <div class="section-label"><span class="bar"></span> Étape 4</div>
+    <h2>Informations professionnelles : Affectation de postes</h2>
+    <p class="sub">Affectez l'employé à son poste. Recherchez par numéro de magasin pour trouver le bon poste.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur +Ajouter (Ajouter un poste)</strong>
+          <span>Cela ouvre le formulaire d'affectation au poste dans la section Affectation de postes.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur l'icône de recherche sous le champ « Poste »</strong>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Effectuez la recherche uniquement par numéro de magasin</strong>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Sélectionnez le poste correspondant au rôle de l'employé</strong>
+        </div>
+      </li>
+    </ol>
+    <table class="field-table" style="margin-top:1.25rem;">
+      <thead><tr><th>Champ</th><th>Action requise</th></tr></thead>
+      <tbody>
+        <tr><td class="field-name">Date de début</td><td class="field-action">Saisissez la date du jour — date d'entrée en vigueur de l'affectation, pas la date de début de l'employé.</td></tr>
+        <tr><td class="field-name">Est Affectation principale</td><td class="field-action">Cochez la case — obligatoire pour tous les nouveaux employés.</td></tr>
+        <tr><td class="field-name">Raison du changement d'affectation</td><td class="field-action">Sélectionnez « New Hire (Nouvelle embauche) » dans le menu déroulant.</td></tr>
+        <tr><td class="field-name">ÉTP affecté</td><td class="field-action">Saisissez 1 pour toutes les nouvelles embauches en vente au détail, qu'elles soient à temps partiel ou à temps plein.</td></tr>
+        <tr><td class="field-name">Responsable principal (1)</td><td class="field-action">Après avoir enregistré le poste, sélectionnez « Relève directement du responsable ». Si personne n'apparait, cliquez sur « Annuler » puis « Continuer ».</td></tr>
+      </tbody>
+    </table>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Important :</strong> NE saisissez PAS la rémunération dans la section des détails du poste. La rémunération est saisie séparément dans la section « Rémunération de base ».</div>
+    </div>
+  </section>
+
+  <section class="section" id="compensation">
+    <div class="section-label"><span class="bar"></span> Étape 5</div>
+    <h2>Informations professionnelles : Rémunération de base</h2>
+    <p class="sub">Saisissez le taux de rémunération de l'employé dans la section « Rémunération de base » et non dans les détails du poste. Ne modifiez que les quatre champs indiqués ci-dessous.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur « +Ajouter » dans la section « Rémunération de base »</strong>
+        </div>
+      </li>
+    </ol>
+    <table class="field-table" style="margin-top:1.25rem;">
+      <thead><tr><th>Champ</th><th>Action requise</th></tr></thead>
+      <tbody>
+        <tr><td class="field-name">Date de début en vigueur</td><td class="field-action">Saisissez la date du jour. Ne pas antidater ni postdater.</td></tr>
+        <tr><td class="field-name">Code de motif</td><td class="field-action">Sélectionnez « New Hire (Nouvelle embauche) » dans le menu déroulant.</td></tr>
+        <tr><td class="field-name">Montant</td><td class="field-action">Saisissez le taux horaire de l'employé comme indiqué dans la lettre d'offre.</td></tr>
+        <tr><td class="field-name">Par (premier champ « Par »)</td><td class="field-action">Modifiez par « Heure » — c'est le seul champ « Par » que vous devez modifier.</td></tr>
+      </tbody>
+    </table>
+    <div class="danger-box">
+      <h4>✗ Ne touchez pas à ces champs</h4>
+      <ul class="danger-list">
+        <li>Heures, Par (deuxième champ « Par »), PP dans l'année, Payer automatiquement le montant de rémunération, Type de paiement automatique — ne modifiez aucun de ces champs</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="submit">
+    <div class="section-label"><span class="bar"></span> Étape finale</div>
+    <h2>Responsable(s) et Centre(s) de coûts : Soumettre</h2>
+    <p class="sub">Dernière étape avant la soumission via la procédure d'approbation.</p>
+    <table class="field-table">
+      <thead><tr><th>Champ</th><th>Action requise</th></tr></thead>
+      <tbody>
+        <tr><td class="field-name">Responsable 1</td><td class="field-action">Recherchez et sélectionnez le supérieur hiérarchique direct de l'employé — la personne à qui il rend compte au quotidien.</td></tr>
+        <tr><td class="field-name">Lids Corporation par défaut</td><td class="field-action">Le centre de coûts devrait s'afficher automatiquement — vérifiez qu'il est correct avant de soumettre.</td></tr>
+      </tbody>
+    </table>
+    <ol class="steps-list" style="margin-top:1.25rem;">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Vérifiez que le responsable 1 et le centre de coûts sont corrects avant de soumettre</strong>
+          <span>Ces informations déterminent la paie et les rapports.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cliquez sur Soumettre</strong>
+          <span>Cela envoie la demande d'embauche via le processus de validation. La fiche de l'employé sera créée une fois la demande approuvée.</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · Formation UKG Ready</strong> &nbsp;|&nbsp; Usage interne uniquement &nbsp;|&nbsp; Questions ? Contactez les RH
+</footer>
+
+</body>
+</html>

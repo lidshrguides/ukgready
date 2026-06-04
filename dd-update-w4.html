@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Withholding Forms – UKG Ready Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero p{font-size:16px;opacity:0.75;max-width:480px;margin:0 auto;}
+.hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
+.nav-tab:hover{color:var(--navy);border-color:var(--border);}
+.nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
+.content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
+.section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;}
+.section-card h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,28px);color:var(--navy-dark);margin-bottom:6px;}
+.section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+.alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
+.alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
+.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
+.alert-success{background:var(--green-light);border:1px solid #a7d7d2;color:#1a5e54;}
+.alert-icon{font-size:18px;flex-shrink:0;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;position:relative;}
+.step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
+.step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.step-body{padding:0 0 28px;flex:1;}
+.step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
+.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
+.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+.step-body strong{color:var(--text);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px;}
+@media(max-width:580px){.form-grid{grid-template-columns:1fr;}}
+.form-card{border-radius:12px;padding:18px 20px;border:1px solid;}
+.form-card.federal{background:#f0f3ff;border-color:#c5d0f5;}
+.form-card.state{background:#f0faf8;border-color:#a7d7d2;}
+.form-card .form-type{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.form-card.federal .form-type{color:var(--accent);}
+.form-card.state .form-type{color:var(--green);}
+.form-card h4{font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:4px;}
+.form-card .form-code{display:inline-block;font-size:12px;font-weight:700;background:var(--navy);color:white;padding:2px 8px;border-radius:4px;margin-bottom:8px;}
+.form-card p{font-size:13px;color:var(--text-muted);}
+.nav-path{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;margin-bottom:20px;}
+.nav-path-item{background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-weight:600;color:var(--navy-dark);}
+.nav-path-sep{color:var(--text-muted);}
+.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
+.callout h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;}
+.callout p{opacity:0.75;font-size:14px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
+  <h1>Tax Withholding<br>Forms</h1>
+  <p>How to add and submit federal or state tax withholding forms in UKG Ready</p>
+  <div class="hero-curve"></div>
+</div>
+
+<div class="nav-wrap"><div class="nav-tabs">
+  <a href="#overview" class="nav-tab active">Overview</a>
+  <a href="#navigate" class="nav-tab">How to Navigate</a>
+  <a href="#steps" class="nav-tab">Adding a Form</a>
+  <a href="#sign" class="nav-tab">Signing &amp; Submitting</a>
+</div></div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div class="section-card" id="overview">
+    <div class="section-label">Overview</div>
+    <h2>What You'll Do Here</h2>
+    <p class="subtitle">Add new federal or state tax withholding forms directly in UKG Ready. All forms are completed and signed electronically — no paper required.</p>
+    <div class="form-grid">
+      <div class="form-card federal">
+        <p class="form-type">Federal</p>
+        <h4>Employee's Withholding Certificate</h4>
+        <span class="form-code">W-4</span>
+        <p>Tells your employer how much federal income tax to withhold from each paycheck based on your filing status and adjustments.</p>
+      </div>
+      <div class="form-card state">
+        <p class="form-type">State (Indiana)</p>
+        <h4>Employee's Withholding Exemption and County Status Certificate</h4>
+        <span class="form-code">WH-4</span>
+        <p>Indiana state withholding form. Includes county tax information based on where you live and work.</p>
+      </div>
+    </div>
+    <div class="alert alert-info" style="margin-top:16px;">
+      <span class="alert-icon">ℹ️</span>
+      <div>You can add forms at any time. If you've had a life event — marriage, new dependent, second job — updating your W-4 ensures the right amount is withheld.</div>
+    </div>
+  </div>
+
+  <!-- NAVIGATE -->
+  <div class="section-card" id="navigate">
+    <div class="section-label">Navigation</div>
+    <h2>Getting to Withholding</h2>
+    <p class="subtitle">Two ways to get there.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+      <div style="background:linear-gradient(135deg,#f0f3ff,#f8f9ff);border:1.5px solid var(--accent);border-radius:12px;padding:20px;">
+        <h3 style="font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:10px;">Dashboard <span style="font-size:11px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;font-weight:600;margin-left:4px;">Fastest</span></h3>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</div>Click the <strong>My Pay</strong> tile on the dashboard</div>
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</div>Select <strong>Withholding</strong> from the dropdown</div>
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</div>Click <strong>Add New</strong> to get started</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <h3 style="font-size:14px;font-weight:700;color:var(--navy-dark);margin-bottom:10px;">Hamburger Menu</h3>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</div>Click the <strong>☰</strong> menu at the top left</div>
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</div>Click <strong>My Info → My Pay → Forms → Withholding</strong></div>
+          <div style="display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.4;"><div style="min-width:20px;height:20px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</div>Click <strong>Add New</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ADDING A FORM -->
+  <div class="section-card" id="steps">
+    <div class="section-label">Process</div>
+    <h2>Adding a Form</h2>
+    <p class="subtitle">Once you're on the Withholding screen, follow these steps.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Click "Add New"</h4>
+        <ul>
+          <li>The <strong>Add New Withholding</strong> dialog will open</li>
+          <li>The current year is pre-selected</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Choose Your Form</h4>
+        <ul>
+          <li>Forms are grouped by <strong>Federal</strong> and <strong>State</strong></li>
+          <li>Click <strong>+ Add</strong> next to the form you need (W-4 for federal, WH-4 for Indiana state)</li>
+          <li>You can add both in one session if needed</li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">ℹ️</span>
+          <div>If you work or live in a state other than Indiana, your applicable state form will appear in the list instead.</div>
+        </div>
+      </div></div>
+
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Complete the Form</h4>
+        <ul>
+          <li>Fill out the form fields — filing status, allowances, and any additional withholding amounts</li>
+          <li>Review your entries before moving to the next step</li>
+          <li>Click <strong>Review</strong> when ready</li>
+        </ul>
+      </div></div>
+
+    </div>
+  </div>
+
+  <!-- SIGNING -->
+  <div class="section-card" id="sign">
+    <div class="section-label">Final Step</div>
+    <h2>Signing &amp; Submitting</h2>
+    <p class="subtitle">All tax forms require an electronic signature before they take effect.</p>
+    <div class="steps">
+
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Review the Form</h4>
+        <ul>
+          <li>After completing the form, click <strong>Review</strong> in the top right</li>
+          <li>You'll see a full preview of the completed form</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Click "Sign &amp; Submit"</h4>
+        <ul>
+          <li>Click <strong>Sign &amp; Submit</strong> in the top right</li>
+          <li>A confirmation dialog will appear with a legal declaration statement</li>
+        </ul>
+      </div></div>
+
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Type Your Name to Confirm</h4>
+        <ul>
+          <li>Type your <strong>full name</strong> in the field to serve as your electronic signature</li>
+          <li>Click <strong>I Agree</strong> to submit</li>
+          <li>The form status will update to <strong>Active</strong> — your withholding elections are now in effect</li>
+        </ul>
+        <div class="alert alert-success" style="margin-top:12px;">
+          <span class="alert-icon">✅</span>
+          <div>Once submitted, the form appears on your Withholding screen with an Active status and the date it was signed. You can download a PDF copy at any time.</div>
+        </div>
+      </div></div>
+
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Not sure what to enter on your W-4?</h3>
+    <p>The IRS Tax Withholding Estimator at irs.gov can help you figure out the right settings based on your situation.</p>
+  </div>
+
+</div>
+<script>
+const tabs=document.querySelectorAll('.nav-tab');
+const sections=document.querySelectorAll('.section-card[id]');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.remove('active'));const m=document.querySelector(`.nav-tab[href="#${e.target.id}"]`);if(m)m.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+tabs.forEach(t=>{t.addEventListener('click',e=>{e.preventDefault();document.querySelector(t.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});});
+</script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment gérer les candidats — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a;
+    --accent: #3a7bd5; --accent-glow: #5a9bf5;
+    --white: #ffffff; --off-white: #f4f6fb; --light-gray: #e8edf7;
+    --text-body: #2d3748; --text-muted: #6b7a99;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%); pointer-events: none; }
+  header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px; background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
+  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; position: relative; }
+  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
+  .nav-pills a { text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid); background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.35rem 1rem; transition: all 0.18s ease; }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  .section { background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray); padding: 2.25rem 2.5rem; margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s} .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s} .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s} .section:nth-child(7){animation-delay:0.35s}
+  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
+  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .step:hover { border-color: var(--accent); }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+  .tip-box { background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem; }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  .alert-box { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 0.9rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; margin-top: 1.25rem; }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+  .review-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; transition: border-color 0.18s, box-shadow 0.18s; }
+  .review-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(58,123,213,0.1); }
+  .review-card .rc-icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .review-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+  .review-card p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.4; }
+  .pipeline { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.3rem; margin-bottom: 1.25rem; }
+  .stage-pill { background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px; padding: 0.3rem 0.85rem; font-size: 0.78rem; font-weight: 600; color: var(--navy); white-space: nowrap; }
+  .stage-pill.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .stage-arrow { color: var(--accent); font-size: 0.9rem; font-weight: 700; }
+  .comm-steps { display: flex; flex-direction: column; gap: 0.85rem; }
+  .comm-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
+  .comm-step:hover { border-color: var(--accent); }
+  .comm-icon { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+  .comm-step strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .comm-step span { font-size: 0.82rem; color: var(--text-muted); }
+  .bp-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .bp-item { display: flex; align-items: center; gap: 1rem; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.9rem 1.2rem; }
+  .bp-check { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: #dcfce7; color: #16a34a; font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .bp-item p { font-size: 0.88rem; color: #166534; font-weight: 600; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
+  footer strong { color: rgba(255,255,255,0.9); }
+  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> Formation UKG Ready</div>
+  <h1>Comment gérer<br>les candidats</h1>
+  <p>Un guide étape par étape pour examiner les candidatures, les transférer et communiquer avec les candidats dans UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Aller à la section">
+  <a href="#when">Quand utiliser</a>
+  <a href="#view">Consulter les candidatures</a>
+  <a href="#review">Éléments à examiner</a>
+  <a href="#stages">Faire progresser les étapes</a>
+  <a href="#communicate">Envoyer une communication</a>
+  <a href="#best">Pratiques d'excellence</a>
+</nav>
+
+<main>
+
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Aperçu</div>
+    <h2>Quand utiliser ce guide</h2>
+    <p class="sub">Consultez ce guide chaque fois que vous devez gérer des candidats dans le cadre d'une offre d'emploi en cours.</p>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">👀</div><p>Examiner les candidatures d'une offre d'emploi en cours</p></div>
+      <div class="use-card"><div class="icon">📅</div><p>Planifier des entretiens téléphoniques ou en personne</p></div>
+      <div class="use-card"><div class="icon">🔀</div><p>Faire progresser les candidats dans les étapes du processus de recrutement</p></div>
+      <div class="use-card"><div class="icon">✉️</div><p>Envoyer des messages aux candidats</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="view">
+    <div class="section-label"><span class="bar"></span> Étape par étape</div>
+    <h2>Comment consulter les candidatures</h2>
+    <p class="sub">Accédez d'abord à votre offre d'emploi en cours, puis suivez ces étapes.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur l'onglet « Demandes d'emploi » de l'offre d'emploi</strong>
+          <span>Il s'agit du deuxième onglet en haut de la page de l'offre d'emploi, à côté de « Informations sur demande de poste ».</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cochez la case du candidat</strong>
+          <span>Cochez la case située à gauche du nom du candidat dans la liste.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Cliquez sur « Afficher »</strong>
+          <span>Cette option se trouve dans le panneau « Actions rapides » sur le côté droit de l'écran.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <p><strong>Astuce d'accès rapide :</strong> Tapez <strong>« Candidat »</strong> dans la barre de recherche (en haut à droite) et sélectionnez la quatrième option <strong>« Demandes d'emploi/Recrutement &gt; Candidats »</strong> pour accéder plus rapidement à la liste des candidats.</p>
+    </div>
+  </section>
+
+  <section class="section" id="review">
+    <div class="section-label"><span class="bar"></span> Révision</div>
+    <h2>Éléments à examiner</h2>
+    <p class="sub">Une fois que vous avez ouvert le dossier d'un candidat, concentrez-vous sur ces trois points. Utilisez la section « Aller à » située à gauche pour naviguer rapidement dans la page.</p>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="rc-icon">📊</div>
+        <div>
+          <h4>Étape du processus de recrutement</h4>
+          <p>Vérifiez où en est actuellement le candidat dans le processus de recrutement.</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-icon">📄</div>
+        <div>
+          <h4>CV</h4>
+          <p>Consultez le CV du candidat avant de prendre toute décision concernant son avancement dans le processus.</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-icon">📝</div>
+        <div>
+          <h4>Questionnaire</h4>
+          <p>Examinez ses réponses au questionnaire de candidature pour évaluer son adéquation au poste.</p>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <span><strong>Ignorez la section « Demande d'emploi »</strong> — elle ne contient pas d'informations utiles pour la suite du processus.</span>
+    </div>
+  </section>
+
+  <section class="section" id="stages">
+    <div class="section-label"><span class="bar"></span> Processus de recrutement</div>
+    <h2>Faire passer un candidat à l'étape suivante</h2>
+    <p class="sub">Les étapes disponibles dépendent du poste à pourvoir. Recherchez le processus de recrutement approprié ci-dessous, puis suivez les étapes pour faire passer un candidat.</p>
+
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;">Aide-gérant à TP et TPa · 3e clé · Gérant de magasin</p>
+    <div class="pipeline" style="margin-bottom:1.25rem;">
+      <span class="stage-pill active">Candidature reçue</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Examen de la candidature</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Entretien</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Offre</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Lancement vérification antécédents</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Pré-intégration</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill" style="border-color:#fca5a5;color:#991b1b;">Refus</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Embauché</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Poste pourvu</span>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;">Associé aux ventes · Associé saisonnier aux ventes</p>
+    <div class="pipeline" style="margin-bottom:1.5rem;">
+      <span class="stage-pill active">Candidature reçue</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Entretien</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Offre</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Lancement vérification antécédents</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Pré-intégration</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill" style="border-color:#fca5a5;color:#991b1b;">Refus</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Embauché</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Poste pourvu</span>
+    </div>
+
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">Définition de chaque étape</p>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;">
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Candidature reçue</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Le candidat a postulé, aucune action n'a encore été entreprise. Consultez son CV et son questionnaire ici.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Examen de la candidature</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Postes de gestion uniquement. Passez à cette étape pour indiquer que vous avez examiné la candidature et que vous envisagez de retenir le candidat.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Entretien</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Vous planifiez ou avez déjà réalisé un entretien. Utilisez le bouton « Communiquer » pour envoyer la demande d'entretien à partir d'ici.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Offre</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Vous êtes prêt à faire une offre. Consultez le guide « Comment créer et envoyer une offre » pour connaitre les étapes suivantes.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Lancement vérification antécédents</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">L'offre est acceptée ; cela déclenche le processus de vérification des antécédents via HireRight. Ne passez pas à cette étape avant que le candidat n'ait donné son accord verbal.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Pré-intégration</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">La vérification des antécédents est validée ; le candidat reçoit les tâches de pré-intégration, notamment les documents administratifs relatifs à l'embauche.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:#fff5f5;border:1.5px solid #fecaca;border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#dc2626;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Refus</span>
+        <span style="font-size:0.83rem;color:#991b1b;">Le candidat n'est plus pris en considération. Passez à cette étape pour le retirer de votre processus de recrutement actif. Cela peut déclencher une notification.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#16a34a;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Embauché</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Le candidat a terminé la pré-intégration et est officiellement embauché.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#16a34a;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Poste pourvu</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Tous les postes vacants de l'offre d'emploi ont été pourvus. L'offre d'emploi se fermera automatiquement si l'option « Fermeture automatique une fois le poste pourvu » a été cochée lors de sa création.</span>
+      </div>
+    </div>
+
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Cliquez sur le cercle de l'étape de recrutement vers laquelle vous souhaitez déplacer le candidat</strong>
+          <span>Les cercles apparaissent en haut de la fiche du candidat dans la section Étapes d'embauche.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Ne modifiez pas la date</strong>
+          <span>Laissez le champ « Date réelle » tel quel lorsque la fenêtre contextuelle s'affiche.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Cliquez sur OK</strong>
+          <span>Confirmez la fenêtre contextuelle « Modification de l'étape d'embauche » pour enregistrer la modification.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Important :</strong> Le déplacement d'un candidat vers certaines étapes peut déclencher automatiquement l'envoi d'un courriel au candidat. Vérifiez bien que vous avez sélectionné la bonne étape avant de cliquer sur OK.</div>
+    </div>
+  </section>
+
+  <section class="section" id="communicate">
+    <div class="section-label"><span class="bar"></span> Communication</div>
+    <h2>Envoyer une communication</h2>
+    <p class="sub">Utilisez cette fonction pour envoyer des demandes d'entretien ou d'autres messages directement aux candidats via UKG.</p>
+    <div class="comm-steps">
+      <div class="comm-step">
+        <div class="comm-icon">☑️</div>
+        <div>
+          <strong>Cochez la case du candidat, puis cliquez sur « Communiquer »</strong>
+          <span>Le bouton « Communiquer » apparait dans le panneau « Actions rapides » à droite.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">📋</div>
+        <div>
+          <strong>Sélectionnez un modèle</strong>
+          <span>Choisissez « Demander un entretien téléphonique » ou « Demander un entretien en personne » ; l'objet, l'expéditeur et le corps du message seront remplis automatiquement.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">✏️</div>
+        <div>
+          <strong>Remplacez le champ « De » par votre adresse courriel</strong>
+          <span>Cette étape est obligatoire : l'adresse par défaut est une adresse de non-réponse. Remplacez-la par la vôtre afin que le candidat puisse vous répondre directement.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">📤</div>
+        <div>
+          <strong>Cliquez sur « Envoyer »</strong>
+          <span>Vérifiez le message avant de l'envoyer.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="best">
+    <div class="section-label"><span class="bar"></span> Pratiques d'excellence</div>
+    <h2>Pratiques d'excellence</h2>
+    <p class="sub">Suivez toujours ces conseils lorsque vous gérez des candidats afin d'éviter les erreurs et de garder votre parcours de recrutement bien organisé.</p>
+    <ul class="bp-list">
+      <li class="bp-item"><div class="bp-check">✓</div><p>Vérifiez toujours le CV avant de faire passer un candidat à l'étape suivante</p></li>
+      <li class="bp-item"><div class="bp-check">✓</div><p>Vérifiez les réponses au questionnaire avant de prendre une décision d'embauche</p></li>
+      <li class="bp-item"><div class="bp-check">✓</div><p>Utilisez uniquement les modèles de communication, ne rédigez pas de messages personnalisés</p></li>
+      <li class="bp-item"><div class="bp-check">✓</div><p>Vérifiez bien l'étape de recrutement avant de cliquer sur OK : certaines étapes déclenchent l'envoi de courriels automatiques</p></li>
+      <li class="bp-item"><div class="bp-check">✓</div><p>Mettez toujours à jour le champ « De » avec votre adresse courriel avant d'envoyer toute communication</p></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · Formation UKG Ready</strong> &nbsp;|&nbsp; Usage interne uniquement &nbsp;|&nbsp; Questions ? Contactez les RH
+</footer>
+
+</body>
+</html>

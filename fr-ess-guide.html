@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide de libre-service pour les employés – UKG Ready</title>
+<style>
+:root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--red:#e63946;--red-light:#fdecea;--green:#2a9d8f;--green-light:#e6f4f2;--yellow:#f4a261;--yellow-light:#fef3e8;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.hero{background:linear-gradient(145deg,var(--navy-dark) 0%,var(--navy) 55%,var(--navy-mid) 100%);color:white;text-align:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(79,111,216,0.25) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.badge-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:16px;}
+.hero p{font-size:16px;opacity:0.75;max-width:520px;margin:0 auto;}
+.hero-curve{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.nav-tabs{display:flex;gap:4px;overflow-x:auto;padding:0 24px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{white-space:nowrap;padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:block;}
+.nav-tab:hover{color:var(--navy);border-color:var(--border);}
+.nav-tab.active{color:var(--navy);border-color:var(--navy);font-weight:600;}
+.content{max-width:960px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:24px;}
+.section-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:0 1px 4px rgba(0,0,0,0.06);scroll-margin-top:60px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;}
+.section-card h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(22px,3.5vw,28px);color:var(--navy-dark);margin-bottom:6px;}
+.section-card .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.access-grid{grid-template-columns:1fr!important;}}
+.alert{border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;}
+.alert-warn{background:var(--yellow-light);border:1px solid #f4c78a;color:#7a4a10;}
+.alert-info{background:var(--accent-light);border:1px solid #c5d0f5;color:var(--navy);}
+.alert-danger{background:var(--red-light);border:1px solid #f5b8bc;color:#8b1a22;}
+.alert-icon{font-size:18px;flex-shrink:0;}
+.steps{display:flex;flex-direction:column;}
+.step{display:flex;gap:18px;position:relative;}
+.step:not(:last-child) .step-line{position:absolute;left:18px;top:44px;bottom:0;width:2px;background:var(--border);}
+.step-num{width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.step-body{padding:0 0 28px;flex:1;}
+.step-body h4{font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;}
+.step-body ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0;margin-bottom:0;}
+.step-body li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+.step-body li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+.step-body strong{color:var(--text);}
+.callout{background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));color:white;border-radius:16px;padding:32px;text-align:center;}
+.callout h3{font-family:Georgia,'Times New Roman',serif;font-size:20px;margin-bottom:8px;}
+.callout p{opacity:0.75;font-size:14px;margin-bottom:16px;}
+.callout a{display:inline-block;background:white;color:var(--navy);font-weight:700;font-size:14px;padding:10px 24px;border-radius:999px;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> Formation UKG Ready</div>
+  <h1>Guide de libre-service<br>pour les employés</h1>
+  <p>Comment mettre à jour vos informations personnelles, vos contacts d'urgence et plus encore dans UKG Ready</p>
+  <div class="hero-curve"></div>
+</div>
+
+<div class="nav-wrap"><div class="nav-tabs">
+  <a href="#comment-acceder" class="nav-tab active">Comment accéder</a>
+  <a href="#infos-personnelles" class="nav-tab">Infos personnelles</a>
+  <a href="#adresse" class="nav-tab">Adresse</a>
+  <a href="#depot-direct" class="nav-tab">Dépôt direct</a>
+  <a href="#courriel-telephone" class="nav-tab">Courriel / Téléphone</a>
+  <a href="#contacts-urgence" class="nav-tab">Contacts d'urgence</a>
+  <a href="#etat-civil" class="nav-tab">État civil</a>
+  <a href="#nom" class="nav-tab">Nom</a>
+  <a href="#attestations" class="nav-tab">Attestations</a>
+  <a href="#formations" class="nav-tab">Formations</a>
+  <a href="#documents-fiscaux" class="nav-tab">Documents fiscaux</a>
+</div></div>
+
+<div class="content">
+
+  <!-- ── COMMENT ACCÉDER ── -->
+  <div class="section-card" id="comment-acceder">
+    <div class="section-label">Pour commencer</div>
+    <h2>Comment accéder au libre-service</h2>
+    <p class="subtitle">Toutes les actions de libre-service commencent de la même façon. Suivez ces étapes, puis passez à l'action dont vous avez besoin ci-dessous.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Se connecter à UKG Ready</h4>
+        <ul><li>Connectez-vous avec vos identifiants UKG Ready</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Aller à la page d'accueil</h4>
+        <ul><li>Après la connexion, vous arriverez sur votre page d'accueil UKG Ready</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
+        <h4>Survoler « Mes tâches »</h4>
+        <ul><li>Trouvez <strong>Mes tâches</strong> dans la navigation et survolez-le avec votre curseur</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <h4>Cliquer sur « Mettre à jour mes informations »</h4>
+        <ul><li>Sélectionnez <strong>Mettre à jour mes informations</strong> dans le menu déroulant</li><li>Une liste d'actions de libre-service s'affichera — choisissez celle dont vous avez besoin</li></ul>
+      </div></div>
+    </div>
+    <div class="alert alert-info" style="margin-top:4px;">
+      <span class="alert-icon">👇</span>
+      <div>Une fois sur la page « Mettre à jour mes informations », consultez les sections ci-dessous pour trouver l'action qui vous convient.</div>
+    </div>
+  </div>
+
+  <!-- ── INFORMATIONS PERSONNELLES ── -->
+  <div class="section-card" id="infos-personnelles">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour toutes mes informations personnelles</h2>
+    <p class="subtitle">Utilisez cette action pour consulter et mettre à jour votre nom, adresse, courriel, langue préférée, date de naissance et informations EEO.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour toutes mes informations personnelles</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Consulter et mettre à jour chaque section</h4>
+        <ul>
+          <li>Passez en revue et mettez à jour vos informations au besoin — y compris le nom, l'adresse, le courriel, la langue préférée et la date de naissance</li>
+          <li>Cette action peut également inclure les <strong>informations EEO</strong>, qui servent aux rapports et à la conformité</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Naviguer et soumettre</h4>
+        <ul>
+          <li>Cliquez sur <strong>Continuer</strong> pour avancer dans chaque section</li>
+          <li>Cliquez sur <strong>Soumettre</strong> lorsque vous avez terminé</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── ADRESSE ── -->
+  <div class="section-card" id="adresse">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mon adresse</h2>
+    <p class="subtitle">Utilisez cette action pour mettre à jour votre adresse domiciliaire.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mon adresse</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Saisir votre nouvelle adresse</h4>
+        <ul><li>Entrez votre nouvelle adresse domiciliaire et soumettez le changement</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Soumettre</h4>
+        <ul><li>Cliquez sur <strong>Soumettre</strong> lorsque vous avez terminé</li></ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── DÉPÔT DIRECT ── -->
+  <div class="section-card" id="depot-direct">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mon dépôt direct</h2>
+    <p class="subtitle">Pour mettre à jour vos informations bancaires pour le dépôt direct, vous devez effectuer ce changement directement dans ADP Workforce Now — et non dans UKG Ready.</p>
+    <div class="alert alert-warn" style="margin-bottom: 20px;">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Employés canadiens :</strong> Les modifications au dépôt direct doivent être effectuées dans <strong>ADP Workforce Now</strong>, et non dans UKG Ready. Connectez-vous à ADP Workforce Now pour ajouter ou mettre à jour vos coordonnées bancaires.</div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Se connecter à ADP Workforce Now</h4>
+        <ul><li>Connectez-vous à votre compte ADP Workforce Now avec vos identifiants habituels</li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Naviguer vers les paramètres de paie</h4>
+        <ul><li>Accédez à la section de dépôt direct ou de paramètres de paie dans ADP Workforce Now</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Mettre à jour vos informations bancaires</h4>
+        <ul>
+          <li>Ajoutez ou modifiez vos coordonnées bancaires dans ADP Workforce Now</li>
+          <li>Sauvegardez vos modifications lorsque vous avez terminé</li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">🏦</span>
+          <div>Si vous avez plusieurs comptes, assurez-vous de les classer dans le bon ordre : <strong>Compte 1 :</strong> Montant fixe en $ &nbsp;|&nbsp; <strong>Compte 2 :</strong> Solde total / reste</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── COURRIEL / TÉLÉPHONE ── -->
+  <div class="section-card" id="courriel-telephone">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mon courriel / numéro de téléphone</h2>
+    <p class="subtitle">Utilisez cette action pour mettre à jour votre adresse courriel et/ou votre numéro de téléphone au dossier.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mon courriel / numéro de téléphone</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Effectuer vos modifications</h4>
+        <ul><li>Mettez à jour votre adresse courriel et/ou votre numéro de téléphone au besoin</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Confirmer et soumettre</h4>
+        <ul>
+          <li>Confirmez la date d'entrée en vigueur</li>
+          <li>Cliquez sur <strong>Soumettre</strong> pour enregistrer vos modifications</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── CONTACTS D'URGENCE ── -->
+  <div class="section-card" id="contacts-urgence">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mes contacts d'urgence</h2>
+    <p class="subtitle">Utilisez cette action pour ajouter ou mettre à jour les contacts d'urgence figurant dans votre dossier d'employé.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mes contacts d'urgence</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Ajouter un contact</h4>
+        <ul>
+          <li>Cliquez sur <strong>+Ajouter</strong> à droite de l'écran</li>
+          <li>Cochez la case pour sélectionner le type de contact : <strong>Urgence</strong></li>
+          <li>Entrez le <strong>nom, le type de relation, le numéro de téléphone et l'adresse courriel</strong> du contact</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Soumettre</h4>
+        <ul><li>Cliquez sur <strong>Soumettre</strong> une fois qu'au moins 1 contact a été saisi</li></ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── ÉTAT CIVIL ── -->
+  <div class="section-card" id="etat-civil">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mon état civil</h2>
+    <p class="subtitle">Utilisez cette action pour mettre à jour votre état civil. Vous devrez téléverser une pièce justificative.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mon état civil</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Téléverser une pièce justificative</h4>
+        <ul>
+          <li>Cliquez sur <strong>Téléverser un document</strong></li>
+          <li>Sélectionnez le type de document : <strong>Mariage</strong></li>
+          <li>Cliquez sur <strong>Soumettre</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Mettre à jour les retenues fiscales si nécessaire</h4>
+        <ul>
+          <li>Si un changement d'état civil affecte vos retenues fiscales, vous devez remplir le formulaire fiscal approprié et l'envoyer par courriel à <strong><a href="mailto:payroll@lids.com">payroll@lids.com</a></strong></li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">📋</span>
+          <div><strong>Documents fiscaux :</strong> Ne mettez <strong>pas</strong> à jour vos retenues fiscales dans UKG Ready. Remplissez le formulaire fiscal applicable, puis envoyez-le par courriel à <strong>payroll@lids.com</strong> pour traitement.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── NOM ── -->
+  <div class="section-card" id="nom">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mon nom</h2>
+    <p class="subtitle">Utilisez cette action pour mettre à jour votre nom légal. Vous devrez téléverser une pièce justificative.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mon nom</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Téléverser une pièce justificative</h4>
+        <ul>
+          <li>Cliquez sur <strong>Téléverser un document</strong></li>
+          <li>Sélectionnez le type de document : <strong>Changement de nom</strong></li>
+          <li>Cliquez sur <strong>Soumettre</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Mettre à jour les retenues fiscales si nécessaire</h4>
+        <ul>
+          <li>Si un changement de nom nécessite une mise à jour de vos documents fiscaux, remplissez le formulaire applicable et envoyez-le par courriel à <strong><a href="mailto:payroll@lids.com">payroll@lids.com</a></strong></li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">📋</span>
+          <div><strong>Documents fiscaux :</strong> Ne mettez <strong>pas</strong> à jour vos retenues fiscales dans UKG Ready. Remplissez le formulaire fiscal applicable, puis envoyez-le par courriel à <strong>payroll@lids.com</strong> pour traitement.</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── ATTESTATIONS ── -->
+  <div class="section-card" id="attestations">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mes attestations professionnelles</h2>
+    <p class="subtitle">Utilisez cette action pour ajouter ou mettre à jour vos attestations professionnelles et téléverser les documents justificatifs.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mes attestations</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Saisir les informations relatives à votre attestation</h4>
+        <ul>
+          <li>Entrez les renseignements demandés concernant votre attestation</li>
+          <li>Si vous n'avez pas de numéro d'identification de document, entrez votre <strong>numéro d'assurance sociale (NAS)</strong></li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Téléverser votre document</h4>
+        <ul>
+          <li>Lors du téléversement, sélectionnez <strong>Documents de l'employé</strong> comme type de document</li>
+          <li>Cliquez sur <strong>Soumettre</strong> lorsque vous avez terminé</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── FORMATIONS ── -->
+  <div class="section-card" id="formations">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mes formations / certifications</h2>
+    <p class="subtitle">Utilisez cette action pour ajouter les détails de vos formations ou certifications complétées à votre dossier d'employé.</p>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Sélectionner l'action</h4>
+        <ul><li>Sur la page « Mettre à jour mes informations », cliquez sur <strong>Mettre à jour mes formations / certifications</strong></li></ul>
+      </div></div>
+      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
+        <h4>Ajouter les détails de votre formation</h4>
+        <ul><li>Entrez les détails de votre formation ou certification complétée</li></ul>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <h4>Téléverser la documentation et soumettre</h4>
+        <ul>
+          <li>Téléversez la documentation justificative si elle est requise</li>
+          <li>Cliquez sur <strong>Soumettre</strong> lorsque vous avez terminé</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── DOCUMENTS FISCAUX ── -->
+  <div class="section-card" id="documents-fiscaux">
+    <div class="section-label">Action de libre-service</div>
+    <h2>Mettre à jour mes documents fiscaux</h2>
+    <p class="subtitle">Pour toute mise à jour de vos documents fiscaux (retenues à la source, changement de situation), vous devez remplir le formulaire applicable et l'envoyer directement à la paie — et non le modifier dans UKG Ready.</p>
+    <div class="alert alert-warn" style="margin-bottom: 20px;">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Employés canadiens :</strong> Ne mettez <strong>pas</strong> à jour vos formulaires fiscaux dans UKG Ready. Remplissez le formulaire fiscal approprié (p. ex. TD1 fédéral, TD1 provincial) et envoyez-le par courriel à <strong><a href="mailto:payroll@lids.com">payroll@lids.com</a></strong> pour qu'il soit traité par l'équipe de la paie.</div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
+        <h4>Remplir le formulaire fiscal approprié</h4>
+        <ul>
+          <li>Formulaire TD1 – Déclaration des crédits d'impôt personnels fédéraux</li>
+          <li>Formulaire TD1 provincial – selon votre province de résidence (p. ex. TD1QC pour le Québec)</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">
+        <h4>Envoyer le formulaire à la paie</h4>
+        <ul>
+          <li>Envoyez le formulaire dûment rempli et signé par courriel à <strong><a href="mailto:payroll@lids.com">payroll@lids.com</a></strong></li>
+          <li>L'équipe de la paie traitera votre demande et mettra vos retenues à jour en conséquence</li>
+        </ul>
+        <div class="alert alert-info" style="margin-top:12px;">
+          <span class="alert-icon">📧</span>
+          <div><strong>Adresse courriel de la paie :</strong> <a href="mailto:payroll@lids.com">payroll@lids.com</a></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>Des questions sur une action de libre-service?</h3>
+    <p>Si vous n'êtes pas certain de ce qu'il faut saisir ou si vous rencontrez un problème, communiquez avec l'équipe des RH pour obtenir de l'aide.</p>
+    <a href="mailto:hr@lids.com">hr@lids.com</a>
+  </div>
+
+</div>
+</body>
+</html>

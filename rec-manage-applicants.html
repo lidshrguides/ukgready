@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Manage Applicants — Lids</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --navy-light: #2a4a8a;
+    --accent: #3a7bd5;
+    --accent-glow: #5a9bf5;
+    --white: #ffffff;
+    --off-white: #f4f6fb;
+    --light-gray: #e8edf7;
+    --green: #1db954;
+    --red: #e53e3e;
+    --yellow: #f6c90e;
+    --text-body: #2d3748;
+    --text-muted: #6b7a99;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-body);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0; height: 48px;
+    background: var(--off-white);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .logo-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+  }
+  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  header p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── NAV PILLS ── */
+  .nav-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+    padding: 2rem 1rem 0;
+    max-width: 860px; margin: 0 auto;
+  }
+  .nav-pills a {
+    text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    color: var(--navy-mid);
+    background: var(--white);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    transition: all 0.18s ease;
+    letter-spacing: 0.02em;
+  }
+  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  /* ── MAIN ── */
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+  /* ── SECTION CARDS ── */
+  .section {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1.5px solid var(--light-gray);
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0 2px 12px rgba(15,31,61,0.06);
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:0.05s}
+  .section:nth-child(2){animation-delay:0.1s}
+  .section:nth-child(3){animation-delay:0.15s}
+  .section:nth-child(4){animation-delay:0.2s}
+  .section:nth-child(5){animation-delay:0.25s}
+  .section:nth-child(6){animation-delay:0.3s}
+  .section:nth-child(7){animation-delay:0.35s}
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .section .sub {
+    font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+
+  /* ── USE GRID ── */
+  .use-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem;
+  }
+  .use-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--light-gray);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .use-card .icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+
+  /* ── STEPS ── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+  .step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 12px; padding: 1rem 1.2rem;
+    transition: border-color 0.18s;
+  }
+  .step:hover { border-color: var(--accent); }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-weight: 700; font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── TIP BOX ── */
+  .tip-box {
+    background: #eff6ff;
+    border: 1.5px solid #93c5fd;
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    display: flex; align-items: flex-start; gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  .tip-box strong { font-weight: 700; }
+
+  /* ── ALERT BOX ── */
+  .alert-box {
+    background: #fef3c7; border: 1.5px solid #f59e0b;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.88rem; font-weight: 500; color: #78350f;
+    margin-top: 1.25rem;
+  }
+  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* ── NOTE BOX ── */
+  .note-box {
+    background: #f5f3ff; border: 1.5px solid #c4b5fd;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.88rem; color: #4c1d95;
+    margin-top: 1rem;
+  }
+  .note-box .note-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+  /* ── REVIEW GRID ── */
+  .review-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .review-card {
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 14px; padding: 1.1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .review-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(58,123,213,0.1); }
+  .review-card .rc-icon {
+    width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .review-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+  .review-card p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.4; }
+
+  /* ── STAGE PIPELINE ── */
+  .pipeline {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 14px; padding: 1.1rem 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+  .stage-pill {
+    background: var(--white); border: 1.5px solid var(--light-gray);
+    border-radius: 999px; padding: 0.3rem 0.85rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--navy);
+    white-space: nowrap;
+  }
+  .stage-pill.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .stage-arrow { color: var(--accent); font-size: 0.9rem; font-weight: 700; }
+
+  /* ── COMMUNICATE STEPS ── */
+  .comm-steps { display: flex; flex-direction: column; gap: 0.85rem; }
+  .comm-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--off-white); border: 1.5px solid var(--light-gray);
+    border-radius: 12px; padding: 1rem 1.2rem;
+    transition: border-color 0.18s;
+  }
+  .comm-step:hover { border-color: var(--accent); }
+  .comm-icon {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .comm-step strong { display: block; font-size: 0.92rem; color: var(--navy); }
+  .comm-step span { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── BEST PRACTICES ── */
+  .bp-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .bp-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: #f0fdf4; border: 1.5px solid #86efac;
+    border-radius: 12px; padding: 0.9rem 1.2rem;
+  }
+  .bp-check {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: #dcfce7; color: #16a34a; font-size: 1rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bp-item p { font-size: 0.88rem; color: #166534; font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+  }
+  footer strong { color: rgba(255,255,255,0.9); }
+
+  @media print {
+    .nav-pills { display: none; }
+    .section { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge"><span class="dot"></span> UKG Ready Training</div>
+  <h1>How to Manage<br>Applicants</h1>
+  <p>A step-by-step reference for reviewing, moving, and communicating with applicants in UKG Ready</p>
+</header>
+
+<nav class="nav-pills" aria-label="Jump to section">
+  <a href="#when">When to Use</a>
+  <a href="#find">Find Your Requisition</a>
+  <a href="#view">View Applicants</a>
+  <a href="#review">What to Review</a>
+  <a href="#stages">Move Stages</a>
+  <a href="#communicate">Send Communication</a>
+  <a href="#best">Best Practices</a>
+</nav>
+
+<main>
+
+  <!-- WHEN TO USE -->
+  <section class="section" id="when">
+    <div class="section-label"><span class="bar"></span> Overview</div>
+    <h2>When to Use This Guide</h2>
+    <p class="sub">Reference this guide any time you need to manage candidates in an open requisition.</p>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="icon">👀</div>
+        <p>Reviewing applicants on an open requisition</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">📅</div>
+        <p>Scheduling phone or in-person interviews</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">🔀</div>
+        <p>Moving candidates through hiring stages</p>
+      </div>
+      <div class="use-card">
+        <div class="icon">✉️</div>
+        <p>Sending communication to applicants</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW APPLICANTS -->
+  <section class="section" id="view">
+    <div class="section-label"><span class="bar"></span> Step-by-Step</div>
+    <h2>How to View Applicants</h2>
+    <p class="sub">Navigate to your open requisition first, then follow these steps.</p>
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Click the Applications tab on the requisition</strong>
+          <span>This is the second tab at the top of the requisition page, next to Job Req. Info.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Select the applicant's checkbox</strong>
+          <span>Check the box to the left of the applicant's name in the list.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Click View</strong>
+          <span>Found in the Quick Actions panel on the right side of the screen.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <p><strong>Quick Access Tip:</strong> Type <strong>"Job Application"</strong> in the search bar (top right) and select the <strong>2nd option</strong> — "Job Applications / Recruitment &gt; Candidates" — to reach the applicant list faster without navigating through the requisition.</p>
+    </div>
+  </section>
+
+  <!-- WHAT TO REVIEW -->
+  <section class="section" id="review">
+    <div class="section-label"><span class="bar"></span> Reviewing</div>
+    <h2>What to Review</h2>
+    <p class="sub">Once you open an applicant's record, focus on these three areas. Use the Jump To section on the left to navigate the page quickly.</p>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="rc-icon">📊</div>
+        <div>
+          <h4>Hiring Stage</h4>
+          <p>Check where the candidate currently sits in the hiring pipeline.</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-icon">📄</div>
+        <div>
+          <h4>Resume</h4>
+          <p>Review the candidate's resume before making any stage decisions.</p>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-icon">📝</div>
+        <div>
+          <h4>Questionnaire</h4>
+          <p>Review their application questionnaire responses for fit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <span><strong>Ignore the Job Application section</strong> — skip past it when reviewing an applicant record. It does not contain information you need to act on.</span>
+    </div>
+  </section>
+
+  <!-- MOVE STAGES -->
+  <section class="section" id="stages">
+    <div class="section-label"><span class="bar"></span> Hiring Pipeline</div>
+    <h2>Move Candidate Stages</h2>
+    <p class="sub">The stages available depend on the role you're hiring for. Find the right pipeline below, then follow the steps to move a candidate.</p>
+
+    <!-- MANAGEMENT PIPELINE -->
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;">ASM PT &amp; FT · 3rd Key · Store Manager</p>
+    <div class="pipeline" style="margin-bottom:1.25rem;">
+      <span class="stage-pill active">Application Received</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Application Review</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Interview</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Offer</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Initiate Background Check</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Preboarding</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill" style="border-color:#fca5a5;color:#991b1b;">Declined</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Hired</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Position Filled</span>
+    </div>
+
+    <!-- SALES HELP PIPELINE -->
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;">Sales Help · Seasonal Sales Help</p>
+    <div class="pipeline" style="margin-bottom:1.5rem;">
+      <span class="stage-pill active">Application Received</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Interview</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Offer</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Initiate Background Check</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Preboarding</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill" style="border-color:#fca5a5;color:#991b1b;">Declined</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Hired</span>
+      <span class="stage-arrow">›</span>
+      <span class="stage-pill">Position Filled</span>
+    </div>
+
+    <!-- STAGE DESCRIPTIONS -->
+    <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:0.75rem;">What Each Stage Means</p>
+    <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;">
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Application Received</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Candidate applied — no action taken yet. Review their resume and questionnaire here.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Application Review</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Management roles only. Move here to indicate you've reviewed the application and are considering the candidate.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Interview</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">You're scheduling or have completed an interview. Use the Communicate button to send the interview request from here.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Offer</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">You're ready to extend an offer. See the How to Extend an Offer guide for next steps from this stage.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Initiate Background Check</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Offer accepted — triggers the background check process through HireRight. Do not move here until the candidate has verbally accepted.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:var(--navy);border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Preboarding</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Background check cleared — candidate receives preboarding tasks including I-9 and new hire paperwork.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:#fff5f5;border:1.5px solid #fecaca;border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#dc2626;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Declined</span>
+        <span style="font-size:0.83rem;color:#991b1b;">Candidate is no longer being considered. Move here to remove them from your active pipeline. This may trigger a notification.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#16a34a;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Hired</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">Candidate has completed preboarding and is officially hired.</span>
+      </div>
+      <div style="display:flex;gap:0.85rem;align-items:flex-start;background:var(--off-white);border:1.5px solid var(--light-gray);border-radius:11px;padding:0.75rem 1rem;">
+        <span style="font-size:0.78rem;font-weight:700;color:var(--white);background:#16a34a;border-radius:999px;padding:0.2rem 0.65rem;white-space:nowrap;flex-shrink:0;">Position Filled</span>
+        <span style="font-size:0.83rem;color:var(--text-muted);">All openings on the requisition have been filled. The req will auto-close if "Auto Closed When Filled" was checked when it was created.</span>
+      </div>
+    </div>
+
+    <ol class="steps-list">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Click the Hiring Stage circle you want to move the candidate to</strong>
+          <span>Circles appear at the top of the applicant record in the Hiring Stages section.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Do not change the date</strong>
+          <span>Leave the Actual Date field as-is when the pop-up appears.</span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Click OK</strong>
+          <span>Confirm the Hiring Stage Modification pop-up to save the change.</span>
+        </div>
+      </li>
+    </ol>
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <strong>Important:</strong> Moving a candidate to certain stages may automatically trigger an email to the applicant. Double-check you have selected the correct stage before clicking OK.
+      </div>
+    </div>
+  </section>
+
+  <!-- SEND COMMUNICATION -->
+  <section class="section" id="communicate">
+    <div class="section-label"><span class="bar"></span> Communication</div>
+    <h2>Send Communication</h2>
+    <p class="sub">Use this to send interview requests or other messages directly to applicants through UKG.</p>
+    <div class="comm-steps">
+      <div class="comm-step">
+        <div class="comm-icon">☑️</div>
+        <div>
+          <strong>Select the applicant's checkbox, then click Communicate</strong>
+          <span>The Communicate button appears in the Quick Actions panel on the right.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">📋</div>
+        <div>
+          <strong>Select a template</strong>
+          <span>Choose either "Request Phone Interview" or "Request In-Person Interview" — the subject, from, and body will auto-fill.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">✏️</div>
+        <div>
+          <strong>Update the "From" field to your email address</strong>
+          <span>This is required — the default shows a no-reply address. Replace it with your own so the applicant can respond to you directly.</span>
+        </div>
+      </div>
+      <div class="comm-step">
+        <div class="comm-icon">📤</div>
+        <div>
+          <strong>Click Send</strong>
+          <span>Review the message before sending.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST PRACTICES -->
+  <section class="section" id="best">
+    <div class="section-label"><span class="bar"></span> Best Practices</div>
+    <h2>Best Practices</h2>
+    <p class="sub">Follow these habits every time you manage applicants to avoid errors and keep your pipeline clean.</p>
+    <ul class="bp-list">
+      <li class="bp-item">
+        <div class="bp-check">✓</div>
+        <p>Always review the resume before moving a candidate to the next stage</p>
+      </li>
+      <li class="bp-item">
+        <div class="bp-check">✓</div>
+        <p>Review the questionnaire responses before making a hiring decision</p>
+      </li>
+      <li class="bp-item">
+        <div class="bp-check">✓</div>
+        <p>Use communication templates only — do not type custom messages</p>
+      </li>
+      <li class="bp-item">
+        <div class="bp-check">✓</div>
+        <p>Double-check the hiring stage before clicking OK — some stages trigger automatic emails</p>
+      </li>
+      <li class="bp-item">
+        <div class="bp-check">✓</div>
+        <p>Always update the "From" field to your email before sending any communication</p>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>Lids · UKG Ready Training</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
+</footer>
+
+</body>
+</html>
