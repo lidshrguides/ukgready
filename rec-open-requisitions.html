@@ -7,310 +7,101 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --navy: #0f1f3d;
-    --navy-mid: #1a3260;
-    --navy-light: #2a4a8a;
-    --accent: #3a7bd5;
-    --accent-glow: #5a9bf5;
-    --white: #ffffff;
-    --off-white: #f4f6fb;
-    --light-gray: #e8edf7;
-    --green: #1db954;
-    --red: #e53e3e;
-    --yellow: #f6c90e;
-    --text-body: #2d3748;
-    --text-muted: #6b7a99;
+    --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a;
+    --accent: #3a7bd5; --accent-glow: #5a9bf5;
+    --white: #fff; --off-white: #f4f6fb; --light-gray: #e8edf7;
+    --text-body: #2d3748; --text-muted: #6b7a99;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--off-white);
-    color: var(--text-body);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: #fff; padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,.15) 0%, transparent 50%); pointer-events:none; }
+  header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:48px; background:var(--off-white); clip-path:ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:.4rem 1.1rem; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:1.5rem; }
+  .logo-badge .dot { width:6px; height:6px; background:var(--accent-glow); border-radius:50%; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  header h1 { font-family:'DM Serif Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:400; line-height:1.15; margin-bottom:.75rem; position:relative; }
+  header p { font-size:1rem; color:rgba(255,255,255,.7); max-width:520px; margin:0 auto; position:relative; }
 
-  /* ── HEADER ── */
-  header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
-    color: var(--white);
-    padding: 3rem 2rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  header::after {
-    content: '';
-    position: absolute; bottom: -1px; left: 0; right: 0; height: 48px;
-    background: var(--off-white);
-    clip-path: ellipse(55% 100% at 50% 100%);
-  }
-  .logo-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 999px;
-    padding: 0.4rem 1.1rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 1.5rem;
-  }
-  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  .nav-pills { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; padding:2rem 1rem 0; max-width:960px; margin:0 auto; }
+  .nav-pills a { text-decoration:none; font-size:.8rem; font-weight:600; color:var(--navy-mid); background:#fff; border:1.5px solid var(--light-gray); border-radius:999px; padding:.35rem 1rem; transition:all .18s; }
+  .nav-pills a:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
 
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
-    margin-bottom: 0.75rem;
-    position: relative;
-  }
-  header p {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.7);
-    max-width: 480px;
-    margin: 0 auto;
-    position: relative;
-  }
+  main { max-width:860px; margin:0 auto; padding:2rem 1.25rem 4rem; }
 
-  /* ── NAV PILLS ── */
-  .nav-pills {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
-    padding: 2rem 1rem 0;
-    max-width: 860px; margin: 0 auto;
-  }
-  .nav-pills a {
-    text-decoration: none; font-size: 0.8rem; font-weight: 600;
-    color: var(--navy-mid);
-    background: var(--white);
-    border: 1.5px solid var(--light-gray);
-    border-radius: 999px;
-    padding: 0.35rem 1rem;
-    transition: all 0.18s ease;
-    letter-spacing: 0.02em;
-  }
-  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .section { background:#fff; border-radius:20px; border:1.5px solid var(--light-gray); padding:2rem 2.25rem; margin-bottom:1.75rem; box-shadow:0 2px 12px rgba(15,31,61,.06); animation:fadeUp .5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:.05s} .section:nth-child(2){animation-delay:.1s} .section:nth-child(3){animation-delay:.15s} .section:nth-child(4){animation-delay:.2s} .section:nth-child(5){animation-delay:.25s} .section:nth-child(6){animation-delay:.3s} .section:nth-child(7){animation-delay:.35s} .section:nth-child(8){animation-delay:.4s}
 
-  /* ── MAIN ── */
-  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  .section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+  .section-label .bar { width:18px; height:2.5px; background:var(--accent); border-radius:2px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:clamp(1.3rem,3vw,1.65rem); color:var(--navy); margin-bottom:.25rem; line-height:1.2; }
+  .section .sub { font-size:.88rem; color:var(--text-muted); margin-bottom:1.25rem; }
 
-  /* ── SECTION CARDS ── */
-  .section {
-    background: var(--white);
-    border-radius: 20px;
-    border: 1.5px solid var(--light-gray);
-    padding: 2.25rem 2.5rem;
-    margin-bottom: 1.75rem;
-    box-shadow: 0 2px 12px rgba(15,31,61,0.06);
-    animation: fadeUp 0.5s ease both;
-  }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
-  .section:nth-child(1){animation-delay:0.05s}
-  .section:nth-child(2){animation-delay:0.1s}
-  .section:nth-child(3){animation-delay:0.15s}
-  .section:nth-child(4){animation-delay:0.2s}
-  .section:nth-child(5){animation-delay:0.25s}
-  .section:nth-child(6){animation-delay:0.3s}
+  /* step boxes */
+  .sbox { border:2px solid #e2e8f0; border-radius:14px; padding:1.1rem 1.25rem 1.25rem; margin-top:1.25rem; background:#fafbfd; }
+  .sbox-label { font-size:.72rem; font-weight:800; color:#111827; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; gap:.5rem; margin-bottom:.85rem; }
+  .sbox-label::before { content:''; display:block; width:4px; height:16px; background:#111827; border-radius:2px; flex-shrink:0; }
+  .sbox .mkp { margin-top:0; }
+  .sbox .alert { margin-top:.75rem; }
 
-  .section-label {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 0.6rem;
-  }
-  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
+  /* CRITICAL WARNING BOX */
+  .critical { border:3px solid #dc2626; border-radius:14px; padding:1.25rem 1.5rem; background:#fff5f5; margin-top:1.25rem; }
+  .critical-label { font-size:.85rem; font-weight:800; color:#dc2626; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; gap:.5rem; margin-bottom:.6rem; }
+  .critical-label::before { content:''; display:block; width:4px; height:18px; background:#dc2626; border-radius:2px; flex-shrink:0; }
+  .critical p { font-size:.95rem; color:#7f1d1d; font-weight:600; line-height:1.5; }
 
-  .section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.3rem, 3vw, 1.7rem);
-    color: var(--navy);
-    margin-bottom: 0.3rem;
-    line-height: 1.2;
-  }
-  .section .sub {
-    font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;
-  }
+  /* alerts */
+  .alert { border-radius:11px; padding:.85rem 1.1rem; display:flex; align-items:flex-start; gap:.7rem; font-size:.85rem; font-weight:500; line-height:1.5; margin-top:1rem; }
+  .alert-warn { background:#fef3c7; border:1.5px solid #f59e0b; color:#78350f; }
+  .alert-red { background:#fff5f5; border:1.5px solid #fca5a5; color:#7f1d1d; }
+  .alert-blue { background:#eff6ff; border:1.5px solid #93c5fd; color:#1e40af; }
+  .alert-green { background:#f0fdf4; border:1.5px solid #86efac; color:#14532d; }
+  .alert .ai { font-size:1.1rem; flex-shrink:0; }
 
-  /* ── WHEN TO USE ── */
-  .use-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem;
-  }
-  .use-card {
-    background: var(--off-white);
-    border: 1.5px solid var(--light-gray);
-    border-radius: 14px;
-    padding: 1.1rem 1.2rem;
-    display: flex; align-items: flex-start; gap: 0.75rem;
-  }
-  .use-card .icon {
-    width: 34px; height: 34px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-    color: white; font-size: 1rem;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
+  .use-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; }
+  .use-card { background:var(--off-white); border:1.5px solid var(--light-gray); border-radius:14px; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.75rem; }
+  .use-card .icon { width:32px; height:32px; border-radius:9px; flex-shrink:0; background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:#fff; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
+  .use-card p { font-size:.85rem; font-weight:500; color:var(--text-body); line-height:1.4; }
+  .dont-card { background:#fff5f5; border:1.5px solid #fecaca; border-radius:14px; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.75rem; }
+  .dont-card .icon { width:32px; height:32px; border-radius:9px; flex-shrink:0; background:#dc2626; color:#fff; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
+  .dont-card p { font-size:.85rem; font-weight:500; color:#991b1b; line-height:1.4; }
 
-  /* ── ACCESS OPTIONS ── */
-  .options-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  @media(max-width:580px){ .options-row{ grid-template-columns: 1fr; } }
+  /* mockup */
+  .mkp { border:1px solid #dde3f0; border-radius:12px; overflow:hidden; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; background:#fff; font-size:13px; }
+  .finput { border:1px solid #d1d5db; border-radius:6px; padding:7px 10px; background:#fff; display:flex; align-items:center; justify-content:space-between; color:#374151; }
+  .finput.ghost { color:#9ca3af; font-style:italic; background:#f8f9fb; border-color:#e5e7eb; }
+  .finput.filled { color:#1a3260; font-weight:600; border-color:#3a7bd5; }
+  .finput.disabled { color:#9ca3af; background:#f4f6fb; border-color:#e5e7eb; }
+  .flabel { font-size:11px; font-weight:600; color:#374151; margin-bottom:3px; }
+  .flabel.blue { color:#3a7bd5; }
+  .freq { color:#dc2626; }
+  .frow { display:flex; gap:10px; margin-bottom:12px; }
+  .frow > div { flex:1; }
+  .fsection { font-size:12px; font-weight:700; color:#1a2a5e; margin:16px 0 10px; padding-bottom:6px; border-bottom:2px solid #e2e8f0; }
+  .ftag-auto { display:inline-block; background:#dcfce7; color:#166534; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
+  .ftag-warn { display:inline-block; background:#fef3c7; color:#92400e; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
+  .ftag-skip { display:inline-block; background:#f3f4f6; color:#6b7280; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
 
-  .option-card {
-    background: var(--off-white);
-    border: 1.5px solid var(--light-gray);
-    border-radius: 14px;
-    padding: 1.4rem 1.2rem;
-    position: relative;
-    transition: box-shadow 0.18s, transform 0.18s;
-    cursor: default;
-  }
-  .option-card:hover { box-shadow: 0 8px 28px rgba(15,31,61,0.1); transform: translateY(-2px); }
+  /* req form sidebar */
+  .req-wrap { display:flex; border:1px solid #dde3f0; border-radius:12px; overflow:hidden; font-family:-apple-system,sans-serif; font-size:13px; }
+  .req-side { background:#f8f9fb; border-right:1px solid #e2e8f0; min-width:165px; flex-shrink:0; }
+  .req-side-tabs { background:#3d6b9e; display:flex; }
+  .req-side-tab { padding:10px 14px; font-size:12px; font-weight:700; color:rgba(255,255,255,.7); }
+  .req-side-tab.act { color:#fff; border-bottom:2px solid #fff; }
+  .req-side-item { padding:8px 14px; font-size:12px; color:#6b7280; border-bottom:1px solid #f0f0f0; }
+  .req-side-item.act { color:#1a3260; font-weight:700; background:#eff6ff; border-left:3px solid #3a7bd5; }
+  .req-main { flex:1; background:#fff; min-width:0; }
+  .req-section-head { background:#f4f6fb; padding:9px 16px; font-size:13px; font-weight:700; color:#1a2a5e; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; gap:6px; }
 
-  .option-num {
-    position: absolute; top: 1rem; right: 1rem;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--navy); color: white;
-    font-size: 0.72rem; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .option-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
-  .option-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
-  .option-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; }
-  .option-path {
-    margin-top: 0.75rem;
-    font-size: 0.75rem; font-weight: 600;
-    background: var(--navy);
-    color: white;
-    border-radius: 8px;
-    padding: 0.35rem 0.65rem;
-    display: inline-block;
-    font-family: monospace;
-    letter-spacing: 0.02em;
-  }
-
-  /* ── STEPS ── */
-  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-  .step {
-    display: flex; gap: 1rem; align-items: flex-start;
-    background: var(--off-white); border: 1.5px solid var(--light-gray);
-    border-radius: 12px; padding: 1rem 1.2rem;
-    transition: border-color 0.18s;
-  }
-  .step:hover { border-color: var(--accent); }
-  .step-num {
-    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-    color: white; font-weight: 700; font-size: 0.85rem;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
-  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
-
-  /* ── RULES DO/DONT ── */
-  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  @media(max-width:560px){ .rules-grid{ grid-template-columns: 1fr; } }
-
-  .rules-col { border-radius: 14px; padding: 1.35rem 1.4rem; }
-  .rules-col.do { background: #f0fdf4; border: 1.5px solid #86efac; }
-  .rules-col.dont { background: #fff5f5; border: 1.5px solid #fca5a5; }
-  .rules-col.optional { background: #fffbeb; border: 1.5px solid #fcd34d; }
-
-  .rules-col h4 {
-    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 0.9rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .rules-col.do h4 { color: #166534; }
-  .rules-col.dont h4 { color: #991b1b; }
-  .rules-col.optional h4 { color: #92400e; }
-
-  .rules-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-  .rules-col ul li {
-    font-size: 0.87rem; display: flex; align-items: flex-start; gap: 0.6rem;
-    color: var(--text-body);
-  }
-  .rules-col ul li::before { content: ''; flex-shrink: 0; margin-top: 0.35em; }
-  .rules-col.do ul li::before { content: '✓'; color: #16a34a; font-weight: 700; font-size: 0.9rem; }
-  .rules-col.dont ul li::before { content: '✗'; color: #dc2626; font-weight: 700; font-size: 0.9rem; }
-  .rules-col.optional ul li::before { content: '◎'; color: #d97706; font-weight: 700; font-size: 0.85rem; }
-
-  .rules-optional-wrap { margin-top: 1.25rem; }
-
-  /* ── APPROVAL FLOW ── */
-  .flow {
-    display: flex; flex-direction: column; align-items: center; gap: 0;
-  }
-  .flow-step {
-    display: flex; align-items: center; gap: 1rem;
-    background: var(--off-white); border: 1.5px solid var(--light-gray);
-    border-radius: 14px; padding: 1rem 1.4rem;
-    width: 100%; max-width: 500px;
-    transition: all 0.18s;
-  }
-  .flow-step:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(58,123,213,0.12); }
-  .flow-icon { font-size: 1.4rem; flex-shrink: 0; }
-  .flow-step p { font-size: 0.9rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
-  .flow-step small { display: block; font-size: 0.78rem; color: var(--text-muted); font-weight: 400; margin-top: 0.15rem; }
-  .flow-arrow {
-    font-size: 1.2rem; color: var(--accent);
-    height: 28px; display: flex; align-items: center;
-  }
-
-  .alert-box {
-    margin-top: 1.25rem;
-    background: #fef3c7; border: 1.5px solid #f59e0b;
-    border-radius: 12px; padding: 0.9rem 1.2rem;
-    display: flex; align-items: center; gap: 0.75rem;
-    font-size: 0.88rem; font-weight: 500; color: #78350f;
-  }
-  .alert-box .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
-
-  /* ── MISTAKES ── */
-  .mistakes-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .mistake-item {
-    display: flex; align-items: center; gap: 1rem;
-    background: #fff5f5; border: 1.5px solid #fecaca;
-    border-radius: 12px; padding: 0.9rem 1.2rem;
-  }
-  .mistake-x {
-    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
-    background: #fee2e2; color: #dc2626; font-size: 1rem; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .mistake-item p { font-size: 0.88rem; color: var(--text-body); font-weight: 500; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.6);
-    text-align: center;
-    font-size: 0.8rem;
-    padding: 1.5rem;
-  }
-  footer strong { color: rgba(255,255,255,0.9); }
-
-  /* ── PRINT ── */
-  @media print {
-    .nav-pills { display: none; }
-    .section { break-inside: avoid; box-shadow: none; }
-  }
-.back-bar{background:white;padding:12px 24px;display:flex;align-items:center;border-bottom:2px solid #e2e8f0;}.back-bar a{color:#1a2a5e;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:#4f6fd8;text-decoration:underline;}
+  footer { background:var(--navy); color:rgba(255,255,255,.6); text-align:center; font-size:.8rem; padding:1.5rem; }
+  footer strong { color:rgba(255,255,255,.9); }
+  .back-bar { background:#fff; padding:11px 22px; display:flex; align-items:center; border-bottom:2px solid #e2e8f0; }
+  .back-bar a { color:#1a2a5e; font-size:14px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:7px; }
+  .back-bar a:hover { color:#3a7bd5; text-decoration:underline; }
+  @media(max-width:600px) { .section{padding:1.5rem 1.1rem;} .req-wrap{flex-direction:column;} .req-side{min-width:unset;border-right:none;border-bottom:1px solid #e2e8f0;} }
 </style>
 </head>
 <body>
@@ -318,246 +109,457 @@
 
 <header>
   <div class="logo-badge"><span class="dot"></span> UKG Ready Training</div>
-  <h1>How to Open<br>Requisitions</h1>
+  <h1>How to Open<br>a Requisition</h1>
   <p>A step-by-step reference for opening retail job requisitions in UKG Ready</p>
 </header>
 
-<nav class="nav-pills" aria-label="Jump to section">
-  <a href="#when">When to Use</a>
-  <a href="#access">3 Ways to Access</a>
-  <a href="#open">Open a Req</a>
-  <a href="#rules">Req Rules</a>
-  <a href="#approval">After You Submit</a>
-  <a href="#mistakes">Common Mistakes</a>
+<nav class="nav-pills">
+  <a href="#access">Get to Job Requisitions</a>
+  <a href="#template">Step 1 — Template</a>
+  <a href="#details">Step 2 — Fill In Details</a>
+  <a href="#submit">Step 3 — Submit</a>
+  <a href="#rules">Do Not Touch</a>
 </nav>
 
 <main>
 
-  <!-- WHEN TO USE -->
-  <section class="section" id="when">
-    <div class="section-label"><span class="bar"></span> Overview</div>
-    <h2>When to Use This Guide</h2>
-    <p class="sub">Reference this guide any time you're hiring for a retail store position.</p>
-    <div class="use-grid">
-      <div class="use-card">
-        <div class="icon">📋</div>
-        <p>Opening a new retail requisition</p>
-      </div>
-      <div class="use-card">
-        <div class="icon">👤</div>
-        <p>Hiring for Sales Help, 3rd Key, ASM, or Store Manager roles</p>
-      </div>
-      <div class="use-card">
-        <div class="icon">✅</div>
-        <p>Checking approval status on a submitted req</p>
-      </div>
-      <div class="use-card">
-        <div class="icon">📡</div>
-        <p>Monitoring whether a req has posted to job boards</p>
-      </div>
-    </div>
-  </section>
+<!-- ── GET THERE ── -->
+<section class="section" id="access">
+  <div class="section-label"><span class="bar"></span> Navigation</div>
+  <h2>Get to Job Requisitions</h2>
+  <p class="sub">Two ways to get there — use whichever is fastest.</p>
 
-  <!-- ACCESS OPTIONS -->
-  <section class="section" id="access">
-    <div class="section-label"><span class="bar"></span> Navigation</div>
-    <h2>3 Ways to Access Job Requisitions</h2>
-    <p class="sub">Any of these paths will get you to the same place — choose whichever feels fastest.</p>
-    <div class="options-row">
-      <div class="option-card">
-        <div class="option-num">1</div>
-        <div class="option-icon">🏠</div>
-        <h3>Recruitment Dashboard</h3>
-        <p>Start from your home screen and tap the Recruitment widget.</p>
-        <span class="option-path">Home → Recruitment → My open job requisitions</span>
+  <div class="sbox">
+    <div class="sbox-label">Option A — Search bar (fastest)</div>
+    <div class="mkp">
+      <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;max-width:500px;">
+          <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;">
+            <div style="width:16px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+            <div style="width:16px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+            <div style="width:16px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.15);border-radius:999px;padding:6px 14px;display:flex;align-items:center;gap:8px;outline:3px solid #f59e0b;outline-offset:2px;">
+            <span style="font-size:12px;color:rgba(255,255,255,.9);">job requisitions</span>
+            <span style="margin-left:auto;font-size:13px;color:rgba(255,255,255,.6);">⊗</span>
+          </div>
+        </div>
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;margin-left:10px;">TE</div>
       </div>
-      <div class="option-card">
-        <div class="option-num">2</div>
-        <div class="option-icon">☰</div>
-        <h3>Menu Navigation</h3>
-        <p>Use the hamburger menu in the top left corner.</p>
-        <span class="option-path">☰ → Team → Recruitment → Job Requisitions</span>
-      </div>
-      <div class="option-card">
-        <div class="option-num">3</div>
-        <div class="option-icon">🔍</div>
-        <h3>Search Bar</h3>
-        <p>The fastest option — type and select the first result.</p>
-        <span class="option-path">Search "Job Requisitions" → Select first result</span>
+      <div style="background:#fff;">
+        <div style="padding:8px 16px;font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #f0f0f0;">Menu</div>
+        <div style="padding:10px 16px;border-bottom:1px solid #f0f0f0;background:#eff6ff;outline:2px solid #f59e0b;outline-offset:-2px;cursor:pointer;">
+          <div style="font-size:13px;font-weight:700;color:#1a2a5e;">Job Requisitions</div>
+          <div style="font-size:11.5px;color:#6b7280;">Recruitment</div>
+        </div>
+        <div style="padding:10px 16px;border-bottom:1px solid #f0f0f0;">
+          <div style="font-size:13px;color:#374151;"><strong style="color:#1a2a5e;">Job Requisition</strong> Templates</div>
+          <div style="font-size:11.5px;color:#9ca3af;">HR Setup › Applicant Tracking/Recruitment › Templates Library</div>
+        </div>
+        <div style="padding:10px 16px;border-bottom:1px solid #f0f0f0;">
+          <div style="font-size:13px;color:#374151;"><strong style="color:#1a2a5e;">Job Requisition</strong> Custom Fields</div>
+          <div style="font-size:11.5px;color:#9ca3af;">HR Setup › Applicant Tracking/Recruitment › Custom Fields</div>
+        </div>
+        <div style="padding:10px 16px;">
+          <div style="font-size:13px;color:#9ca3af;">Job Applications</div>
+          <div style="font-size:11.5px;color:#9ca3af;">Recruitment › Candidates</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- OPEN A REQ -->
-  <section class="section" id="open">
-    <div class="section-label"><span class="bar"></span> Step-by-Step</div>
-    <h2>Open a Retail Requisition</h2>
-    <p class="sub">Follow these steps in order after navigating to Job Requisitions.</p>
-    <ol class="steps-list">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Click Add New</strong>
-          <span>This creates a blank requisition form.</span>
+  <div class="sbox">
+    <div class="sbox-label">Option B — Hamburger menu → Team → Recruitment → Job Requisitions</div>
+    <div class="mkp" style="max-width:400px;">
+      <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;outline:3px solid #f59e0b;outline-offset:3px;border-radius:3px;cursor:pointer;">
+            <div style="width:16px;height:2px;background:#fff;border-radius:2px;"></div>
+            <div style="width:16px;height:2px;background:#fff;border-radius:2px;"></div>
+            <div style="width:16px;height:2px;background:#fff;border-radius:2px;"></div>
+          </div>
+          <span style="color:#fff;font-size:13px;font-weight:700;opacity:.9;">UKG Ready</span>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Click the search icon in the Job Requisition Template field</strong>
-          <span>This opens the template lookup window.</span>
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">TE</div>
+      </div>
+      <div style="display:flex;background:#fff;">
+        <div style="background:#f4f6fb;border-right:1px solid #e2e8f0;width:70px;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;">
+          <div style="padding:6px 4px;text-align:center;font-size:10px;color:#6b7280;">Favorites</div>
+          <div style="padding:6px 4px;text-align:center;font-size:10px;color:#6b7280;">My Team</div>
+          <div style="padding:6px 4px;text-align:center;font-size:10px;color:#6b7280;">Time</div>
+          <div style="padding:6px 4px;text-align:center;font-size:10px;color:#1a3260;font-weight:700;background:#e8edf7;border-radius:6px;width:60px;">Talent</div>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Search by store number only</strong>
-          <span>Type just the store number (e.g. 0001) — do not type the role name.</span>
+        <div style="flex:1;padding:12px 14px;font-size:13px;">
+          <div style="font-weight:700;color:#1a2a5e;margin-bottom:8px;">Recruitment</div>
+          <div style="color:#6b7280;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12.5px;">Dashboard</div>
+          <div style="padding:4px 8px;color:#3a7bd5;font-weight:700;background:#eff6ff;border-radius:4px;font-size:12.5px;margin:2px 0;outline:2px solid #f59e0b;outline-offset:1px;">Job Requisitions</div>
+          <div style="color:#6b7280;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12.5px;">Candidates</div>
+          <div style="color:#6b7280;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12.5px;">Offer Letters</div>
+          <div style="color:#6b7280;padding:4px 0;font-size:12.5px;">Applicant Checklist</div>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">
-          <strong>Select the correct position for that store</strong>
-          <span>Choose the right role (Sales Help, 3rd Key, ASM FT/PT, Store Manager, etc.).</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">5</div>
-        <div class="step-text">
-          <strong>Click OK to override fields</strong>
-          <span>Confirm the pop-up — this will auto-fill most required fields from the template.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">6</div>
-        <div class="step-text">
-          <strong>Check Status and Visibility</strong>
-          <span>Ensure the Status is set correctly and the Visibility is configured so the req posts to the career page.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">7</div>
-        <div class="step-text">
-          <strong>Select the Background Check Package</strong>
-          <span>Scroll to the bottom and select the appropriate package: <strong>Lids Retail Management PG</strong> for US stores, or <strong>Canada Retail Management Package</strong> for Canadian stores.</span>
-        </div>
-      </li>
-    </ol>
-  </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- RULES -->
-  <section class="section" id="rules">
-    <div class="section-label"><span class="bar"></span> Configuration Rules</div>
-    <h2>Requisition Rules</h2>
-    <p class="sub">Most fields auto-fill from the template. Only a handful need your attention.</p>
-    <div class="rules-grid">
-      <div class="rules-col do">
-        <h4>✓ Do</h4>
-        <ul>
-          <li>Enter the correct number of openings</li>
-          <li>Check "Auto Closed When Filled"</li>
-          <li>Enter Hiring Manager 1</li>
-          <li>Add Pay Range (if required by state)</li>
-        </ul>
-      </div>
-      <div class="rules-col dont">
-        <h4>✗ Do Not</h4>
-        <ul>
-          <li>Select Evergreen</li>
-          <li>Select Remote Job</li>
-          <li>Enter anything in the Requirements or Summary section</li>
-        </ul>
-      </div>
-    </div>
-    <div class="rules-optional-wrap">
-      <div class="rules-col optional">
-        <h4>◎ Optional</h4>
-        <ul>
-          <li>Use Visibility Dates for advance planning</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<!-- ── STEP 1: TEMPLATE ── -->
+<section class="section" id="template">
+  <div class="section-label"><span class="bar"></span> Step 1</div>
+  <h2>Click Add New — Then Do the Template First</h2>
+  <p class="sub">The very first thing you do after clicking Add New is select the Job Requisition Template. Do not touch anything else first.</p>
 
-  <!-- APPROVAL FLOW -->
-  <section class="section" id="approval">
-    <div class="section-label"><span class="bar"></span> Approval Process</div>
-    <h2>What Happens After You Submit</h2>
-    <p class="sub">Once you click submit, the process is automatic — here's what to expect.</p>
-    <div class="flow">
-      <div class="flow-step">
-        <div class="flow-icon">💾</div>
-        <div>
-          <p>Click Save and Submit for Approval</p>
-          <small>Your req is saved and enters the approval queue.</small>
-        </div>
-      </div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step">
-        <div class="flow-icon">👥</div>
-        <div>
-          <p>Routes automatically to HR team</p>
-          <small>No action needed from you — HR receives it automatically.</small>
-        </div>
-      </div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step">
-        <div class="flow-icon">🟢</div>
-        <div>
-          <p>Requisition opens and posts to job boards</p>
-          <small>Once approved, the role is live and accepting applicants.</small>
-        </div>
-      </div>
-    </div>
-    <div class="alert-box">
-      <span class="alert-icon">⚠️</span>
-      <span>You will <strong>not</strong> see applicants until the requisition has been approved by HR.</span>
-    </div>
-  </section>
+  <!-- CRITICAL WARNING -->
+  <div class="critical">
+    <div class="critical-label">🚨 Do This First — Before Anything Else</div>
+    <p>The <strong>Job Requisition Template</strong> auto-fills almost every field on this form. If you fill in fields before selecting the template, the template will overwrite them and you'll have to redo your work — or worse, submit incorrect information.</p>
+  </div>
 
-  <!-- MISTAKES -->
-  <section class="section" id="mistakes">
-    <div class="section-label"><span class="bar"></span> Watch Out</div>
-    <h2>Common Mistakes to Avoid</h2>
-    <p class="sub">These are the most frequent errors — double-check before submitting.</p>
-    <ul class="mistakes-list">
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Selecting the wrong requisition template for the store</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Entering an incorrect number of openings</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Forgetting to check "Auto Close When Filled"</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Marking the role as Remote or Evergreen</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Entering custom text in the Requirements or Summary section</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Not checking Status and Visibility before submitting — the req won't post if these are incorrect</p>
-      </li>
-      <li class="mistake-item">
-        <div class="mistake-x">✗</div>
-        <p>Forgetting to select a Background Check Package — choose Lids Retail Management PG (US) or Canada Retail Management Package (Canada)</p>
-      </li>
-    </ul>
-  </section>
+  <div class="sbox">
+    <div class="sbox-label">Click Add New on the Job Requisition list page</div>
+    <div class="mkp">
+      <div style="background:#fff;padding:10px 16px;border-bottom:1px solid #e2e8f0;">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:4px;">Recruitment › Job Requisitions</div>
+        <div style="font-size:16px;font-weight:700;color:#1a2a5e;display:flex;align-items:center;justify-content:space-between;">
+          <span>← Job Requisition</span>
+          <div style="display:flex;gap:8px;">
+            <div style="background:#1a3260;color:#fff;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:700;outline:3px solid #f59e0b;outline-offset:2px;cursor:pointer;">Add New</div>
+            <div style="background:#e8edf7;color:#6b7280;border-radius:6px;padding:7px 14px;font-size:13px;">Job Board</div>
+            <div style="background:#e8edf7;color:#9ca3af;border-radius:6px;padding:7px 14px;font-size:13px;">View</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;padding:10px 16px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7280;">
+        <span>View: Master Requisition List ▾</span>
+        <span>🔽</span>
+      </div>
+      <div style="background:#f4f6fb;padding:8px 16px;border-bottom:1px solid #e2e8f0;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1fr;gap:0;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;">
+        <span>DSM/Corporate Hiring Manager</span><span>Store Manager/Other</span><span>Job Title</span><span>Location</span><span>Workflow Status</span><span>Req #</span>
+      </div>
+      <div style="padding:20px 16px;font-size:13px;color:#9ca3af;font-style:italic;text-align:center;">No requisitions — click Add New to create one</div>
+    </div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">Immediately click the 🔍 icon in Job Requisition Template — type your store number</div>
+    <div class="req-wrap">
+      <div class="req-side">
+        <div class="req-side-tabs">
+          <div class="req-side-tab act">Job Req. Info</div>
+          <div class="req-side-tab">Applications</div>
+        </div>
+        <div style="padding:10px 14px;font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e2e8f0;">Jump To</div>
+        <div class="req-side-item act">Requisition Details</div>
+        <div class="req-side-item" style="color:#9ca3af;">Job Details</div>
+        <div class="req-side-item" style="color:#9ca3af;">Hiring Stages</div>
+        <div class="req-side-item" style="color:#9ca3af;">Contact Information</div>
+        <div class="req-side-item" style="color:#9ca3af;">Requirements</div>
+        <div class="req-side-item" style="color:#9ca3af;">Compensation</div>
+        <div class="req-side-item" style="color:#9ca3af;">Summary</div>
+        <div class="req-side-item" style="color:#9ca3af;">Custom Fields</div>
+        <div class="req-side-item" style="color:#9ca3af;">Job Board</div>
+        <div class="req-side-item" style="color:#9ca3af;">Background Screen</div>
+      </div>
+      <div class="req-main">
+        <div class="req-section-head">▾ Requisition Details</div>
+        <div style="padding:16px;">
+          <div class="frow">
+            <div>
+              <div class="flabel blue">Job Requisition Template</div>
+              <div style="outline:3px solid #f59e0b;outline-offset:3px;border-radius:8px;">
+                <div class="finput" style="border-color:#3a7bd5;">
+                  <span style="color:#9ca3af;font-style:italic;flex:1;">Choose...</span>
+                  <span style="color:#3a7bd5;font-size:16px;">🔍</span>
+                </div>
+              </div>
+              <div style="font-size:11.5px;color:#f59e0b;font-weight:700;margin-top:4px;">↑ Click here FIRST — before anything else</div>
+            </div>
+            <div>
+              <div class="flabel">Job Requisition Workflow <span class="freq">*</span></div>
+              <div class="finput filled">Job Requisition Default Workflow &nbsp; ⊗ 🔍</div>
+            </div>
+          </div>
+          <div class="frow">
+            <div style="display:flex;align-items:center;gap:20px;flex:2;">
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;"><div style="width:14px;height:14px;border:2px solid #d1d5db;border-radius:3px;"></div> Resume Required</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#374151;"><div style="width:14px;height:14px;border:2px solid #d1d5db;border-radius:3px;"></div> Allow Quick Apply</div>
+            </div>
+          </div>
+          <div class="frow">
+            <div><div class="flabel">Job Title <span class="freq">*</span></div><div class="finput ghost">Will auto-fill from template</div></div>
+            <div><div class="flabel">Status</div><div class="finput disabled">-- auto-fills --</div></div>
+            <div><div class="flabel blue">Default Position <span class="freq">*</span></div><div class="finput ghost">Will auto-fill</div></div>
+          </div>
+          <div class="frow">
+            <div><div class="flabel blue">Lids Corporation <span class="freq">*</span></div><div class="finput ghost">Will auto-fill</div></div>
+            <div><div class="flabel blue">Company EIN <span class="freq">*</span></div><div class="finput filled">Hat World Inc. <span style="color:#9ca3af;">▾</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">Type the store number → select the correct position</div>
+    <div class="req-wrap">
+      <div class="req-side">
+        <div class="req-side-tabs">
+          <div class="req-side-tab act">Job Req. Info</div>
+          <div class="req-side-tab">Applications</div>
+        </div>
+        <div style="padding:10px 14px;font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e2e8f0;">Jump To</div>
+        <div class="req-side-item act">Requisition Details</div>
+        <div class="req-side-item" style="color:#9ca3af;">Job Details</div>
+        <div class="req-side-item" style="color:#9ca3af;">Hiring Stages</div>
+        <div class="req-side-item" style="color:#9ca3af;">Contact Information</div>
+        <div class="req-side-item" style="color:#9ca3af;">Requirements</div>
+        <div class="req-side-item" style="color:#9ca3af;">Compensation</div>
+        <div class="req-side-item" style="color:#9ca3af;">Summary</div>
+        <div class="req-side-item" style="color:#9ca3af;">Background Screen</div>
+      </div>
+      <div class="req-main">
+        <div class="req-section-head">▾ Requisition Details</div>
+        <div style="padding:16px;">
+          <div style="margin-bottom:12px;">
+            <div class="flabel blue">Job Requisition Template</div>
+            <div class="finput filled" style="margin-bottom:4px;">
+              <span style="flex:1;">5054</span>
+              <span style="color:#3a7bd5;font-size:16px;">🔍</span>
+            </div>
+            <!-- dropdown results -->
+            <div style="border:1.5px solid #3a7bd5;border-radius:8px;overflow:hidden;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,.1);">
+              <div style="padding:8px 14px;color:#6b7280;border-bottom:1px solid #f0f0f0;font-size:12px;">Browse...</div>
+              <div style="padding:9px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:6px;cursor:pointer;background:#fafafa;">
+                <strong style="color:#1a2a5e;">5054</strong><span style="color:#374151;">– Assistant Store Manager FT</span>
+              </div>
+              <div style="padding:9px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:6px;cursor:pointer;background:#eff6ff;outline:2px solid #f59e0b;outline-offset:-2px;">
+                <strong style="color:#1a2a5e;">5054</strong><span style="color:#374151;font-weight:600;">– Assistant Store Manager PT</span>
+                <span style="margin-left:auto;font-size:11px;color:#f59e0b;font-weight:700;">← select correct role</span>
+              </div>
+              <div style="padding:9px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:6px;cursor:pointer;">
+                <strong style="color:#1a2a5e;">5054</strong><span style="color:#374151;">– Sales Help</span>
+              </div>
+              <div style="padding:9px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:6px;cursor:pointer;">
+                <strong style="color:#1a2a5e;">5054</strong><span style="color:#374151;">– Seasonal Sales Help</span>
+              </div>
+              <div style="padding:8px 14px;font-size:12px;color:#3a7bd5;">Showing 4 of 5 results. <strong>View all results.</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-blue">
+      <span class="ai">💡</span>
+      <div>Type <strong>only the store number</strong> — do not type the role name. All positions for that store will appear. Select the one that matches the role you're hiring for.</div>
+    </div>
+  </div>
+
+  <div class="alert alert-green" style="margin-top:1rem;">
+    <span class="ai">✅</span>
+    <div>Once you select the template, most fields will auto-fill — Job Title, Status, Default Position, Lids Corporation, and more. <strong>Do not edit any of those auto-filled fields.</strong></div>
+  </div>
+</section>
+
+<!-- ── STEP 2: FILL IN DETAILS ── -->
+<section class="section" id="details">
+  <div class="section-label"><span class="bar"></span> Step 2</div>
+  <h2>Fill In the Required Fields</h2>
+  <p class="sub">After the template auto-fills, there are only a few fields you need to complete. Everything else should be left alone.</p>
+
+  <!-- Number of openings + auto close -->
+  <div class="sbox">
+    <div class="sbox-label">Job Details — Number of Openings + Auto Close</div>
+    <div class="mkp">
+      <div style="background:#f4f6fb;padding:9px 16px;font-size:13px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">▾ Job Details</div>
+      <div style="padding:16px 18px;background:#fff;">
+        <div class="frow">
+          <div>
+            <div class="flabel">Number of Openings <span class="freq">*</span></div>
+            <div class="finput filled" style="outline:2px solid #f59e0b;outline-offset:2px;max-width:180px;">1</div>
+            <div style="font-size:11px;color:#f59e0b;font-weight:600;margin-top:3px;">↑ Enter how many you're hiring</div>
+          </div>
+          <div>
+            <div class="flabel">Hired Applicants Count <span class="ftag-auto">Auto</span></div>
+            <div class="finput disabled" style="max-width:180px;">0</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding-top:20px;">
+            <div style="width:16px;height:16px;background:#1a3260;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;flex-shrink:0;">✓</div>
+            <span style="font-size:13px;color:#374151;font-weight:500;line-height:1.4;">Auto Change Status To Closed And Filled When Filled</span>
+          </div>
+        </div>
+        <div class="frow" style="margin-bottom:0;">
+          <div style="max-width:180px;">
+            <div class="flabel">Total FTE <span class="ftag-auto">Auto</span></div>
+            <div class="finput disabled">--</div>
+          </div>
+        </div>
+        <div style="font-size:12.5px;color:#1a2a5e;font-weight:700;margin-top:14px;padding-top:10px;border-top:1px solid #f0f0f0;">Job Location</div>
+      </div>
+    </div>
+    <div class="alert alert-warn">
+      <span class="ai">⚠️</span>
+      <div>Make sure <strong>Auto Change Status To Closed And Filled When Filled</strong> is checked. This closes the req automatically once the position is filled.</div>
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="sbox">
+    <div class="sbox-label">Contact Information — Enter managers</div>
+    <div class="mkp">
+      <div style="background:#f4f6fb;padding:9px 16px;font-size:13px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">▾ Contact Information</div>
+      <div style="padding:16px 18px;background:#fff;">
+        <div class="frow">
+          <div>
+            <div class="flabel blue">DSM/Corporate Hiring Manager <span class="freq">*</span></div>
+            <div class="finput" style="border-color:#3a7bd5;outline:2px solid #f59e0b;outline-offset:2px;">
+              <span style="color:#9ca3af;font-style:italic;flex:1;font-size:12px;">Choose Employee...</span>
+              <span style="color:#3a7bd5;font-size:15px;">🔍</span>
+            </div>
+          </div>
+          <div>
+            <div class="flabel">Store Manager/Other</div>
+            <div class="finput ghost">
+              <span style="flex:1;font-size:12px;">Choose Employee...</span>
+              <span style="color:#9ca3af;font-size:15px;">🔍</span>
+            </div>
+          </div>
+        </div>
+        <div class="frow" style="margin-bottom:0;">
+          <div>
+            <div class="flabel">Recruiter</div>
+            <div class="finput ghost">
+              <span style="flex:1;font-size:12px;">Choose Employee...</span>
+              <span style="color:#9ca3af;font-size:15px;">🔍</span>
+            </div>
+          </div>
+          <div>
+            <div class="flabel blue">Other Hiring Managers</div>
+            <div class="finput ghost">
+              <span style="flex:1;font-size:12px;">Choose...</span>
+              <span style="color:#9ca3af;font-size:15px;">🔍</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0f0f0;">
+          <div style="font-size:12.5px;font-weight:700;color:#1a2a5e;margin-bottom:10px;">Primary Contact</div>
+          <div class="frow" style="margin-bottom:0;">
+            <div><div class="flabel">Name</div><div class="finput ghost">&nbsp;</div></div>
+            <div><div class="flabel">Phone</div><div class="finput ghost">&nbsp;</div></div>
+            <div><div class="flabel">Email</div><div class="finput ghost">&nbsp;</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-blue">
+      <span class="ai">💡</span>
+      <div><strong>DSM/Corporate Hiring Manager</strong> is required. Store Manager/Other and Recruiter are optional but recommended so the right people can see and manage applicants.</div>
+    </div>
+  </div>
+
+  <!-- Pay Range -->
+  <div class="sbox">
+    <div class="sbox-label">Compensation — Add pay range if required by your state</div>
+    <div class="mkp">
+      <div style="background:#f4f6fb;padding:9px 16px;font-size:13px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">▾ Compensation</div>
+      <div style="padding:16px 18px;background:#fff;">
+        <div class="frow">
+          <div>
+            <div class="flabel">Pay Range Min <span class="ftag-warn">If required by state</span></div>
+            <div class="finput ghost">Enter minimum pay rate</div>
+          </div>
+          <div>
+            <div class="flabel">Pay Range Max <span class="ftag-warn">If required by state</span></div>
+            <div class="finput ghost">Enter maximum pay rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warn">
+      <span class="ai">⚠️</span>
+      <div>Some states legally require a pay range on job postings. If your store is in one of those states, enter the min and max. If not, leave this section blank.</div>
+    </div>
+  </div>
+
+  <div class="critical" style="margin-top:1.25rem;">
+    <div class="critical-label">🚫 Do Not Touch These Sections</div>
+    <p>Leave <strong>Hiring Stages, Requirements, Summary, and Custom Fields</strong> completely alone. Do not add, edit, or delete anything in these sections. They are pre-configured and changing them will cause issues.</p>
+  </div>
+</section>
+
+<!-- ── STEP 3: SUBMIT ── -->
+<section class="section" id="submit">
+  <div class="section-label"><span class="bar"></span> Step 3</div>
+  <h2>Save &amp; Submit</h2>
+  <p class="sub">Once you've filled in the required fields, save and submit for approval.</p>
+
+  <div class="sbox">
+    <div class="sbox-label">Click Save → then Submit for Approval</div>
+    <div class="mkp">
+      <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="color:#fff;font-size:13px;font-weight:700;opacity:.9;">UKG Ready</span>
+        <div style="display:flex;gap:8px;">
+          <div style="border:1px solid rgba(255,255,255,.4);border-radius:6px;padding:5px 14px;font-size:12px;color:#fff;">Save</div>
+          <div style="background:#fff;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;color:#1a3260;outline:3px solid #f59e0b;outline-offset:2px;">Submit for Approval</div>
+        </div>
+      </div>
+      <div style="padding:16px 18px;background:#fff;font-size:13px;color:#374151;line-height:1.6;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;border:2px solid #16a34a;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✅</div>
+            <div><strong style="color:#1a2a5e;">Req saved and submitted</strong><br><span style="color:#6b7280;font-size:12.5px;">Enters the HR approval queue automatically</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dbeafe;border:2px solid #3a7bd5;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">👥</div>
+            <div><strong style="color:#1a2a5e;">HR reviews and approves</strong><br><span style="color:#6b7280;font-size:12.5px;">No action needed from you</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;border:2px solid #16a34a;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">🟢</div>
+            <div><strong style="color:#1a2a5e;">Req goes live and posts to job boards</strong><br><span style="color:#6b7280;font-size:12.5px;">Applicants can start applying</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warn">
+      <span class="ai">⚠️</span>
+      <div>You will <strong>not</strong> see applicants until HR approves the requisition. Do not resubmit — just wait for the approval.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DO NOT TOUCH ── -->
+<section class="section" id="rules">
+  <div class="section-label"><span class="bar"></span> Reference</div>
+  <h2>Quick Reference — What to Fill In vs. Leave Alone</h2>
+  <p class="sub">Only these fields need your attention. Everything else is handled by the template.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem;">
+    <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:14px;padding:1.1rem 1.2rem;">
+      <div style="font-size:.75rem;font-weight:800;color:#15803d;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem;"><span>✓</span> Fill These In</div>
+      <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.88rem;color:#14532d;">
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">→</span><span><strong>Job Requisition Template</strong> — do this first</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">→</span><span><strong>Number of Openings</strong></span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">→</span><span><strong>Auto Change Status to Closed</strong> — check this box</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">→</span><span><strong>DSM/Corporate Hiring Manager</strong></span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#16a34a;font-weight:700;flex-shrink:0;">→</span><span><strong>Pay Range</strong> — only if required by your state</span></div>
+      </div>
+    </div>
+    <div style="background:#fff5f5;border:1.5px solid #fecaca;border-radius:14px;padding:1.1rem 1.2rem;">
+      <div style="font-size:.75rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem;"><span>✗</span> Leave These Alone</div>
+      <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.88rem;color:#7f1d1d;">
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Hiring Stages</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Requirements section</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Summary section</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Custom Fields</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Evergreen or Remote Job checkboxes</span></div>
+        <div style="display:flex;align-items:flex-start;gap:.5rem;"><span style="color:#dc2626;font-weight:700;flex-shrink:0;">✗</span><span>Any auto-filled field from the template</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <strong>Lids · UKG Ready Training</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
 </footer>
-
 </body>
 </html>
