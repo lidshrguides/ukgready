@@ -120,27 +120,173 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <div class="section-label">Getting Started</div>
     <h2>How to Get There</h2>
     <p class="subtitle">Every self-service action starts the same way. Follow these steps first, then jump to the specific action you need below.</p>
-    <div class="steps">
-      <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Login to UKG Ready</h4>
-        <ul><li>Log in with your UKG Ready credentials</li></ul>
-      </div></div>
-      <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
-        <h4>Go to the Home Page</h4>
-        <ul><li>You'll land on your UKG Ready home page after logging in</li></ul>
-      </div></div>
-      <div class="step"><div class="step-line"></div><div class="step-num">3</div><div class="step-body">
-        <h4>Hover Over My Tasks</h4>
-        <ul><li>Find <strong>My Tasks</strong> in the navigation and hover over it</li></ul>
-      </div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body">
-        <h4>Click Update My Information</h4>
-        <ul><li>Select <strong>Update My Information</strong> from the dropdown</li><li>You'll see a list of self-service actions — select the one you need</li></ul>
-      </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:32px;margin-top:24px;">
+
+      <!-- STEP 1 -->
+      <div style="display:flex;gap:18px;align-items:flex-start;">
+        <div style="width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;">1</div>
+        <div style="flex:1;">
+          <h4 style="font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:6px;">Login to UKG Ready</h4>
+          <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">Log in with your UKG Ready credentials. You'll land on your home page.</p>
+          <!-- Home page mockup -->
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+            <!-- Top bar -->
+            <div style="background:#3d6b9e;padding:10px 18px;display:flex;align-items:center;gap:12px;">
+              <div style="width:36px;height:36px;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:13px;">MD</div>
+              <div style="background:white;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;color:#1a2a5e;">Today's Tasks (99)</div>
+            </div>
+            <!-- Nav bar -->
+            <div style="background:white;border-bottom:1px solid #e2e8f0;padding:0 18px;display:flex;gap:20px;align-items:center;">
+              <span style="padding:12px 0;font-size:13px;font-weight:700;color:#1a2a5e;border-bottom:2px solid #1a2a5e;">Home</span>
+              <span style="padding:12px 0;font-size:13px;color:#6b7280;">Employees</span>
+              <span style="padding:12px 0;font-size:13px;color:#6b7280;">HRIS</span>
+              <span style="padding:12px 0;font-size:13px;color:#6b7280;">Recruitment</span>
+              <span style="padding:12px 0;font-size:13px;color:#6b7280;">Payroll &amp; Timekeeping</span>
+            </div>
+            <!-- Icon tiles -->
+            <div style="background:#f0f2f7;padding:20px 18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#e8f0fb;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">👤</div>
+                <span style="font-size:12px;color:#374151;">My Info</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#e8f5f3;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🏦</div>
+                <span style="font-size:12px;color:#374151;">My Pay</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#e8f5f3;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">⏱️</div>
+                <span style="font-size:12px;color:#374151;">My Time</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#fce8f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">✅</div>
+                <span style="font-size:12px;font-weight:700;color:#1a2a5e;">My Tasks</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#fce8f5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🩺</div>
+                <span style="font-size:12px;color:#374151;">My Benefits</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#f5f0e8;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🎓</div>
+                <span style="font-size:12px;color:#374151;">My Career</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div style="display:flex;gap:18px;align-items:flex-start;">
+        <div style="width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;">2</div>
+        <div style="flex:1;">
+          <h4 style="font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:6px;">Click My Tasks</h4>
+          <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">Click the <strong style="color:var(--text);">My Tasks</strong> icon. A dropdown will appear with two options.</p>
+          <!-- Dropdown mockup -->
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#f0f2f7;padding:20px 18px;">
+            <div style="display:flex;gap:12px;justify-content:center;align-items:flex-start;position:relative;flex-wrap:wrap;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#e8f5f3;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">⏱️</div>
+                <span style="font-size:12px;color:#374151;">My Time</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;position:relative;">
+                <div style="width:52px;height:52px;background:#fce8f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;outline:3px solid #e63946;outline-offset:2px;">✅</div>
+                <span style="font-size:12px;font-weight:700;color:#1a2a5e;">My Tasks</span>
+                <!-- dropdown -->
+                <div style="position:absolute;top:70px;left:50%;transform:translateX(-50%);background:white;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.12);width:200px;z-index:10;padding:12px 0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 16px 10px;border-bottom:1px solid #f0f0f0;">
+                    <span style="font-size:14px;font-weight:700;color:#1a2a5e;">My Tasks</span>
+                    <span style="font-size:16px;color:#6b7280;">⚙️</span>
+                  </div>
+                  <div style="padding:8px 0;">
+                    <div style="padding:8px 16px;font-size:13.5px;color:#4f6fd8;font-weight:600;background:#f0f3ff;">Update My Information</div>
+                    <div style="padding:8px 16px;font-size:13.5px;color:#4f6fd8;">My Checklists</div>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;">
+                <div style="width:52px;height:52px;background:#fce8f5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🩺</div>
+                <span style="font-size:12px;color:#374151;">My Benefits</span>
+              </div>
+            </div>
+            <div style="height:90px;"></div><!-- spacer for dropdown -->
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div style="display:flex;gap:18px;align-items:flex-start;">
+        <div style="width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;">3</div>
+        <div style="flex:1;">
+          <h4 style="font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:6px;">Click Update My Information</h4>
+          <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">Select <strong style="color:var(--text);">Update My Information</strong> from the dropdown. You'll be taken to the <strong style="color:var(--text);">HR Actions</strong> page.</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div style="display:flex;gap:18px;align-items:flex-start;">
+        <div style="width:38px;height:38px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px;">4</div>
+        <div style="flex:1;">
+          <h4 style="font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:6px;">Find Your Action &amp; Click Start</h4>
+          <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:14px;">On the HR Actions page, locate the action you need and click <strong style="color:var(--text);">Start</strong> on the right.</p>
+          <!-- HR Actions table mockup -->
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:white;">
+            <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
+              <span style="font-size:16px;color:#6b7280;">←</span>
+              <span style="font-size:17px;font-weight:700;color:#1a2a5e;">HR Actions</span>
+            </div>
+            <div style="padding:0 20px 4px;border-bottom:1px solid var(--border);display:flex;gap:20px;">
+              <span style="padding:10px 0;font-size:13px;font-weight:700;color:#1a2a5e;border-bottom:2px solid #1a2a5e;">Available</span>
+              <span style="padding:10px 0;font-size:13px;color:#6b7280;">Open</span>
+              <span style="padding:10px 0;font-size:13px;color:#6b7280;">Submitted</span>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="background:#f8f9fb;">
+                  <th style="text-align:left;padding:9px 16px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);width:35%;">Action Name</th>
+                  <th style="text-align:left;padding:9px 16px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);">Description</th>
+                  <th style="text-align:right;padding:9px 16px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);white-space:nowrap;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 16px;color:#1e1e2e;font-weight:500;">Update All Personal Information</td>
+                  <td style="padding:10px 16px;color:#4f6fd8;font-size:12.5px;">How to Update Your Information</td>
+                  <td style="padding:10px 16px;text-align:right;"><span style="color:#4f6fd8;font-weight:700;font-size:13px;">Start</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+                  <td style="padding:10px 16px;color:#1e1e2e;font-weight:500;">Update My Address</td>
+                  <td style="padding:10px 16px;color:#4f6fd8;font-size:12.5px;">How to Update Your Address</td>
+                  <td style="padding:10px 16px;text-align:right;"><span style="color:#4f6fd8;font-weight:700;font-size:13px;">Start</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 16px;color:#1e1e2e;font-weight:500;">Update My Direct Deposit</td>
+                  <td style="padding:10px 16px;color:#4f6fd8;font-size:12.5px;">How to Update Direct Deposit</td>
+                  <td style="padding:10px 16px;text-align:right;"><span style="color:#4f6fd8;font-weight:700;font-size:13px;">Start</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #f0f0f0;background:#fafafa;">
+                  <td style="padding:10px 16px;color:#1e1e2e;font-weight:500;">Update My Email/Phone Number</td>
+                  <td style="padding:10px 16px;color:#4f6fd8;font-size:12.5px;">How to Update Email/Phone Number</td>
+                  <td style="padding:10px 16px;text-align:right;"><span style="color:#4f6fd8;font-weight:700;font-size:13px;">Start</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid #f0f0f0;">
+                  <td style="padding:10px 16px;color:#1e1e2e;font-weight:500;">Update My Emergency Contacts</td>
+                  <td style="padding:10px 16px;color:#4f6fd8;font-size:12.5px;">How to Update Emergency Contacts</td>
+                  <td style="padding:10px 16px;text-align:right;"><span style="color:#4f6fd8;font-weight:700;font-size:13px;">Start</span></td>
+                </tr>
+                <tr style="background:#fafafa;">
+                  <td style="padding:10px 16px;color:#6b7280;font-style:italic;font-size:12px;" colspan="3">&nbsp;&nbsp;+ more actions…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="alert alert-info" style="margin-top:4px;">
+
+    <div class="alert alert-info" style="margin-top:28px;">
       <span class="alert-icon">👇</span>
-      <div>Once you're on the Update My Information page, find your specific action in the sections below.</div>
+      <div>Once you're on the <strong>HR Actions</strong> page, find your specific action in the sections below and click <strong>Start</strong> to begin.</div>
     </div>
   </div>
 
@@ -151,8 +297,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to review and update your name, address, email, preferred language, date of birth, and EEO information.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update All Personal Information</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update All Personal Information</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Review &amp; Update Each Section</h4>
@@ -178,8 +324,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to update your home address. Address changes may affect your state and local tax withholding.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Address</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Address</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Enter Your Updated Address</h4>
@@ -206,8 +352,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to add or update your bank account information for direct deposit.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Direct Deposit</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Direct Deposit</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Add Your Bank Account</h4>
@@ -235,8 +381,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to update your email address and/or phone number on file.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Email/Phone Number</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Email/Phone Number</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Make Your Updates</h4>
@@ -259,8 +405,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to add or update the emergency contacts on your employee record.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Emergency Contacts</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Emergency Contacts</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Add a Contact</h4>
@@ -284,8 +430,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to update your marital status. You'll need to upload supporting documentation and may need to update your tax withholding.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Marital Status</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Marital Status</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Upload Supporting Documentation</h4>
@@ -312,8 +458,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to update your legal name. You'll need to upload supporting documentation and may need to update your tax withholding.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Name</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Name</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Upload Supporting Documentation</h4>
@@ -340,8 +486,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to add or update your professional credentials and upload supporting documents.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Credentials</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Credentials</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Enter Your Credential Information</h4>
@@ -367,8 +513,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to add completed training or certification details to your employee record.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Update My Trainings/Certifications</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Update My Trainings/Certifications</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Add Your Training Details</h4>
@@ -391,8 +537,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <p class="subtitle">Use this action to upload documents verifying your identity and work authorization for Form I-9.</p>
     <div class="steps">
       <div class="step"><div class="step-line"></div><div class="step-num">1</div><div class="step-body">
-        <h4>Select the Action</h4>
-        <ul><li>On the Update My Information page, click <strong>Upload I-9 Work Authorization Documents</strong></li></ul>
+        <h4>Start the Action</h4>
+        <ul><li>On the HR Actions page, click <strong>Start</strong> next to <strong>Upload I-9 Work Authorization Documents</strong></li></ul>
       </div></div>
       <div class="step"><div class="step-line"></div><div class="step-num">2</div><div class="step-body">
         <h4>Review Acceptable Documents</h4>
