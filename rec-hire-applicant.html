@@ -7,124 +7,138 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --navy: #0f1f3d;
-    --navy-mid: #1a3260;
-    --navy-light: #2a4a8a;
-    --accent: #3a7bd5;
-    --accent-glow: #5a9bf5;
-    --white: #ffffff;
-    --off-white: #f4f6fb;
-    --light-gray: #e8edf7;
-    --text-body: #2d3748;
-    --text-muted: #6b7a99;
+    --navy: #0f1f3d; --navy-mid: #1a3260; --navy-light: #2a4a8a;
+    --accent: #3a7bd5; --accent-glow: #5a9bf5;
+    --white: #fff; --off-white: #f4f6fb; --light-gray: #e8edf7;
+    --text-body: #2d3748; --text-muted: #6b7a99;
   }
-
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; min-height: 100vh; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-body); line-height: 1.6; }
 
-  /* ── HEADER ── */
-  header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
-    color: var(--white); padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
-  }
-  header::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(90,155,245,0.15) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  header::after {
-    content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 48px;
-    background: var(--off-white); clip-path: ellipse(55% 100% at 50% 100%);
-  }
-  .logo-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem;
-  }
-  .logo-badge .dot { width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
-  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 0.75rem; position: relative; }
-  header p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto; position: relative; }
+  /* HEADER */
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%); color: #fff; padding: 3rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  header::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 20% 50%, rgba(58,123,213,.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(90,155,245,.15) 0%, transparent 50%); pointer-events:none; }
+  header::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:48px; background:var(--off-white); clip-path:ellipse(55% 100% at 50% 100%); }
+  .logo-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:.4rem 1.1rem; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:1.5rem; }
+  .logo-badge .dot { width:6px; height:6px; background:var(--accent-glow); border-radius:50%; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  header h1 { font-family:'DM Serif Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:400; line-height:1.15; margin-bottom:.75rem; position:relative; }
+  header p { font-size:1rem; color:rgba(255,255,255,.7); max-width:500px; margin:0 auto; position:relative; }
 
-  /* ── NAV ── */
-  .nav-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1rem 0; max-width: 960px; margin: 0 auto; }
-  .nav-pills a {
-    text-decoration: none; font-size: 0.8rem; font-weight: 600; color: var(--navy-mid);
-    background: var(--white); border: 1.5px solid var(--light-gray); border-radius: 999px;
-    padding: 0.35rem 1rem; transition: all 0.18s ease; letter-spacing: 0.02em;
-  }
-  .nav-pills a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  /* NAV */
+  .nav-pills { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; padding:2rem 1rem 0; max-width:960px; margin:0 auto; }
+  .nav-pills a { text-decoration:none; font-size:.8rem; font-weight:600; color:var(--navy-mid); background:#fff; border:1.5px solid var(--light-gray); border-radius:999px; padding:.35rem 1rem; transition:all .18s; }
+  .nav-pills a:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
 
-  /* ── MAIN ── */
-  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  /* MAIN */
+  main { max-width:860px; margin:0 auto; padding:2rem 1.25rem 4rem; }
 
-  .section {
-    background: var(--white); border-radius: 20px; border: 1.5px solid var(--light-gray);
-    padding: 2.25rem 2.5rem; margin-bottom: 1.75rem;
-    box-shadow: 0 2px 12px rgba(15,31,61,0.06); animation: fadeUp 0.5s ease both;
-  }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
-  .section:nth-child(1){animation-delay:0.05s} .section:nth-child(2){animation-delay:0.1s}
-  .section:nth-child(3){animation-delay:0.15s} .section:nth-child(4){animation-delay:0.2s}
-  .section:nth-child(5){animation-delay:0.25s} .section:nth-child(6){animation-delay:0.3s}
-  .section:nth-child(7){animation-delay:0.35s} .section:nth-child(8){animation-delay:0.4s}
-  .section:nth-child(9){animation-delay:0.45s}
+  /* SECTION */
+  .section { background:#fff; border-radius:20px; border:1.5px solid var(--light-gray); padding:2rem 2.25rem; margin-bottom:1.75rem; box-shadow:0 2px 12px rgba(15,31,61,.06); animation:fadeUp .5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+  .section:nth-child(1){animation-delay:.05s} .section:nth-child(2){animation-delay:.1s} .section:nth-child(3){animation-delay:.15s} .section:nth-child(4){animation-delay:.2s} .section:nth-child(5){animation-delay:.25s} .section:nth-child(6){animation-delay:.3s} .section:nth-child(7){animation-delay:.35s} .section:nth-child(8){animation-delay:.4s} .section:nth-child(9){animation-delay:.45s} .section:nth-child(10){animation-delay:.5s} .section:nth-child(11){animation-delay:.55s}
+  .section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+  .section-label .bar { width:18px; height:2.5px; background:var(--accent); border-radius:2px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:clamp(1.3rem,3vw,1.65rem); color:var(--navy); margin-bottom:.25rem; line-height:1.2; }
+  .section .sub { font-size:.88rem; color:var(--text-muted); margin-bottom:1.25rem; }
 
-  .section-label { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
-  .section-label .bar { width: 18px; height: 2.5px; background: var(--accent); border-radius: 2px; }
-  .section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy); margin-bottom: 0.3rem; line-height: 1.2; }
-  .section .sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  /* USE CARDS */
+  .use-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; }
+  .use-card { background:var(--off-white); border:1.5px solid var(--light-gray); border-radius:14px; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.75rem; }
+  .use-card .icon { width:32px; height:32px; border-radius:9px; flex-shrink:0; background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:#fff; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
+  .use-card p { font-size:.85rem; font-weight:500; color:var(--text-body); line-height:1.4; }
+  .dont-card { background:#fff5f5; border:1.5px solid #fecaca; border-radius:14px; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.75rem; }
+  .dont-card .icon { width:32px; height:32px; border-radius:9px; flex-shrink:0; background:#dc2626; color:#fff; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
+  .dont-card p { font-size:.85rem; font-weight:500; color:#991b1b; line-height:1.4; }
 
-  /* ── USE GRID ── */
-  .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
-  .use-card { background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
-  .use-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
-  .use-card p { font-size: 0.88rem; font-weight: 500; color: var(--text-body); line-height: 1.4; }
-  .dont-card { background: #fff5f5; border: 1.5px solid #fecaca; border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
-  .dont-card .icon { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; background: #dc2626; color: white; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
-  .dont-card p { font-size: 0.88rem; font-weight: 500; color: #991b1b; line-height: 1.4; }
+  /* STEPS — slim */
+  .steps { display:flex; flex-direction:column; gap:.6rem; }
+  .step { display:flex; gap:.85rem; align-items:flex-start; }
+  .step-num { width:28px; height:28px; border-radius:50%; flex-shrink:0; background:linear-gradient(135deg,var(--navy),var(--navy-light)); color:#fff; font-weight:700; font-size:.8rem; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .step-body { flex:1; font-size:.88rem; color:var(--text-body); line-height:1.5; }
+  .step-body strong { color:var(--navy); }
 
-  /* ── STEPS ── */
-  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--off-white); border: 1.5px solid var(--light-gray); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.18s; }
-  .step:hover { border-color: var(--accent); }
-  .step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: white; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
-  .step-text strong { display: block; font-size: 0.92rem; color: var(--navy); }
-  .step-text span { font-size: 0.82rem; color: var(--text-muted); }
+  /* ALERTS */
+  .alert { border-radius:11px; padding:.85rem 1.1rem; display:flex; align-items:flex-start; gap:.7rem; font-size:.85rem; font-weight:500; line-height:1.5; margin-top:1rem; }
+  .alert-warn { background:#fef3c7; border:1.5px solid #f59e0b; color:#78350f; }
+  .alert-red { background:#fff5f5; border:1.5px solid #fca5a5; color:#7f1d1d; }
+  .alert-blue { background:#eff6ff; border:1.5px solid #93c5fd; color:#1e40af; }
+  .alert-green { background:#f0fdf4; border:1.5px solid #86efac; color:#14532d; }
+  .alert .ai { font-size:1.1rem; flex-shrink:0; }
 
-  /* ── FIELD RULES TABLE ── */
-  .field-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; border-radius: 12px; overflow: hidden; }
-  .field-table th { background: var(--navy); color: white; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.65rem 1rem; text-align: left; }
-  .field-table td { font-size: 0.85rem; padding: 0.65rem 1rem; border-bottom: 1px solid var(--light-gray); color: var(--text-body); vertical-align: top; }
-  .field-table tr:last-child td { border-bottom: none; }
-  .field-table tr:nth-child(even) td { background: var(--off-white); }
-  .field-table td.field-name { font-weight: 700; color: var(--navy); white-space: nowrap; }
-  .field-table td.field-value { font-family: monospace; color: var(--accent); font-size: 0.82rem; }
-  .field-table td.field-note { color: var(--text-muted); font-size: 0.8rem; }
-  .tag-auto { display: inline-block; background: #dcfce7; color: #166534; font-size: 0.68rem; font-weight: 700; border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.3rem; }
-  .tag-required { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 0.68rem; font-weight: 700; border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.3rem; }
-  .tag-blank { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.68rem; font-weight: 700; border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.3rem; }
+  /* MOCKUP shell */
+  .mkp { border:1px solid #dde3f0; border-radius:12px; overflow:hidden; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; margin-top:1rem; background:#fff; font-size:13px; }
+  .mkp-bar { background:#3d6b9e; padding:9px 16px; display:flex; align-items:center; gap:10px; }
+  .mkp-nav { background:#fff; border-bottom:1px solid #e2e8f0; padding:0 16px; display:flex; gap:20px; }
+  .mkp-ni { padding:10px 0; font-size:12.5px; color:#6b7280; }
+  .mkp-ni.act { color:#1a2a5e; font-weight:700; border-bottom:2px solid #1a2a5e; }
+  .mkp-body { background:#f4f6fb; padding:16px; }
+  .mkp-white { background:#fff; padding:16px; }
+  .finput { border:1px solid #d1d5db; border-radius:6px; padding:6px 10px; background:#fff; display:flex; align-items:center; justify-content:space-between; color:#374151; }
+  .finput.err { border-color:#dc2626; background:#fff5f5; }
+  .finput.ghost { color:#9ca3af; font-style:italic; background:#f8f9fb; border-color:#e5e7eb; }
+  .finput.filled { color:#1a3260; font-weight:600; }
+  .flabel { font-size:11px; font-weight:600; color:#374151; margin-bottom:3px; }
+  .flabel.blue { color:#3a7bd5; }
+  .freq { color:#dc2626; }
+  .frow { display:flex; gap:10px; margin-bottom:12px; }
+  .frow > div { flex:1; }
+  .fsection { font-size:11px; font-weight:700; color:#9ca3af; text-transform:uppercase; letter-spacing:.05em; margin:14px 0 8px; }
+  .ftag-auto { display:inline-block; background:#dcfce7; color:#166534; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
+  .ftag-req { display:inline-block; background:#fee2e2; color:#991b1b; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
+  .ftag-warn { display:inline-block; background:#fef3c7; color:#92400e; font-size:.65rem; font-weight:700; border-radius:999px; padding:1px 6px; margin-left:4px; }
 
-  /* ── ALERT / TIP BOXES ── */
-  .alert-box { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; font-weight: 500; color: #78350f; margin-top: 1.25rem; }
-  .alert-box.red { background: #fff5f5; border-color: #fca5a5; color: #7f1d1d; }
-  .alert-box .alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
-  .alert-box div { line-height: 1.55; }
-  .tip-box { background: #eff6ff; border: 1.5px solid #93c5fd; border-radius: 14px; padding: 1.1rem 1.3rem; display: flex; align-items: flex-start; gap: 0.85rem; margin-top: 1.25rem; }
-  .tip-box .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
-  .tip-box p { font-size: 0.88rem; color: #1e40af; line-height: 1.5; }
+  /* sidebar form layout */
+  .form-wrap { display:flex; border:1px solid #dde3f0; border-radius:12px; overflow:hidden; margin-top:1rem; font-family:-apple-system,sans-serif; font-size:13px; }
+  .form-side { background:#f8f9fb; border-right:1px solid #e2e8f0; min-width:175px; flex-shrink:0; }
+  .form-side-prog { padding:10px 14px; border-bottom:1px solid #e2e8f0; }
+  .form-side-item { padding:8px 14px; font-size:12.5px; color:#6b7280; display:flex; align-items:center; gap:7px; }
+  .form-side-item.act { background:#fff; color:#1a3260; font-weight:600; border-left:3px solid #3a7bd5; }
+  .sdot { width:13px; height:13px; border-radius:50%; border:2px solid #d1d5db; flex-shrink:0; }
+  .sdot.act { border-color:#3a7bd5; background:#3a7bd5; }
+  .sdot.done { border-color:#16a34a; background:#16a34a; }
+  .form-main { flex:1; background:#fff; min-width:0; }
+  .form-head { background:#f4f6fb; padding:9px 18px; font-size:13.5px; font-weight:700; color:#1a2a5e; border-bottom:1px solid #e2e8f0; }
+  .form-body { padding:16px 18px; }
 
-  /* ── FOOTER ── */
-  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; padding: 1.5rem; }
-  footer strong { color: rgba(255,255,255,0.9); }
+  /* checklist mockup */
+  .cl-row { display:flex; align-items:center; padding:9px 14px; gap:10px; border-bottom:1px solid #f0f0f0; font-size:13px; }
+  .cl-row:last-child { border-bottom:none; }
+  .cl-check { width:16px; height:16px; border:2px solid #d1d5db; border-radius:3px; flex-shrink:0; }
+  .cl-pencil { width:24px; height:24px; border-radius:5px; background:#e8edf7; display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0; color:#1a3260; cursor:pointer; outline:2px solid #f59e0b; outline-offset:2px; }
+  .cl-tag { font-size:11px; background:#dbeafe; color:#1e40af; border-radius:999px; padding:2px 8px; font-weight:600; }
+  .cl-pct { font-size:12px; color:#6b7280; margin-left:auto; }
 
-  @media(max-width:600px) { .section { padding: 1.5rem 1.25rem; } }
-  @media print { .nav-pills { display: none; } .section { break-inside: avoid; box-shadow: none; } }
-.back-bar{background:white;padding:12px 24px;display:flex;align-items:center;border-bottom:2px solid #e2e8f0;}.back-bar a{color:#1a2a5e;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:"DM Sans",sans-serif;}.back-bar a:hover{color:#4f6fd8;text-decoration:underline;}
+  /* modal */
+  .modal-wrap { background:rgba(0,0,0,.12); padding:20px; border-radius:12px; margin-top:1rem; }
+  .modal { background:#fff; border-radius:12px; padding:20px; border:1px solid #e2e8f0; box-shadow:0 8px 32px rgba(0,0,0,.12); max-width:440px; margin:0 auto; font-family:-apple-system,sans-serif; font-size:13px; }
+  .modal-title { font-size:14px; font-weight:700; color:#1a2a5e; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; }
+  .modal-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; }
+  .mbtn { border-radius:6px; padding:7px 18px; font-size:13px; font-weight:700; cursor:pointer; border:none; }
+  .mbtn-pri { background:#1a3260; color:#fff; }
+  .mbtn-sec { background:#e8edf7; color:#1a3260; }
+
+  /* qa panel */
+  .qa-btn { background:#1a3260; color:#fff; border-radius:6px; padding:8px 12px; font-size:12px; font-weight:700; text-align:center; margin-bottom:7px; }
+  .qa-btn.hi { outline:3px solid #f59e0b; outline-offset:2px; }
+
+  /* compensation table mockup */
+  .comp-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .comp-table th { background:#f4f6fb; padding:8px 12px; text-align:left; font-size:11px; font-weight:700; color:#6b7280; text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid #e2e8f0; }
+  .comp-table td { padding:9px 12px; border-bottom:1px solid #f0f0f0; color:#374151; }
+
+  /* tag chips */
+  .chip { display:inline-flex; align-items:center; gap:4px; font-size:.78rem; font-weight:700; border-radius:999px; padding:.2rem .65rem; }
+  .chip-pt { background:#dbeafe; color:#1e40af; }
+  .chip-ft { background:#dcfce7; color:#166534; }
+
+  footer { background:var(--navy); color:rgba(255,255,255,.6); text-align:center; font-size:.8rem; padding:1.5rem; }
+  footer strong { color:rgba(255,255,255,.9); }
+  .back-bar { background:#fff; padding:11px 22px; display:flex; align-items:center; border-bottom:2px solid #e2e8f0; }
+  .back-bar a { color:#1a2a5e; font-size:14px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:7px; }
+  .back-bar a:hover { color:#3a7bd5; text-decoration:underline; }
+  @media(max-width:600px) { .section{padding:1.5rem 1.1rem;} .form-wrap{flex-direction:column;} .form-side{min-width:unset;border-right:none;border-bottom:1px solid #e2e8f0;} }
 </style>
 </head>
 <body>
@@ -136,490 +150,652 @@
   <p>A step-by-step reference for completing the hire action for a new retail employee in UKG Ready</p>
 </header>
 
-<nav class="nav-pills" aria-label="Jump to section">
+<nav class="nav-pills">
   <a href="#when">When to Use</a>
-  <a href="#preboarding">Open Preboarding Form</a>
+  <a href="#preboarding">Preboarding Form</a>
   <a href="#hire">Hire the Candidate</a>
-  <a href="#effective">Effective Date Rule</a>
+  <a href="#effective">Effective Date</a>
   <a href="#empinfo">Employee Information</a>
   <a href="#contact">Contact Information</a>
   <a href="#position">Work Information</a>
   <a href="#comp">Compensation</a>
-  <a href="#submit">Managers &amp; Submit</a>
-  <a href="#rehire-note">Rehires Only</a>
+  <a href="#unemployment">Unemployment State</a>
+  <a href="#submit">Submit</a>
+  <a href="#rehire-note">Rehires</a>
 </nav>
 
 <main>
 
-  <!-- WHEN TO USE -->
-  <section class="section" id="when">
-    <div class="section-label"><span class="bar"></span> Overview</div>
-    <h2>When to Use This Guide</h2>
-    <p class="sub">This guide covers the HR Actions hire workflow — used only for brand new employees who do not yet exist in UKG Ready.</p>
-    <div class="use-grid" style="margin-bottom:1rem;">
-      <div class="use-card">
-        <div class="icon">✅</div>
-        <p>Hiring a brand new employee</p>
+<style>
+  .vstep { font-size:.78rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.07em; margin:1.4rem 0 .35rem; display:flex; align-items:center; gap:.5rem; }
+  .vstep::before { content:''; display:block; width:20px; height:2px; background:var(--accent); border-radius:2px; flex-shrink:0; }
+</style>
+
+<!-- ── WHEN TO USE ── -->
+<section class="section" id="when">
+  <div class="section-label"><span class="bar"></span> Overview</div>
+  <h2>When to Use This Guide</h2>
+  <p class="sub">Use this guide only when hiring a brand new employee who does not yet exist in UKG Ready.</p>
+  <div class="use-grid" style="margin-bottom:.85rem;">
+    <div class="use-card"><div class="icon">✅</div><p>Hiring a brand new employee</p></div>
+    <div class="use-card"><div class="icon">👤</div><p>Employee does not yet exist in UKG Ready</p></div>
+  </div>
+  <div class="use-grid">
+    <div class="dont-card"><div class="icon">✗</div><p>Do NOT use for rehires — use the Rehire action</p></div>
+    <div class="dont-card"><div class="icon">✗</div><p>Do NOT use for job changes — use the Job Change action</p></div>
+  </div>
+</section>
+
+<!-- ── PREBOARDING FORM ── -->
+<section class="section" id="preboarding">
+  <div class="section-label"><span class="bar"></span> Before You Begin</div>
+  <h2>Open the Preboarding Form</h2>
+  <p class="sub">Before starting the hire form, open the candidate's preboarding form in a second window. You'll need their SSN/SIN and Date of Birth from it.</p>
+
+  <div class="vstep">Step 1 — Click your initials (top right) → New Window</div>
+  <div class="mkp">
+    <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;">
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+        </div>
+        <span style="color:#fff;font-size:13px;font-weight:700;opacity:.9;">UKG Ready</span>
       </div>
-      <div class="use-card">
-        <div class="icon">👤</div>
-        <p>Employee does not yet exist in UKG Ready</p>
-      </div>
-    </div>
-    <div class="use-grid">
-      <div class="dont-card">
-        <div class="icon">✗</div>
-        <p>Do NOT use for rehires — use the Rehire action instead</p>
-      </div>
-      <div class="dont-card">
-        <div class="icon">✗</div>
-        <p>Do NOT use for job changes — use the Job Change action instead</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- OPEN PREBOARDING FORM -->
-  <section class="section" id="preboarding">
-    <div class="section-label"><span class="bar"></span> Before You Begin</div>
-    <h2>Open the Preboarding Form</h2>
-    <p class="sub">Before starting the hire action, you need to retrieve the candidate's SSN/SIN and Date of Birth from their completed preboarding form. Open this in a separate window so you can reference it while completing the hire form.</p>
-    <ol class="steps-list">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Click your initials in the top right corner → New Window</strong>
-          <span>This opens UKG Ready in a second browser window so you can reference preboarding while completing the hire form.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Navigate to ☰ Menu → Team → Recruitment → Applicant Checklists</strong>
-          <span>This takes you to the list of applicant checklists.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Select the candidate's checkbox → Click View</strong>
-          <span>Find the candidate in the list, check their box, and click View in the top right.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">
-          <strong>Select Preboarding</strong>
-          <span>Open the Preboarding checklist to access the candidate's SSN/SIN and Date of Birth. Keep this window open — you will need it in the next steps.</span>
-        </div>
-      </li>
-    </ol>
-    <div class="alert-box">
-      <span class="alert-icon">⚠️</span>
-      <div>Do NOT collect SSN, SIN, or Date of Birth outside of UKG Ready. Only access this information through the preboarding form for the purpose of completing the hire action.</div>
-    </div>
-  </section>
-
-  <!-- HIRE CANDIDATE -->
-  <section class="section" id="hire">
-    <div class="section-label"><span class="bar"></span> Step 1</div>
-    <h2>Hire the Candidate</h2>
-    <p class="sub">Return to the candidate's application and launch the hire action from Quick Actions.</p>
-    <ol class="steps-list">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Open the candidate's application</strong>
-          <span>Navigate to the requisition, click the Applications tab, select the candidate, and click View.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Click Hire in the Quick Actions panel</strong>
-          <span>Found on the right side of the applicant record.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Select Retail Leader - Hire Employee</strong>
-          <span>This launches the hire action form. The candidate will move to the Hired stage automatically once this is completed.</span>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <!-- EFFECTIVE DATE -->
-  <section class="section" id="effective">
-    <div class="section-label"><span class="bar"></span> Step 2</div>
-    <h2>Effective Date Rule</h2>
-    <p class="sub">The Effective From date applies to both Position Assignment and Compensation. This rule must be followed every time.</p>
-    <table class="field-table">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Effective From</td>
-          <td class="field-value">Today's date</td>
-          <td class="field-note">Applies to both Position Assignment and Compensation sections</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="alert-box" style="margin-top:1rem;">
-      <span class="alert-icon">⚠️</span>
-      <div><strong>Do NOT backdate or postdate.</strong> Always use today's date as the Effective From date regardless of when the employee's actual start date is. Start date is entered separately.</div>
-    </div>
-  </section>
-
-  <!-- EMPLOYEE INFORMATION -->
-  <section class="section" id="empinfo">
-    <div class="section-label"><span class="bar"></span> Step 3</div>
-    <h2>Employee Information</h2>
-    <p class="sub">Enter the employee's personal details carefully. Reference the preboarding form you opened earlier for SSN/SIN and Date of Birth.</p>
-
-    <table class="field-table" style="margin-bottom:1.25rem;">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Date of Birth</td>
-          <td class="field-value">From preboarding form</td>
-          <td class="field-note">Copy exactly from the candidate's completed preboarding form</td>
-        </tr>
-        <tr>
-          <td class="field-name">SSN or SIN</td>
-          <td class="field-value">From preboarding form</td>
-          <td class="field-note">U.S. employees provide SSN — Canadian employees provide SIN</td>
-        </tr>
-        <tr>
-          <td class="field-name">First Name</td>
-          <td class="field-value">Legal first name</td>
-          <td class="field-note">Must match legal documents — not a preferred name</td>
-        </tr>
-        <tr>
-          <td class="field-name">Last Name</td>
-          <td class="field-value">Legal last name</td>
-          <td class="field-note">Must match legal documents</td>
-        </tr>
-        <tr>
-          <td class="field-name">Nickname / Preferred Name</td>
-          <td class="field-value">If applicable</td>
-          <td class="field-note">Optional — enter only if the employee has provided one</td>
-        </tr>
-        <tr>
-          <td class="field-name">Employee ID <span class="tag-auto">Auto</span></td>
-          <td class="field-value">Leave blank</td>
-          <td class="field-note">Auto-populates — do not enter anything</td>
-        </tr>
-        <tr>
-          <td class="field-name">Username <span class="tag-auto">Auto</span></td>
-          <td class="field-value">Leave blank</td>
-          <td class="field-note">Auto-populates — do not enter anything</td>
-        </tr>
-        <tr>
-          <td class="field-name">Password <span class="tag-auto">Auto</span></td>
-          <td class="field-value">Leave blank</td>
-          <td class="field-note">Auto-populates — do not enter anything</td>
-        </tr>
-        <tr>
-          <td class="field-name">Hire Date <span class="tag-required">Required</span></td>
-          <td class="field-value">Employee's start date</td>
-          <td class="field-note">This is the employee's actual first day of work — not today's date</td>
-        </tr>
-        <tr>
-          <td class="field-name">Primary Language <span class="tag-required">Required</span></td>
-          <td class="field-value">Select from dropdown</td>
-          <td class="field-note"><strong>Important:</strong> This determines what language the employee receives their onboarding forms in. Always confirm the employee's preferred language and select accordingly.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="alert-box red">
-      <span class="alert-icon">🚫</span>
-      <div><strong>Do NOT enter Employee ID, Username, or Password.</strong> These fields auto-populate — entering anything in them will cause errors in the system.</div>
-    </div>
-
-    <div class="tip-box">
-      <div class="tip-icon">💡</div>
-      <p>After entering all employee information, click <strong>Continue</strong> to move to the next section.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT INFORMATION -->
-  <section class="section" id="contact">
-    <div class="section-label"><span class="bar"></span> Step 4</div>
-    <h2>Contact Information</h2>
-    <p class="sub">The candidate's contact details should pre-fill from their application. Verify and then continue.</p>
-    <table class="field-table">
-      <thead>
-        <tr><th>Field</th><th>What to Do</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Primary Email</td>
-          <td class="field-value">Verify it is pre-filled</td>
-          <td class="field-note">Should auto-fill from the candidate's application — do not change unless incorrect</td>
-        </tr>
-        <tr>
-          <td class="field-name">Cell Phone</td>
-          <td class="field-value">Verify it is pre-filled</td>
-          <td class="field-note">Should auto-fill from the candidate's application</td>
-        </tr>
-        <tr>
-          <td class="field-name">Country Code <span class="tag-required">Required</span></td>
-          <td class="field-value">Select correct country code</td>
-          <td class="field-note">U.S. = +1 / Canada = +1 (but select Canada specifically from the dropdown)</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="tip-box">
-      <div class="tip-icon">💡</div>
-      <p>After verifying contact information, click <strong>Continue</strong> to move to Work Information.</p>
-    </div>
-  </section>
-
-  <!-- WORK INFORMATION -->
-  <section class="section" id="position">
-    <div class="section-label"><span class="bar"></span> Step 5</div>
-    <h2>Work Information — Position Assignment</h2>
-    <p class="sub">Assign the employee to their position. Search by store number to find the correct position.</p>
-    <ol class="steps-list" style="margin-bottom:1.25rem;">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Click +Add Position</strong>
-          <span>This opens the position assignment form in the Position Assignments section.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Click the search icon under the Position field</strong>
-          <span>This opens the position lookup window.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Search by store number only</strong>
-          <span>Type just the store number to find all positions for that location.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">
-          <strong>Select the correct position for the employee's role</strong>
-          <span>Choose the position that matches the role they were hired into.</span>
-        </div>
-      </li>
-    </ol>
-
-    <table class="field-table" style="margin-bottom:1.25rem;">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Start Date <span class="tag-required">Required</span></td>
-          <td class="field-value">Today's date</td>
-          <td class="field-note">Use today's date — this is the effective date of the position assignment, not the employee's start date</td>
-        </tr>
-        <tr>
-          <td class="field-name">Is Primary Assignment <span class="tag-required">Required</span></td>
-          <td class="field-value">Check the box</td>
-          <td class="field-note">Must be checked for all new hires</td>
-        </tr>
-        <tr>
-          <td class="field-name">Assignment Change Reason <span class="tag-required">Required</span></td>
-          <td class="field-value">New Hire</td>
-          <td class="field-note">Select New Hire from the dropdown</td>
-        </tr>
-        <tr>
-          <td class="field-name">Assigned FTE <span class="tag-required">Required</span></td>
-          <td class="field-value">1</td>
-          <td class="field-note">Enter 1 for all retail new hires regardless of part-time or full-time status</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="alert-box">
-      <span class="alert-icon">⚠️</span>
-      <div>
-        <strong>Primary Manager:</strong> After saving the position, a prompt may appear to select the position's primary manager. Select <strong>Directly Reports to Manager</strong>. If no one appears in the list, click <strong>Cancel</strong> and Continue — do not leave this hanging.
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:14px;color:rgba(255,255,255,.5);">⊗</span>
+        <span style="font-size:14px;color:rgba(255,255,255,.5);">🔔</span>
+        <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;outline:3px solid #f59e0b;outline-offset:2px;cursor:pointer;">TE</div>
       </div>
     </div>
-    <div class="alert-box red" style="margin-top:0.75rem;">
-      <span class="alert-icon">🚫</span>
-      <div><strong>Do NOT enter compensation in the position details section.</strong> Compensation is entered separately in the Base Compensation section below.</div>
+    <div style="background:#fff;display:flex;justify-content:flex-end;border-top:1px solid #e2e8f0;">
+      <div style="width:210px;padding:14px;font-size:13px;border-left:1px solid #f0f0f0;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #f0f0f0;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#1a3260;position:relative;flex-shrink:0;">TE<div style="position:absolute;bottom:0;right:0;width:13px;height:13px;background:#1a3260;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;">✎</div></div>
+          <div><div style="font-weight:700;color:#1a2a5e;">Test Employee</div><div style="font-size:11px;color:#6b7280;">Hat World Inc.</div></div>
+        </div>
+        <div style="padding:7px 0;color:#374151;border-bottom:1px solid #f5f5f5;">Profile</div>
+        <div style="padding:7px 6px;color:#1a3260;font-weight:700;outline:2px solid #f59e0b;outline-offset:2px;border-radius:4px;margin:2px 0;">New Window</div>
+        <div style="padding:7px 0;color:#374151;">Sign Out</div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- COMPENSATION -->
-  <section class="section" id="comp">
-    <div class="section-label"><span class="bar"></span> Step 6</div>
-    <h2>Work Information — Base Compensation</h2>
-    <p class="sub">Enter the employee's pay rate in the Base Compensation section — not in the position details. Follow the field rules exactly.</p>
-    <ol class="steps-list" style="margin-bottom:1.25rem;">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Click +Add in the Base Compensation section</strong>
-          <span>This opens the Add New Base Compensation pop-up.</span>
+  <div class="vstep">Step 2 — Click the ☰ menu (top left) → Team → Recruitment → Applicant Checklists</div>
+  <div class="mkp" style="max-width:380px;">
+    <!-- Top bar showing hamburger highlighted -->
+    <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;outline:3px solid #f59e0b;outline-offset:3px;border-radius:3px;cursor:pointer;">
+          <div style="width:18px;height:2px;background:#fff;border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:#fff;border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:#fff;border-radius:2px;"></div>
         </div>
-      </li>
-    </ol>
-    <table class="field-table">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Effective Date <span class="tag-required">Required</span></td>
-          <td class="field-value">Today's date</td>
-          <td class="field-note">Same rule as always — do not backdate or postdate</td>
-        </tr>
-        <tr>
-          <td class="field-name">Reason Code <span class="tag-required">Required</span></td>
-          <td class="field-value">New Hire</td>
-          <td class="field-note">Select New Hire from the dropdown</td>
-        </tr>
-        <tr>
-          <td class="field-name">Amount <span class="tag-required">Required</span></td>
-          <td class="field-value">Employee's hourly rate</td>
-          <td class="field-note">Enter the pay rate from the offer letter</td>
-        </tr>
-        <tr>
-          <td class="field-name">Per (first field) <span class="tag-required">Required</span></td>
-          <td class="field-value">Hour</td>
-          <td class="field-note">Change this to Hour — it may default to something else. This is the only Per field you touch.</td>
-        </tr>
-        <tr>
-          <td class="field-name">Hours <span class="tag-blank">Leave Alone</span></td>
-          <td class="field-value">Do not change</td>
-          <td class="field-note">Leave whatever value is already there — do not edit</td>
-        </tr>
-        <tr>
-          <td class="field-name">Per (second field) <span class="tag-blank">Leave Alone</span></td>
-          <td class="field-value">Do not change</td>
-          <td class="field-note">Leave whatever value is already there — do not edit</td>
-        </tr>
-        <tr>
-          <td class="field-name">PP in a Year <span class="tag-blank">Leave Alone</span></td>
-          <td class="field-value">Do not change</td>
-          <td class="field-note">Leave whatever value is already there — do not edit</td>
-        </tr>
-        <tr>
-          <td class="field-name">Amount Earning Autopay <span class="tag-blank">Leave Alone</span></td>
-          <td class="field-value">Do not change</td>
-          <td class="field-note">Leave whatever value is already there — do not edit</td>
-        </tr>
-        <tr>
-          <td class="field-name">Autopay Type <span class="tag-blank">Leave Alone</span></td>
-          <td class="field-value">Do not change</td>
-          <td class="field-note">Leave whatever value is already there — do not edit</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- MANAGERS & SUBMIT -->
-  <section class="section" id="submit">
-    <div class="section-label"><span class="bar"></span> Step 7</div>
-    <h2>Managers &amp; Cost Centers — Submit</h2>
-    <p class="sub">The final step before submitting through the approval workflow.</p>
-    <table class="field-table" style="margin-bottom:1.25rem;">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="field-name">Manager 1 <span class="tag-required">Required</span></td>
-          <td class="field-value">Employee's direct manager</td>
-          <td class="field-note">Search and select the employee's direct manager — this is who they report to day-to-day</td>
-        </tr>
-        <tr>
-          <td class="field-name">Default Lids Corporation <span class="tag-auto">Auto</span></td>
-          <td class="field-value">Should auto-fill</td>
-          <td class="field-note">The cost center should populate automatically — verify it is correct before submitting</td>
-        </tr>
-      </tbody>
-    </table>
-    <ol class="steps-list">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Verify Manager 1 and cost center are correct</strong>
-          <span>Double-check before submitting — these drive payroll and reporting.</span>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Click Submit</strong>
-          <span>This sends the hire action through the approval workflow. The employee record will be created once approved.</span>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <section class="section" id="rehire-note">
-    <div class="section-label"><span class="bar"></span> Rehires Only</div>
-    <h2>Processing a Rehire After Background Check</h2>
-    <p class="sub">If the employee is a rehire, do not continue through the standard hire steps after initiating the background check. Follow these steps instead.</p>
-    <div class="dont-card" style="margin-bottom:1.25rem;">
-      <div class="icon">✗</div>
-      <p>Do NOT complete the full hire action for a rehire — use the Rehire HR Action instead after the background check is initiated.</p>
+        <span style="color:#fff;font-size:13px;font-weight:700;opacity:.9;">UKG Ready</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:14px;color:rgba(255,255,255,.5);">⊗</span>
+        <span style="font-size:14px;color:rgba(255,255,255,.5);">🔔</span>
+        <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">TE</div>
+      </div>
     </div>
-    <ol class="steps-list">
-      <li class="step">
-        <div class="step-num">1</div>
-        <div class="step-text">
-          <strong>Initiate the background check</strong>
-          <span>Complete only the background check initiation as normal. Stop there — do not proceed with the hire action.</span>
+    <!-- Menu panel that slides out -->
+    <div style="background:#fff;border-bottom:1px solid #e2e8f0;padding:0 14px;display:flex;gap:0;">
+      <div style="padding:10px 14px;font-size:13px;color:#6b7280;">My Info</div>
+      <div style="padding:10px 14px;font-size:13px;color:#1a2a5e;font-weight:700;border-bottom:2px solid #1a2a5e;">Team</div>
+      <div style="padding:10px 14px;font-size:13px;color:#6b7280;">Settings</div>
+    </div>
+    <div style="display:flex;background:#fff;">
+      <div style="background:#f4f6fb;border-right:1px solid #e2e8f0;padding:8px 0;width:70px;display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div style="padding:8px 4px;text-align:center;font-size:10px;color:#6b7280;">My Team</div>
+        <div style="padding:8px 4px;text-align:center;font-size:10px;color:#6b7280;">Time</div>
+        <div style="padding:8px 4px;text-align:center;font-size:10px;color:#1a3260;font-weight:700;background:#e8edf7;border-radius:6px;width:60px;">Recruit&shy;ment</div>
+      </div>
+      <div style="flex:1;padding:12px 14px;font-size:13px;">
+        <div style="font-weight:700;color:#1a2a5e;margin-bottom:8px;">Recruitment</div>
+        <div style="color:#6b7280;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12.5px;">Dashboard</div>
+        <div style="color:#6b7280;padding:4px 0;border-bottom:1px solid #f5f5f5;font-size:12.5px;">Job Requisitions</div>
+        <div style="padding:4px 0;border-bottom:1px solid #f5f5f5;">
+          <div style="color:#374151;font-weight:600;font-size:12.5px;margin-bottom:4px;">Applicant Checklist ▾</div>
+          <div style="padding:4px 8px;color:#3a7bd5;font-weight:700;background:#eff6ff;border-radius:4px;font-size:12.5px;outline:2px solid #f59e0b;outline-offset:1px;">Applicant Checklists</div>
+          <div style="padding:4px 8px;color:#6b7280;font-size:12px;margin-top:2px;">Applicant Checklist Items</div>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">2</div>
-        <div class="step-text">
-          <strong>Go to HR Actions via the search bar</strong>
-          <span>Type <strong>HR Actions</strong> in the UKG Ready search bar and select it from the results.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="vstep">Step 3 — Find the candidate → click the ✏️ pencil icon</div>
+  <div class="mkp">
+    <div style="background:#fff;padding:10px 14px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:14px;font-weight:700;color:#1a2a5e;">← Applicant Checklists</span>
+      <div style="display:flex;gap:6px;">
+        <div style="background:#e8edf7;border-radius:6px;padding:5px 10px;font-size:12px;color:#1a3260;font-weight:600;">View Available</div>
+        <div style="background:#1a3260;border-radius:6px;padding:5px 10px;font-size:12px;color:#fff;font-weight:700;">View</div>
+        <div style="background:#e8edf7;border-radius:6px;padding:5px 10px;font-size:12px;color:#9ca3af;">Delete</div>
+      </div>
+    </div>
+    <div style="background:#fff;">
+      <div style="display:grid;grid-template-columns:30px 36px 1fr 1fr 1fr 1fr 60px;gap:0;background:#f4f6fb;border-bottom:1px solid #e2e8f0;padding:7px 14px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;">
+        <div></div><div></div><div>First Name</div><div>Last Name</div><div>Category</div><div>Checklist Name</div><div style="text-align:right;">% Done</div>
+      </div>
+      <div class="cl-row">
+        <div class="cl-check"></div>
+        <div class="cl-pencil" title="Click to view">✎</div>
+        <div style="flex:1;">Test</div>
+        <div style="flex:1;">Employee</div>
+        <div style="flex:1;"><span class="cl-tag">Preboarding</span></div>
+        <div style="flex:1;color:#3a7bd5;font-weight:600;font-size:12.5px;">Preboarding</div>
+        <div class="cl-pct">100%</div>
+      </div>
+      <div class="cl-row">
+        <div class="cl-check"></div>
+        <div style="width:24px;height:24px;border-radius:5px;background:#e8edf7;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#9ca3af;">✎</div>
+        <div style="flex:1;">Sample</div>
+        <div style="flex:1;">Applicant</div>
+        <div style="flex:1;"><span class="cl-tag">Preboarding</span></div>
+        <div style="flex:1;color:#3a7bd5;font-weight:600;font-size:12.5px;">Preboarding</div>
+        <div class="cl-pct">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vstep">Step 4 — Click the Preboarding step to open the form</div>
+  <div class="mkp" style="max-width:500px;">
+    <div style="padding:14px 18px;background:#fff;">
+      <div style="font-size:14px;font-weight:700;color:#1a2a5e;margin-bottom:8px;text-decoration:underline;">Preboarding checklist</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="color:#16a34a;">✅</span><span style="font-size:13px;font-weight:600;color:#16a34a;">Completed</span></div>
+      <div style="background:#16a34a;height:7px;border-radius:4px;margin-bottom:10px;"></div>
+      <div style="border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:8px;">▾ Preboarding</div>
+        <div style="display:flex;align-items:center;gap:10px;background:#f8f9fb;border-radius:8px;padding:10px 12px;outline:2px solid #f59e0b;outline-offset:2px;cursor:pointer;">
+          <span style="color:#16a34a;font-size:16px;">✅</span>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1a2a5e;">Preboarding <span style="background:#dcfce7;color:#166534;font-size:11px;font-weight:700;border-radius:999px;padding:1px 7px;margin-left:4px;">Done</span></div>
+            <div style="display:flex;align-items:center;gap:5px;margin-top:3px;">
+              <div style="width:20px;height:20px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#1a3260;">TE</div>
+              <span style="font-size:11.5px;color:#6b7280;">Test Employee</span>
+            </div>
+          </div>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">3</div>
-        <div class="step-text">
-          <strong>Click Start next to Rehire</strong>
-          <span>Locate the Rehire action and click <strong>Start</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn">
+    <span class="ai">⚠️</span>
+    <div>Do <strong>not</strong> collect SSN, SIN, or Date of Birth outside of UKG Ready. Only access this information through the preboarding form.</div>
+  </div>
+</section>
+
+<!-- ── HIRE THE CANDIDATE ── -->
+<section class="section" id="hire">
+  <div class="section-label"><span class="bar"></span> Step 1</div>
+  <h2>Hire the Candidate</h2>
+  <p class="sub">Navigate to the candidate's application via Recruitment, then click <strong>Hire</strong> in the Quick Actions panel on the right.</p>
+
+  <div class="mkp">
+    <!-- Top bar + nav showing path to get here -->
+    <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;">
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
+          <div style="width:18px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;"></div>
         </div>
-      </li>
-      <li class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">
-          <strong>Complete the required fields</strong>
-          <span>Enter the following — these are the only fields that need to be updated:</span>
+        <span style="color:#fff;font-size:13px;font-weight:700;opacity:.9;">UKG Ready</span>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.7);">☰ Menu → Recruitment → Job Requisitions → Applications → View candidate → Quick Actions</div>
+    </div>
+    <div style="background:#fff;border-bottom:1px solid #e2e8f0;padding:5px 14px;font-size:11.5px;color:#6b7280;display:flex;align-items:center;gap:4px;">
+      <span>Recruitment</span><span>›</span><span>Job Requisitions</span><span>›</span><span>Applications</span><span>›</span><span style="color:#1a3260;font-weight:600;">Test Employee</span>
+    </div>
+    <div style="background:#e8f0fb;padding:6px 14px;font-size:11px;color:#1a3260;border-bottom:1px solid #e2e8f0;">
+      <span style="background:rgba(255,255,255,.7);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600;">Application Received</span>
+    </div>
+    <div style="display:flex;">
+      <div style="flex:1;padding:14px;border-right:1px solid #f0f0f0;">
+        <div style="font-size:12.5px;font-weight:700;color:#1a2a5e;margin-bottom:10px;">Hiring Stages</div>
+        <div style="display:flex;align-items:flex-start;margin-bottom:14px;overflow:hidden;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;min-width:56px;">
+            <div style="width:20px;height:20px;border-radius:50%;background:#1a3260;display:flex;align-items:center;justify-content:center;"><div style="width:7px;height:7px;background:#fff;border-radius:50%;"></div></div>
+            <span style="font-size:9px;color:#1a3260;font-weight:700;text-align:center;max-width:52px;">Application Received</span>
+          </div>
+          <div style="flex:1;height:2px;background:#e2e8f0;margin-top:10px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;min-width:50px;">
+            <div style="width:20px;height:20px;border-radius:50%;border:2px solid #93c5fd;background:#fff;"></div>
+            <span style="font-size:9px;color:#9ca3af;text-align:center;max-width:50px;">Preboarding</span>
+          </div>
+          <div style="flex:1;height:2px;background:#e2e8f0;margin-top:10px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;min-width:46px;">
+            <div style="width:20px;height:20px;border-radius:50%;border:2px solid #93c5fd;background:#fff;"></div>
+            <span style="font-size:9px;color:#9ca3af;text-align:center;max-width:46px;">Hired</span>
+          </div>
         </div>
-      </li>
-    </ol>
-    <table class="field-table" style="margin-top:0.75rem;margin-bottom:1.25rem;">
-      <thead>
-        <tr><th>Field</th><th>What to Enter</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="field-name">Rehire Date <span class="tag-required">Required</span></td><td class="field-value">Enter the employee's rehire date</td></tr>
-        <tr><td class="field-name">Status <span class="tag-required">Required</span></td><td class="field-value">Change to <strong>Active</strong></td></tr>
-        <tr><td class="field-name">New Position <span class="tag-required">Required</span></td><td class="field-value">Enter the employee's new position</td></tr>
-        <tr><td class="field-name">New Compensation <span class="tag-required">Required</span></td><td class="field-value">Enter the employee's new pay rate</td></tr>
-      </tbody>
-    </table>
-  </section>
+        <div style="border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;background:#f8f9fb;">
+          <div style="font-weight:700;color:#1a2a5e;font-size:13px;">Test Employee</div>
+          <div style="font-size:11.5px;color:#6b7280;margin-top:2px;">123 Test Street, Indianapolis, IN 46278</div>
+          <div style="font-size:11.5px;color:#3a7bd5;">test.employee@email.com</div>
+        </div>
+      </div>
+      <div style="width:185px;flex-shrink:0;padding:14px;">
+        <div style="font-size:12.5px;font-weight:700;color:#1a2a5e;margin-bottom:10px;">→| Quick Actions</div>
+        <div class="qa-btn">Save</div>
+        <div class="qa-btn">Revert To Previous Stage</div>
+        <div class="qa-btn">Add Evaluation Questionnaire</div>
+        <div class="qa-btn">Schedule Interview</div>
+        <div class="qa-btn">Add Offer</div>
+        <div class="qa-btn hi">Hire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EFFECTIVE DATE ── -->
+<section class="section" id="effective">
+  <div class="section-label"><span class="bar"></span> Step 2</div>
+  <h2>Effective Date</h2>
+  <p class="sub">Set the <strong>Effective From</strong> date at the top of the hire form. Always use today's date — never backdate or postdate.</p>
+
+  <div class="mkp">
+    <div style="background:#3d6b9e;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:2px 4px;">
+          <div style="width:16px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;"></div>
+          <div style="width:16px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;"></div>
+          <div style="width:16px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;"></div>
+        </div>
+        <span style="color:#fff;font-size:12px;font-weight:700;opacity:.8;">UKG Ready</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:13px;color:rgba(255,255,255,.5);">⊗</span>
+        <span style="font-size:13px;color:rgba(255,255,255,.5);">🔔</span>
+        <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">TE</div>
+      </div>
+    </div>
+    <div style="padding:12px 18px;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span style="font-size:14px;font-weight:700;color:#1a2a5e;">← Hire Employee</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1a3260;">TE</div>
+        <span style="font-size:13px;font-weight:600;color:#1a2a5e;">Test Employee</span>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;color:#6b7280;">Effective From <span style="color:#dc2626;">*</span></span>
+        <div style="border:1px solid #d1d5db;border-radius:6px;padding:5px 10px;font-size:13px;font-weight:700;color:#1a2a5e;background:#fff;outline:2px solid #f59e0b;outline-offset:2px;">06/09/2026 📅</div>
+      </div>
+    </div>
+    <div style="padding:8px 18px;background:#eff6ff;font-size:12px;color:#1e40af;">
+      Sections: <strong>Employee Information</strong> → Contact Information → Work Information → Unemployment State → Timesheet Profiles &amp; Settings → Manager(s) &amp; Cost Center(s)
+    </div>
+  </div>
+
+  <div class="alert alert-warn">
+    <span class="ai">⚠️</span>
+    <div><strong>Always use today's date.</strong> The employee's actual start date is entered separately in Employee Information.</div>
+  </div>
+</section>
+
+<!-- ── EMPLOYEE INFORMATION ── -->
+<section class="section" id="empinfo">
+  <div class="section-label"><span class="bar"></span> Step 3</div>
+  <h2>Employee Information</h2>
+  <p class="sub">Fill in the employee's details. Use the preboarding form for SSN/SIN and Date of Birth.</p>
+
+  <div class="form-wrap">
+    <div class="form-side">
+      <div class="form-side-prog">
+        <div style="font-size:11px;color:#f59e0b;font-weight:700;">⚠ In progress</div>
+        <div style="background:#e2e8f0;border-radius:3px;height:5px;margin-top:5px;"><div style="width:0%;height:100%;background:#3a7bd5;border-radius:3px;"></div></div>
+        <div style="font-size:10px;color:#9ca3af;margin-top:2px;">0%</div>
+      </div>
+      <div class="form-side-item act"><div class="sdot act"></div>Employee Information</div>
+      <div class="form-side-item"><div class="sdot"></div>Contact Information</div>
+      <div class="form-side-item"><div class="sdot"></div>Work Information</div>
+      <div class="form-side-item"><div class="sdot"></div>Unemployment State</div>
+      <div class="form-side-item"><div class="sdot"></div>Timesheet Profiles</div>
+      <div class="form-side-item"><div class="sdot"></div>Manager(s) &amp; Cost Center(s)</div>
+    </div>
+    <div class="form-main">
+      <div class="form-head">Employee Information</div>
+      <div class="form-body">
+        <div class="fsection">Personal Settings</div>
+        <div class="frow">
+          <div><div class="flabel blue">EIN <span class="freq">*</span></div><div class="finput filled">Hat World Inc. <span style="color:#9ca3af;">▾</span></div></div>
+          <div><div class="flabel">Birth Date <span class="freq">*</span></div><div class="finput ghost">mm/dd/yyyy 📅</div></div>
+        </div>
+        <div class="fsection">National ID</div>
+        <div class="frow">
+          <div><div class="flabel">Primary National ID <span class="freq">*</span></div><div class="finput filled">Social Security Number <span style="color:#9ca3af;">▾</span></div></div>
+          <div><div class="flabel">&nbsp;</div><div class="finput" style="font-family:monospace;letter-spacing:.1em;">•••••••••••</div></div>
+        </div>
+        <div class="fsection">Account — Do Not Touch</div>
+        <div class="frow">
+          <div><div class="flabel">Employee ID <span class="ftag-auto">Auto</span></div><div class="finput ghost">System Will Auto-generate if Empty</div></div>
+          <div><div class="flabel">Username <span class="ftag-auto">Auto</span></div><div class="finput ghost">System Will Auto-generate if Empty</div></div>
+          <div><div class="flabel">New Password <span class="ftag-auto">Auto</span></div><div class="finput ghost">System Will Auto-generate if Empty</div></div>
+        </div>
+        <div class="fsection">Name</div>
+        <div class="frow">
+          <div><div class="flabel">First Name <span class="freq">*</span></div><div class="finput">&nbsp;</div></div>
+          <div><div class="flabel">Middle</div><div class="finput">&nbsp;</div></div>
+          <div><div class="flabel">Last Name <span class="freq">*</span></div><div class="finput">&nbsp;</div></div>
+        </div>
+        <div class="fsection">Address</div>
+        <div class="frow">
+          <div style="flex:.8;"><div class="flabel">Country <span class="freq">*</span></div><div class="finput filled">United States <span style="color:#9ca3af;">▾</span></div></div>
+          <div style="flex:1.5;"><div class="flabel">Street <span class="freq">*</span></div><div class="finput err"><span style="color:#dc2626;">⬥</span></div></div>
+        </div>
+        <div class="frow">
+          <div><div class="flabel">Zip <span class="freq">*</span></div><div class="finput err"><span style="color:#dc2626;">⬥</span></div></div>
+          <div><div class="flabel">City <span class="freq">*</span></div><div class="finput err"><span style="color:#dc2626;">⬥</span> <span style="color:#9ca3af;font-size:11px;">Choose... ▾</span></div></div>
+          <div><div class="flabel">State <span class="freq">*</span></div><div class="finput err"><span style="color:#dc2626;">⬥</span> <span style="color:#9ca3af;font-size:11px;">Choose... ▾</span></div></div>
+        </div>
+        <div class="fsection">Dates &amp; Status</div>
+        <div class="frow">
+          <div><div class="flabel">Hired <span class="freq">*</span></div><div class="finput ghost">mm/dd/yyyy 📅</div></div>
+          <div><div class="flabel">Started <span class="freq">*</span></div><div class="finput ghost">mm/dd/yyyy 📅</div></div>
+          <div><div class="flabel blue">Account Status <span class="freq">*</span></div><div class="finput filled">Active <span style="color:#9ca3af;">▾</span></div></div>
+        </div>
+        <div class="frow" style="margin-bottom:0;">
+          <div style="max-width:220px;"><div class="flabel">Primary Language <span class="freq">*</span></div><div class="finput ghost">Choose... ▾</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:.9rem;display:flex;flex-direction:column;gap:.5rem;">
+    <div class="alert alert-red"><span class="ai">🚫</span><div><strong>Employee ID, Username, New Password — leave blank.</strong> Auto-generates. Entering anything causes errors.</div></div>
+    <div class="alert alert-red"><span class="ai">🚫</span><div><strong>Never select "No ID Needed."</strong> U.S. = SSN &nbsp;|&nbsp; Canada = SIN.</div></div>
+    <div class="alert alert-blue"><span class="ai">💡</span><div><strong>Hired &amp; Started</strong> = employee's actual start date. &nbsp;<strong>Primary Language</strong> = language their onboarding checklist is delivered in.</div></div>
+  </div>
+</section>
+
+<!-- ── CONTACT INFORMATION ── -->
+<section class="section" id="contact">
+  <div class="section-label"><span class="bar"></span> Step 4</div>
+  <h2>Contact Information</h2>
+  <p class="sub">Contact details pre-fill from the application. Verify email, cell phone, and country code — then click <strong>Continue</strong>.</p>
+  <div class="alert alert-blue" style="margin-top:0;">
+    <span class="ai">💡</span>
+    <div>U.S. and Canada are both <strong>+1</strong> — make sure you select the correct <strong>country</strong> from the dropdown, not just the code.</div>
+  </div>
+</section>
+
+<!-- ── WORK INFORMATION ── -->
+<section class="section" id="position">
+  <div class="section-label"><span class="bar"></span> Step 5</div>
+  <h2>Work Information — Position</h2>
+  <p class="sub">Click <strong>+ Add</strong> in Position Assignments, search by store number, and fill in the position details.</p>
+
+  <div class="vstep">Before — click + Add in Position Assignments</div>
+  <div class="mkp" style="margin-bottom:1rem;">
+    <div style="background:#f4f6fb;padding:9px 18px;font-size:14px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">Work Information</div>
+    <div style="padding:14px 18px;background:#fff;">
+      <div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:10px;">Position Assignments</div>
+      <div style="border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;justify-content:space-between;padding:8px 14px;background:#f8f9fb;border-bottom:1px solid #e2e8f0;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;">
+          <div style="display:flex;gap:24px;"><span>Position Name</span><span>FTE</span><span>Is Primary</span><span>Start Date</span></div>
+          <span style="color:#3a7bd5;font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;cursor:pointer;outline:2px solid #f59e0b;outline-offset:2px;border-radius:3px;padding:0 4px;">+ Add</span>
+        </div>
+        <div style="padding:12px 14px;font-size:13px;color:#9ca3af;font-style:italic;display:flex;align-items:center;gap:6px;">ℹ No Data to Display</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vstep">Add Position modal — search by store number, then fill in fields</div>
+  <div class="modal-wrap">
+    <div class="modal" style="max-width:480px;">
+      <div class="modal-title">Add Position <span style="color:#9ca3af;font-weight:400;cursor:pointer;">✕</span></div>
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Position</div>
+      <div style="margin-bottom:10px;">
+        <div class="flabel">Position <span class="freq">*</span> — type store number to search</div>
+        <div class="finput filled" style="border-color:#3a7bd5;">0001 – Assistant Store Manager PT &nbsp; ✕ 🔍</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <div style="flex:1;"><div class="flabel">Start Date <span class="freq">*</span> — today's date</div><div class="finput filled" style="outline:2px solid #f59e0b;outline-offset:2px;">06/09/2026 📅</div></div>
+        <div style="flex:1;"><div class="flabel">End Date — leave blank</div><div class="finput ghost">mm/dd/yyyy 📅</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="width:15px;height:15px;background:#1a3260;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;">✓</div>
+          <span style="font-size:13px;color:#374151;font-weight:500;">Is Primary Assignment</span>
+        </div>
+        <div style="flex:1;min-width:160px;"><div class="flabel">Assignment Change Reason</div><div class="finput filled">New Hire <span style="color:#9ca3af;">▾</span></div></div>
+      </div>
+      <div style="border-top:1px solid #e2e8f0;margin:10px 0;"></div>
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Compensation</div>
+      <div style="margin-bottom:4px;"><div class="flabel">Assigned FTE <span class="freq">*</span></div></div>
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:10px;font-size:13px;">
+        <div style="background:#dbeafe;color:#1e40af;font-weight:700;border-radius:6px;padding:5px 14px;">0.500 <span style="font-size:11px;">Part-Time</span></div>
+        <span style="color:#9ca3af;">or</span>
+        <div style="background:#dcfce7;color:#166534;font-weight:700;border-radius:6px;padding:5px 14px;">1.000 <span style="font-size:11px;">Full-Time</span></div>
+      </div>
+      <div style="border-top:1px solid #e2e8f0;margin:10px 0;"></div>
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Primary Manager</div>
+      <div style="display:flex;gap:10px;margin-bottom:4px;">
+        <div style="flex:1;"><div class="flabel">Directly Reports To Position</div><div class="finput filled">0001 – Store Manager</div></div>
+        <div style="flex:1;"><div class="flabel">Directly Reports To Manager <span class="freq">*</span></div><div class="finput" style="border-color:#3a7bd5;"><span style="flex:1;color:#9ca3af;font-size:12px;">Search...</span><span style="color:#3a7bd5;font-size:16px;">🔍</span></div></div>
+      </div>
+      <div style="font-size:11.5px;color:#f59e0b;font-weight:600;margin-bottom:10px;">↑ Click 🔍 to search and select the manager — everything else autofills</div>
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Cost Centers <span class="ftag-auto">Autofills</span></div>
+      <div class="finput filled" style="max-width:220px;font-size:12px;">Hat World Inc./Retail/Mid... <span style="color:#9ca3af;">▾</span></div>
+      <div class="modal-footer">
+        <button class="mbtn mbtn-sec">Clear</button>
+        <button class="mbtn mbtn-pri">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-red">
+    <span class="ai">🚫</span>
+    <div>Do <strong>not</strong> enter compensation here. Pay rate is entered separately in Base Compensation.</div>
+  </div>
+</section>
+
+<!-- ── COMPENSATION ── -->
+<section class="section" id="comp">
+  <div class="section-label"><span class="bar"></span> Step 6</div>
+  <h2>Work Information — Base Compensation</h2>
+  <p class="sub">Scroll down to Base Compensation and click <strong>+ Add</strong> to enter the employee's pay rate.</p>
+
+  <div class="vstep">Click + Add in Base Compensation</div>
+  <div class="mkp" style="margin-bottom:1rem;">
+    <div style="padding:14px 18px;background:#fff;">
+      <div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:8px;">Base Compensation</div>
+      <div style="display:flex;gap:24px;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:12px;color:#6b7280;margin-bottom:8px;">
+        <span>Annual &nbsp;<strong style="color:#374151;">$0.00 / 2080.00hrs</strong></span>
+        <span>Pay Period &nbsp;<strong style="color:#374151;">0.00 / 80.00hrs</strong></span>
+        <span>Hourly &nbsp;<strong style="color:#374151;">$0.00</strong></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;color:#3a7bd5;font-weight:600;">Annual ▾</span>
+        <span style="font-size:13px;color:#3a7bd5;font-weight:700;outline:2px solid #f59e0b;outline-offset:2px;border-radius:3px;padding:1px 6px;cursor:pointer;">+ Add</span>
+      </div>
+      <table class="comp-table">
+        <thead><tr><th>Effective From</th><th>Amount</th><th>Hours</th><th>PP</th><th>Autopay Type</th></tr></thead>
+        <tbody><tr><td>12/31/1900</td><td>$0.00 / PP</td><td>2080.00hrs / Year</td><td>26</td><td>AMOUNT</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="vstep">Add New Base Compensation modal — fill in highlighted fields only</div>
+  <div class="modal-wrap">
+    <div class="modal">
+      <div class="modal-title">Add New Base Compensation <span style="color:#9ca3af;cursor:pointer;font-weight:400;">✕</span></div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <div style="flex:1;"><div class="flabel">Effective From <span class="freq">*</span></div><div class="finput filled" style="outline:2px solid #f59e0b;outline-offset:2px;">06/09/2026 📅</div></div>
+        <div style="flex:1;"><div class="flabel">Reason Code <span class="freq">*</span></div><div class="finput filled" style="outline:2px solid #f59e0b;outline-offset:2px;">New Hire <span style="color:#9ca3af;">▾</span></div></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <div style="flex:1;"><div class="flabel">Amount <span class="freq">*</span> — from offer letter</div><div class="finput filled" style="outline:2px solid #f59e0b;outline-offset:2px;">15.0000 <span style="color:#9ca3af;">$</span></div></div>
+        <div style="flex:1;"><div class="flabel">Currency</div><div class="finput ghost">United States Dollar ($)</div></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <div style="flex:1;">
+          <div class="flabel">Per <span class="ftag-warn">Must change to Hour!</span></div>
+          <div style="border:1.5px solid #dc2626;border-radius:6px;overflow:hidden;">
+            <div class="finput" style="border:none;border-bottom:1px solid #e2e8f0;border-radius:0;background:#fff5f5;color:#991b1b;font-weight:700;">PP (default) ▾</div>
+            <div style="background:#f8f9fb;font-size:12.5px;">
+              <div style="padding:5px 12px;color:#374151;">Year</div>
+              <div style="padding:5px 12px;color:#374151;">Month</div>
+              <div style="padding:5px 12px;color:#374151;">Week</div>
+              <div style="padding:5px 12px;background:#1a3260;color:#fff;font-weight:700;">▶ Hour — select this</div>
+              <div style="padding:5px 12px;color:#6b7280;">PP</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div class="flabel">Hours <span class="ftag-auto">Leave Alone</span></div>
+          <div class="finput ghost" style="margin-bottom:8px;">2080.00</div>
+          <div class="flabel">PP in Year <span class="ftag-auto">Leave Alone</span></div>
+          <div class="finput ghost" style="margin-bottom:8px;">26</div>
+          <div class="flabel">Weekly Hours <span class="freq">*</span></div>
+          <div style="border:1.5px solid #3a7bd5;border-radius:6px;overflow:hidden;">
+            <div style="background:#1a3260;color:#fff;font-weight:700;padding:5px 12px;font-size:13px;">20 — Part-Time</div>
+            <div style="padding:5px 12px;font-size:13px;color:#374151;font-weight:600;background:#f8f9fb;">40 — Full-Time</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="mbtn mbtn-sec">Cancel</button>
+        <button class="mbtn mbtn-pri">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warn">
+    <span class="ai">⚠️</span>
+    <div><strong>Per defaults to PP — you must change it to Hour.</strong> All other fields besides the highlighted ones: leave as-is.</div>
+  </div>
+</section>
+
+<!-- ── UNEMPLOYMENT STATE ── -->
+<section class="section" id="unemployment">
+  <div class="section-label"><span class="bar"></span> Step 7</div>
+  <h2>Unemployment State</h2>
+  <p class="sub"><strong>U.S. employees only.</strong> Canadian employees — skip this tab and click Continue.</p>
+
+  <div class="alert alert-green" style="margin-top:0;margin-bottom:1rem;">
+    <span class="ai">🍁</span>
+    <div><strong>Canada employees:</strong> Skip this tab. Click <strong>Continue</strong>.</div>
+  </div>
+
+  <div class="vstep">Click the State tab → click ✎ Edit under Unemployment State</div>
+  <div class="mkp" style="margin-bottom:1rem;">
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:8px 14px;border-bottom:1px solid #e2e8f0;background:#fff;">
+      <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 12px;font-size:12.5px;">Save</div>
+      <div style="background:#1a3260;border-radius:6px;padding:4px 12px;font-size:12.5px;color:#fff;font-weight:700;">Continue</div>
+    </div>
+    <div style="background:#f4f6fb;padding:9px 18px;font-size:14px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">Unemployment State</div>
+    <div style="margin:12px 14px;background:#eff6ff;border-left:3px solid #93c5fd;padding:9px 12px;font-size:12px;color:#1e40af;border-radius:4px;">ℹ Navigate to the State tab → click "Edit" → enter the state where the employee works. Canada employees: skip.</div>
+    <div style="padding:0 14px 12px;">
+      <div style="font-size:12.5px;color:#374151;font-weight:600;margin-bottom:8px;">Tax Information</div>
+      <div style="display:flex;gap:4px;margin-bottom:14px;">
+        <div style="padding:6px 14px;font-size:12.5px;border-radius:6px 6px 0 0;background:#e8edf7;color:#6b7280;font-weight:600;">Federal</div>
+        <div style="padding:6px 14px;font-size:12.5px;border-radius:6px 6px 0 0;background:#1a3260;color:#fff;font-weight:700;outline:2px solid #f59e0b;outline-offset:2px;">State</div>
+        <div style="padding:6px 14px;font-size:12.5px;border-radius:6px 6px 0 0;background:#e8edf7;color:#6b7280;">Local</div>
+        <div style="padding:6px 14px;font-size:12.5px;border-radius:6px 6px 0 0;background:#e8edf7;color:#6b7280;">General</div>
+      </div>
+      <div style="border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;margin-bottom:10px;">
+        <div style="background:#f8f9fb;padding:7px 12px;font-size:11.5px;font-weight:700;color:#374151;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;"><span>▾ Jurisdiction</span><span>Actions</span></div>
+        <div style="padding:9px 12px;font-size:12.5px;color:#9ca3af;font-style:italic;">ℹ No Data to Display</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="font-size:12.5px;font-weight:700;color:#374151;">Settings</span>
+        <span style="font-size:12.5px;color:#3a7bd5;font-weight:700;cursor:pointer;outline:2px solid #f59e0b;outline-offset:2px;border-radius:4px;padding:1px 6px;">✎ Edit</span>
+      </div>
+      <div style="border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;">
+        <div style="background:#f8f9fb;padding:7px 12px;font-size:11.5px;font-weight:700;color:#374151;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;"><span>▾ Unemployment State</span><span>Actions</span></div>
+        <div style="padding:9px 12px;font-size:12.5px;color:#9ca3af;font-style:italic;">ℹ No Data to Display</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vstep">Edit modal — select state, check W2, click Save</div>
+  <div class="modal-wrap">
+    <div class="modal">
+      <div class="modal-title">Edit Unemployment State <span style="color:#9ca3af;font-weight:400;cursor:pointer;">✕</span></div>
+      <div style="margin-bottom:10px;">
+        <div class="flabel">State <span class="freq">*</span> — where the employee works</div>
+        <div style="border:1.5px solid #3a7bd5;border-radius:6px;overflow:hidden;">
+          <div class="finput filled" style="border:none;border-bottom:1px solid #e2e8f0;border-radius:0;">Indiana <span style="color:#9ca3af;margin-left:auto;">▾</span></div>
+          <div style="background:#f8f9fb;font-size:12.5px;">
+            <div style="padding:5px 12px;background:#eff6ff;color:#1a3260;font-weight:700;">Indiana</div>
+            <div style="padding:5px 12px;color:#374151;">Iowa</div>
+            <div style="padding:5px 12px;color:#374151;">Kansas</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div class="flabel">State Reciprocity Override <span class="ftag-warn">Leave Alone</span></div>
+        <div class="finput filled">Enforce Reciprocity <span style="color:#9ca3af;">▾</span></div>
+      </div>
+      <div style="margin-bottom:4px;"><div class="flabel">Employee Tax Type — check W2 only</div></div>
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:4px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;"><div style="width:15px;height:15px;background:#1a3260;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;">✓</div> W2</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;"><div style="width:15px;height:15px;border:2px solid #d1d5db;border-radius:3px;"></div> 1099</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:13px;"><div style="width:15px;height:15px;border:2px solid #d1d5db;border-radius:3px;"></div> Draw</div>
+      </div>
+      <div class="modal-footer">
+        <button class="mbtn mbtn-sec">Cancel</button>
+        <button class="mbtn mbtn-pri">Save</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUBMIT ── -->
+<section class="section" id="submit">
+  <div class="section-label"><span class="bar"></span> Step 8</div>
+  <h2>Managers &amp; Cost Centers — Submit</h2>
+  <p class="sub">Select the employee's direct manager, verify the cost center autofilled correctly, then click <strong>Submit</strong>.</p>
+  <div class="alert alert-blue" style="margin-top:0;">
+    <span class="ai">💡</span>
+    <div>Once submitted, the hire action routes through the approval workflow. The employee record is created once approved.</div>
+  </div>
+</section>
+
+<!-- ── REHIRES ── -->
+<section class="section" id="rehire-note">
+  <div class="section-label"><span class="bar"></span> Rehires</div>
+  <h2>Processing a Rehire</h2>
+  <p class="sub">Do not use this guide for rehires. Confirm the offer was signed and background check completed, then use the Rehire action in HR Actions.</p>
+  <div class="dont-card" style="margin-bottom:1rem;">
+    <div class="icon">✗</div>
+    <p>Do NOT use this guide for rehires — use <strong>Retail Leader – Rehire Employee</strong> in HR Actions</p>
+  </div>
+
+  <div class="mkp">
+    <div style="padding:10px 16px;border-bottom:1px solid #e2e8f0;background:#fff;display:flex;align-items:center;gap:8px;">
+      <span style="font-size:15px;font-weight:700;color:#1a2a5e;">← HR Actions</span>
+    </div>
+    <div style="background:#fff;">
+      <div style="display:grid;grid-template-columns:1fr 2fr 80px;padding:7px 16px;background:#f4f6fb;border-bottom:1px solid #e2e8f0;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;">
+        <span>Action Name</span><span>Description</span><span style="text-align:right;">Actions</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr 80px;padding:9px 16px;border-bottom:1px solid #f0f0f0;font-size:13px;">
+        <span style="color:#374151;">Retail Leader – Hire Employee</span>
+        <span style="color:#3a7bd5;font-size:12.5px;">How to Hire an Applicant</span>
+        <span style="color:#3a7bd5;font-weight:700;text-align:right;">Start</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr 80px;padding:9px 16px;border-bottom:1px solid #f0f0f0;font-size:13px;background:#fffbeb;outline:2px solid #f59e0b;outline-offset:-2px;">
+        <span style="color:#374151;font-weight:700;">Retail Leader – Rehire Employee</span>
+        <span style="color:#3a7bd5;font-size:12.5px;">How to Rehire</span>
+        <span style="color:#3a7bd5;font-weight:700;text-align:right;">Start</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr 80px;padding:9px 16px;font-size:13px;">
+        <span style="color:#374151;">Retail Leader – Terminate Employee</span>
+        <span style="color:#3a7bd5;font-size:12.5px;">How to Terminate</span>
+        <span style="color:#3a7bd5;font-weight:700;text-align:right;">Start</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <strong>Lids · UKG Ready Training</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR
 </footer>
-
 </body>
 </html>
