@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>401(k) Benefits Guide — Lids</title>
+<title>Lids Employee Benefits Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +33,7 @@
 
   .section { background:#fff; border-radius:20px; border:1.5px solid var(--light-gray); padding:2rem 2.25rem; margin-bottom:1.75rem; box-shadow:0 2px 12px rgba(15,31,61,.06); animation:fadeUp .5s ease both; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
-  .section:nth-child(1){animation-delay:.05s} .section:nth-child(2){animation-delay:.1s} .section:nth-child(3){animation-delay:.15s} .section:nth-child(4){animation-delay:.2s} .section:nth-child(5){animation-delay:.25s} .section:nth-child(6){animation-delay:.3s} .section:nth-child(7){animation-delay:.35s}
+  .section:nth-child(1){animation-delay:.05s}.section:nth-child(2){animation-delay:.1s}.section:nth-child(3){animation-delay:.15s}.section:nth-child(4){animation-delay:.2s}.section:nth-child(5){animation-delay:.25s}.section:nth-child(6){animation-delay:.3s}.section:nth-child(7){animation-delay:.35s}.section:nth-child(8){animation-delay:.4s}.section:nth-child(9){animation-delay:.45s}.section:nth-child(10){animation-delay:.5s}.section:nth-child(11){animation-delay:.55s}
 
   .section-label { display:inline-flex; align-items:center; gap:.45rem; font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:.5rem; }
   .section-label .bar { width:18px; height:2.5px; background:var(--green); border-radius:2px; }
@@ -44,6 +44,7 @@
   .sbox { border:2px solid #e2e8f0; border-radius:14px; padding:1.1rem 1.25rem 1.25rem; margin-top:1.25rem; background:#fafbfd; }
   .sbox-label { font-size:.72rem; font-weight:800; color:#111827; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; gap:.5rem; margin-bottom:.85rem; }
   .sbox-label::before { content:''; display:block; width:4px; height:16px; background:#111827; border-radius:2px; flex-shrink:0; }
+  .sbox .alert { margin-top:.75rem; }
 
   /* alerts */
   .alert { border-radius:11px; padding:.85rem 1.1rem; display:flex; align-items:flex-start; gap:.7rem; font-size:.85rem; font-weight:500; line-height:1.5; margin-top:1rem; }
@@ -53,58 +54,65 @@
   .alert .ai { font-size:1.1rem; flex-shrink:0; }
 
   /* info cards */
-  .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1rem; }
-  .info-card { background:var(--green-light); border:1.5px solid #a7f3d0; border-radius:14px; padding:1.1rem 1.2rem; }
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1rem; margin-top:1rem; }
+  .info-card { background:var(--green-light); border:1.5px solid #a7f3d0; border-radius:14px; padding:1rem 1.1rem; }
   .info-card .ic-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--green); margin-bottom:.3rem; }
-  .info-card .ic-value { font-size:1.1rem; font-weight:700; color:var(--navy); line-height:1.3; }
-  .info-card .ic-note { font-size:.8rem; color:var(--text-muted); margin-top:.2rem; }
+  .info-card .ic-value { font-size:1.05rem; font-weight:700; color:var(--navy); line-height:1.3; }
+  .info-card .ic-note { font-size:.78rem; color:var(--text-muted); margin-top:.2rem; }
+
+  /* coverage table */
+  .cov-table { width:100%; border-collapse:collapse; margin-top:.75rem; border-radius:10px; overflow:hidden; font-size:.85rem; }
+  .cov-table th { background:var(--navy); color:#fff; padding:.6rem 1rem; text-align:left; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+  .cov-table td { padding:.65rem 1rem; border-bottom:1px solid var(--light-gray); color:var(--text-body); vertical-align:top; }
+  .cov-table tr:last-child td { border-bottom:none; }
+  .cov-table tr:nth-child(even) td { background:var(--off-white); }
+  .cov-table td:first-child { font-weight:600; color:var(--navy); }
 
   /* steps */
-  .steps { display:flex; flex-direction:column; gap:.75rem; margin-top:.75rem; }
+  .steps { display:flex; flex-direction:column; gap:.7rem; margin-top:.75rem; }
   .step { display:flex; gap:.85rem; align-items:flex-start; }
   .step-num { width:28px; height:28px; border-radius:50%; flex-shrink:0; background:linear-gradient(135deg,var(--green),var(--green-mid)); color:#fff; font-weight:700; font-size:.8rem; display:flex; align-items:center; justify-content:center; margin-top:2px; }
   .step-body { flex:1; font-size:.88rem; color:var(--text-body); line-height:1.5; }
   .step-body strong { color:var(--navy); }
 
   /* use cards */
-  .use-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin-top:.75rem; }
+  .use-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:1rem; margin-top:.75rem; }
   .use-card { background:var(--off-white); border:1.5px solid var(--light-gray); border-radius:14px; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.75rem; }
   .use-card .icon { width:32px; height:32px; border-radius:9px; flex-shrink:0; background:linear-gradient(135deg,var(--green),var(--green-mid)); color:#fff; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
   .use-card p { font-size:.85rem; font-weight:500; color:var(--text-body); line-height:1.4; }
 
   /* cta box */
-  .cta-box { background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%); border-radius:16px; padding:1.75rem 2rem; color:#fff; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; margin-top:1.25rem; }
-  .cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.4rem; font-weight:400; margin-bottom:.3rem; }
-  .cta-box p { font-size:.88rem; color:rgba(255,255,255,.8); }
-  .cta-btn { background:#fff; color:var(--green); font-weight:700; font-size:.88rem; border-radius:999px; padding:.6rem 1.4rem; text-decoration:none; white-space:nowrap; display:inline-block; }
+  .cta-box { background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%); border-radius:16px; padding:1.5rem 1.75rem; color:#fff; display:flex; align-items:center; justify-content:space-between; gap:1.25rem; flex-wrap:wrap; margin-top:1.25rem; }
+  .cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.3rem; font-weight:400; margin-bottom:.25rem; }
+  .cta-box p { font-size:.85rem; color:rgba(255,255,255,.8); }
+  .cta-btn { background:#fff; color:var(--green); font-weight:700; font-size:.85rem; border-radius:999px; padding:.55rem 1.3rem; text-decoration:none; white-space:nowrap; display:inline-block; transition:all .15s; }
   .cta-btn:hover { background:var(--green-light); }
+  .cta-btn.outline { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.6); }
+  .cta-btn.outline:hover { background:rgba(255,255,255,.15); }
 
-  /* login mockup */
-  .login-box { border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; max-width:340px; font-family:-apple-system,sans-serif; font-size:13px; margin-top:1rem; }
-  .login-header { background:#8b0000; padding:12px 16px; display:flex;align-items:center;gap:8px; }
-  .login-header span { color:#fff; font-size:13px; font-weight:700; letter-spacing:.05em; }
-  .login-body { background:#fff; padding:20px; }
-  .login-field { margin-bottom:12px; }
-  .login-field label { font-size:11px; font-weight:600; color:#6b7280; display:block; margin-bottom:4px; }
-  .login-field input-mock { display:block; border:1px solid #d1d5db; border-radius:6px; padding:8px 10px; font-size:13px; color:#9ca3af; font-style:italic; width:100%; }
-  .login-btn { background:#8b0000; color:#fff; border-radius:6px; padding:9px; font-size:13px; font-weight:700; text-align:center; width:100%; margin-top:4px; }
+  /* contact card */
+  .contact-card { background:var(--off-white); border:1.5px solid var(--light-gray); border-radius:14px; padding:1.1rem 1.25rem; display:flex; align-items:flex-start; gap:1rem; }
+  .contact-card .contact-icon { font-size:1.5rem; flex-shrink:0; margin-top:.1rem; }
+  .contact-card h4 { font-size:.9rem; font-weight:700; color:var(--navy); margin-bottom:.2rem; }
+  .contact-card p { font-size:.82rem; color:var(--text-muted); line-height:1.5; }
+  .contact-card a { color:var(--green); font-weight:600; text-decoration:none; }
+  .contact-card a:hover { text-decoration:underline; }
+  .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.85rem; margin-top:.75rem; }
 
-  /* nav mockup */
-  .nav-mock { border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; font-family:-apple-system,sans-serif; font-size:12.5px; margin-top:1rem; }
-  .nav-mock-bar { background:#f4f6fb; border-bottom:1px solid #e2e8f0; display:flex; gap:0; padding:0 12px; }
-  .nav-mock-item { padding:9px 14px; color:#6b7280; cursor:pointer; border-bottom:2px solid transparent; }
-  .nav-mock-item.act { color:#8b0000; font-weight:700; border-bottom-color:#8b0000; }
-  .nav-mock-item.hi { color:#8b0000; font-weight:700; border-bottom-color:#8b0000; outline:2px solid #f59e0b; outline-offset:-2px; border-radius:4px; }
-  .nav-mock-sub { background:#fff; padding:8px 14px; display:flex; gap:16px; border-bottom:1px solid #f0f0f0; flex-wrap:wrap; }
-  .nav-mock-sub span { color:#6b7280; padding:4px 0; font-size:12px; }
-  .nav-mock-sub span.hi { color:#8b0000; font-weight:700; outline:2px solid #f59e0b; outline-offset:2px; border-radius:3px; padding:4px 6px; }
+  /* vesting table */
+  .vest-row { display:grid; grid-template-columns:1fr 1fr; padding:.65rem 1rem; font-size:.88rem; border-bottom:1px solid #f0f0f0; }
+  .vest-row:last-child { border-bottom:none; }
+  .vest-row:nth-child(even) { background:var(--off-white); }
+
+  /* badge */
+  .badge-us { display:inline-flex; align-items:center; gap:4px; background:#dbeafe; color:#1e40af; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 8px; }
+  .badge-all { display:inline-flex; align-items:center; gap:4px; background:#dcfce7; color:#166534; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 8px; }
 
   footer { background:var(--navy); color:rgba(255,255,255,.6); text-align:center; font-size:.8rem; padding:1.5rem; }
   footer strong { color:rgba(255,255,255,.9); }
   .back-bar { background:#fff; padding:11px 22px; display:flex; align-items:center; border-bottom:2px solid #e2e8f0; }
   .back-bar a { color:var(--green); font-size:14px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:7px; }
   .back-bar a:hover { text-decoration:underline; }
-  .us-badge { display:inline-flex; align-items:center; gap:5px; background:#dbeafe; color:#1e40af; font-size:.7rem; font-weight:700; border-radius:999px; padding:2px 8px; margin-bottom:.75rem; }
   @media(max-width:600px) { .section{padding:1.5rem 1.1rem;} .cta-box{flex-direction:column;} }
 </style>
 </head>
@@ -112,232 +120,352 @@
 <div class="back-bar"><a href="index.html">← All HR Guides</a></div>
 
 <header>
-  <div class="logo-badge"><span class="dot"></span> Benefits &amp; 401(k)</div>
-  <h1>Lids 401(k) Plan</h1>
-  <p>Everything you need to know about your retirement benefits at Lids</p>
+  <div class="logo-badge"><span class="dot"></span> Employee Benefits</div>
+  <h1>Lids Employee Benefits</h1>
+  <p>Health, wellness, retirement, and more — all your Lids benefits in one place</p>
 </header>
 
 <nav class="nav-pills">
-  <a href="#enroll">How to Enroll</a>
-  <a href="#plan">Plan Highlights</a>
-  <a href="#invest">Investing</a>
-  <a href="#readysave">ReadySave App</a>
+  <a href="#medical">Medical</a>
+  <a href="#virtual">Virtual Care</a>
+  <a href="#dental">Dental</a>
+  <a href="#vision">Vision</a>
+  <a href="#eap">EAP</a>
+  <a href="#401k">401(k)</a>
   <a href="#loan">Loans</a>
   <a href="#distribution">Distributions</a>
 </nav>
 
 <main>
 
-<!-- US ONLY NOTICE -->
-<div class="alert alert-blue" style="margin-top:0;margin-bottom:1.5rem;">
-  <span class="ai">🇺🇸</span>
-  <div>The Lids 401(k) Salary Deferral Plan is available to <strong>United States employees only.</strong> You must be at least 18 years old and have worked at least 3 months to be eligible. Union and leased employees are excluded.</div>
-</div>
-
-<!-- HOW TO ENROLL -->
-<section class="section" id="enroll">
-  <div class="section-label"><span class="bar"></span> Getting Started</div>
-  <h2>How to Enroll</h2>
-  <p class="sub">Enrolling takes just a few minutes online. You'll set your contribution rate and choose how to invest.</p>
-
-  <div class="cta-box">
-    <div>
-      <h3>Ready to join?</h3>
-      <p>Enroll online at my.vanguardplan.com or call Vanguard directly.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:.5rem;align-items:flex-start;">
-      <a class="cta-btn" href="https://my.vanguardplan.com" target="_blank">my.vanguardplan.com →</a>
-      <span style="font-size:.8rem;color:rgba(255,255,255,.75);">Or call <strong style="color:#fff;">866-794-2145</strong></span>
-    </div>
+<!-- ── MEDICAL ── -->
+<section class="section" id="medical">
+  <div class="section-label"><span class="bar"></span> Medical</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Medical &amp; Prescription Benefits</h2>
+    <span class="badge-all">🌎 All US Employees</span>
   </div>
-
-  <div class="sbox" style="margin-top:1.25rem;">
-    <div class="sbox-label">First time logging in — use these default credentials</div>
-    <div class="login-box">
-      <div class="login-header"><span>Vanguard</span></div>
-      <div class="login-body">
-        <div style="font-size:12px;font-weight:700;color:#374151;text-align:center;margin-bottom:14px;">Participant Login</div>
-        <div class="login-field">
-          <label>Username</label>
-          <div class="input-mock" style="border:1px solid #d1d5db;border-radius:6px;padding:7px 10px;font-size:12.5px;color:#374151;background:#f8f9fb;">Your SSN — no dashes (e.g. 123456789)</div>
-        </div>
-        <div class="login-field">
-          <label>Password</label>
-          <div class="input-mock" style="border:1px solid #d1d5db;border-radius:6px;padding:7px 10px;font-size:12.5px;color:#374151;background:#f8f9fb;">Your birthday — MMDDYYYY (e.g. 06041990)</div>
-        </div>
-        <div class="login-btn">Log In</div>
-      </div>
-    </div>
-    <div class="alert alert-blue" style="margin-top:.75rem;">
-      <span class="ai">💡</span>
-      <div>After your first login, you'll be guided through setting a new password and confirming your security settings.</div>
-    </div>
-  </div>
-
-  <div class="sbox">
-    <div class="sbox-label">Once logged in — complete these steps</div>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Choose how much to save</strong> — aim for 10–15% of your pay including employer contributions. Even starting at 5% and increasing each year makes a big difference.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Choose where to invest</strong> — the easiest option is a Target Date Fund based on your expected retirement year. It automatically adjusts as you get closer to retirement.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Confirm eDelivery preferences</strong> — go paperless for faster, more secure account updates.</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Enter your beneficiary</strong> — designate who receives your account if something happens to you.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PLAN HIGHLIGHTS -->
-<section class="section" id="plan">
-  <div class="section-label"><span class="bar"></span> Plan Details</div>
-  <h2>Plan Highlights</h2>
-  <p class="sub">Key facts about the Lids 401(k) Salary Deferral Plan.</p>
-
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="ic-label">2024 Contribution Limit</div>
-      <div class="ic-value">$23,000</div>
-      <div class="ic-note">Pretax or Roth, or a combination of both</div>
-    </div>
-    <div class="info-card">
-      <div class="ic-label">Catch-Up (Age 50+)</div>
-      <div class="ic-value">+$7,500</div>
-      <div class="ic-note">Additional contribution beyond the standard limit</div>
-    </div>
-    <div class="info-card">
-      <div class="ic-label">Contribution Range</div>
-      <div class="ic-value">1% – 100%</div>
-      <div class="ic-note">Of your salary per pay period</div>
-    </div>
-    <div class="info-card">
-      <div class="ic-label">Eligibility</div>
-      <div class="ic-value">18+ &amp; 3 months</div>
-      <div class="ic-note">Must be at least 18 and have worked 3 months</div>
-    </div>
-  </div>
-
-  <div class="sbox" style="margin-top:1.25rem;">
-    <div class="sbox-label">What Lids contributes on your behalf</div>
-    <div class="use-grid">
-      <div class="use-card"><div class="icon">🤝</div><p><strong>Safe Harbor Match</strong> — Lids makes a matching contribution. See your Summary Plan Description for details.</p></div>
-      <div class="use-card"><div class="icon">📈</div><p><strong>Profit Sharing</strong> — Lids may make additional profit sharing contributions into your account.</p></div>
-    </div>
-  </div>
-
-  <div class="sbox">
-    <div class="sbox-label">Vesting schedule — profit sharing contributions</div>
-    <div style="border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;margin-top:0;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;background:#f4f6fb;padding:8px 16px;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #e2e8f0;">
-        <span>Years of Employment</span><span>Vesting %</span>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;"><span>Less than 1 year</span><span style="color:#dc2626;font-weight:600;">0%</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;background:#fafafa;"><span>1 year</span><span style="color:#d97706;font-weight:600;">25%</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;"><span>2 years</span><span style="color:#d97706;font-weight:600;">50%</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;background:#fafafa;"><span>3 years</span><span style="color:#15803d;font-weight:600;">75%</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;font-size:13px;"><span>4+ years</span><span style="color:#15803d;font-weight:700;">100% ✓</span></div>
-    </div>
-    <div class="alert alert-green" style="margin-top:.75rem;">
-      <span class="ai">✅</span>
-      <div><strong>Safe harbor match contributions are immediately 100% vested.</strong> Your own contributions are always 100% yours.</div>
-    </div>
-  </div>
-</section>
-
-<!-- INVESTING -->
-<section class="section" id="invest">
-  <div class="section-label"><span class="bar"></span> Investments</div>
-  <h2>How to Invest Your Money</h2>
-  <p class="sub">You have three approaches to choose from. You can change your elections at any time at my.vanguardplan.com.</p>
+  <p class="sub">Lids is partnered with AmeriHealth using the Anthem Blue Cross Blue Shield national network for medical, and OptumRx for pharmacy.</p>
 
   <div class="use-grid">
-    <div class="use-card"><div class="icon">🎯</div><p><strong>By Default</strong> — if you don't choose, your savings go into a Target Date Fund based on your retirement year. It's a solid starting point.</p></div>
-    <div class="use-card"><div class="icon">🗺️</div><p><strong>By Design</strong> — choose a Target Date Fund or a Brighton Jones risk model (Aggressive, Balanced, Moderate, or Conservative).</p></div>
-    <div class="use-card"><div class="icon">🔧</div><p><strong>By Myself</strong> — build your own mix from the full lineup of Vanguard, DFA, Fidelity, and PIMCO funds.</p></div>
+    <div class="use-card"><div class="icon">🏥</div><p><strong>Anthem BCBS</strong> — one of the largest national provider networks in the US</p></div>
+    <div class="use-card"><div class="icon">💊</div><p><strong>OptumRx</strong> — prescription benefits through one of the nation's largest pharmacy networks</p></div>
+    <div class="use-card"><div class="icon">📱</div><p><strong>Ameriben Engage App</strong> — view your plan, claims, digital ID card, and find providers</p></div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">Download the Ameriben Engage App</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">Download the <strong>Ameriben Engage</strong> app from the App Store or Google Play</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">Log in at <strong>engage.ameriben.com</strong> or through the app to view your plan details, claims, and digital ID card</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">Use the app to <strong>find in-network providers</strong> near you</div></div>
+    </div>
+    <div class="alert alert-blue">
+      <span class="ai">💡</span>
+      <div>No physical insurance card is mailed. Your digital ID card is available immediately through the Ameriben Engage app and at engage.ameriben.com.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIRTUAL CARE ── -->
+<section class="section" id="virtual">
+  <div class="section-label"><span class="bar"></span> Virtual Care</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">LiveHealth Online — Virtual Care</h2>
+    <span class="badge-all">✅ Free to Anthem Medical Plan Members</span>
+  </div>
+  <p class="sub">Get care from the privacy of your own home — 24/7 doctor visits, therapy, and psychiatry by video.</p>
+
+  <div class="use-grid">
+    <div class="use-card"><div class="icon">🩺</div><p><strong>See a doctor 24/7</strong> — cold, flu, allergies, sore throat, migraines, rashes, and more. No appointment needed.</p></div>
+    <div class="use-card"><div class="icon">🧠</div><p><strong>Behavioral health</strong> — therapy, psychology, and psychiatry by video. Appointments within 1–2 weeks.</p></div>
+    <div class="use-card"><div class="icon">💰</div><p><strong>Cost</strong> — free to enroll. $105 or less per visit without Anthem medical. Free if on the Lids medical plan.</p></div>
+  </div>
+
+  <div class="use-grid" style="margin-top:.85rem;">
+    <div style="background:#e8f5f0;border:1.5px solid #86efac;border-radius:14px;padding:1.1rem 1.25rem;">
+      <div style="font-size:.72rem;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;">Based on patient surveys</div>
+      <div style="display:flex;gap:1.5rem;font-size:.88rem;">
+        <div><div style="font-size:1.4rem;font-weight:800;color:var(--navy);">92%</div><div style="color:var(--text-muted);font-size:.78rem;">booked sooner than in-person</div></div>
+        <div><div style="font-size:1.4rem;font-weight:800;color:var(--navy);">89%</div><div style="color:var(--text-muted);font-size:.78rem;">said doctor was professional</div></div>
+        <div><div style="font-size:1.4rem;font-weight:800;color:var(--navy);">92%</div><div style="color:var(--text-muted);font-size:.78rem;">felt understood</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div><h3>Get started with LiveHealth</h3><p>Free to sign up — see a doctor in minutes</p></div>
+    <a class="cta-btn" href="https://livehealthonline.com" target="_blank">livehealthonline.com →</a>
+  </div>
+
+  <div class="alert alert-warn">
+    <span class="ai">⚠️</span>
+    <div>If you are in crisis or having thoughts of suicide, do not use virtual care. Call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or call <strong>911</strong> immediately.</div>
+  </div>
+</section>
+
+<!-- ── DENTAL ── -->
+<section class="section" id="dental">
+  <div class="section-label"><span class="bar"></span> Dental</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Guardian Dental</h2>
+    <span class="badge-all">🌎 All Eligible Employees</span>
+  </div>
+  <p class="sub">Lids Holdings Inc. offers two dental plan options through Guardian — Low Plan and High Plan — both using the DentalGuard Preferred network.</p>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="ic-label">Group Number</div><div class="ic-value">00071272</div><div class="ic-note">Use this for any Guardian inquiries</div></div>
+    <div class="info-card"><div class="ic-label">Customer Service</div><div class="ic-value">(888) 600-1600</div><div class="ic-note">Mon–Fri, 8am–8:30pm ET</div></div>
+    <div class="info-card"><div class="ic-label">Annual Max — Low Plan</div><div class="ic-value">$1,000</div><div class="ic-note">Per person per year</div></div>
+    <div class="info-card"><div class="ic-label">Annual Max — High Plan</div><div class="ic-value">$2,000</div><div class="ic-note">Per person per year</div></div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">Plan comparison — Low Plan vs. High Plan</div>
+    <table class="cov-table">
+      <thead><tr><th>Service</th><th>Low Plan (Tier 1)</th><th>High Plan (Tier 1)</th></tr></thead>
+      <tbody>
+        <tr><td>Preventive Care (cleanings, exams, x-rays)</td><td>100%</td><td>100%</td></tr>
+        <tr><td>Basic Care (fillings, extractions)</td><td>80%</td><td>90%</td></tr>
+        <tr><td>Major Care (crowns, root canals)</td><td>0%</td><td>60%</td></tr>
+        <tr><td>Orthodontia</td><td>Not covered</td><td>50% — up to $1,500 lifetime</td></tr>
+        <tr><td>Deductible (individual)</td><td>$50</td><td>$50</td></tr>
+        <tr><td>Preventive counts toward max?</td><td>No — exempt</td><td>No — exempt</td></tr>
+      </tbody>
+    </table>
+    <div class="alert alert-green">
+      <span class="ai">💡</span>
+      <div><strong>Preventive Advantage:</strong> Cleanings, exams, x-rays, and fluoride treatments do NOT count against your annual maximum on either plan — your full benefit stays available for fillings, crowns, and other unexpected work.</div>
+    </div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">Maximum Rollover — High Plan only</div>
+    <p style="font-size:.88rem;color:var(--text-muted);margin-bottom:.75rem;">If you don't use much of your annual maximum, Guardian rolls unused funds into a Maximum Rollover Account (MRA) for future years.</p>
+    <div class="info-grid">
+      <div class="info-card"><div class="ic-label">Claims Threshold</div><div class="ic-value">$800</div><div class="ic-note">Must stay under this to earn rollover</div></div>
+      <div class="info-card"><div class="ic-label">Rollover Amount</div><div class="ic-value">$400</div><div class="ic-note">Added to your account ($600 if in-network only)</div></div>
+      <div class="info-card"><div class="ic-label">Rollover Account Limit</div><div class="ic-value">$1,500</div><div class="ic-note">Maximum that can accumulate</div></div>
+    </div>
+  </div>
+
+  <div class="contact-grid" style="margin-top:1.25rem;">
+    <div class="contact-card">
+      <div class="contact-icon">🔍</div>
+      <div>
+        <h4>Find a Dentist</h4>
+        <p>Visit <a href="https://www.guardianlife.com" target="_blank">guardianlife.com</a> → click "Find A Provider." Select the DentalGuard Preferred network.</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">💳</div>
+      <div>
+        <h4>No Physical Card</h4>
+        <p>Guardian does not mail member cards. Access your digital ID card at <a href="https://www.guardianlife.com" target="_blank">guardianlife.com</a>. Your member ID is your Social Security number.</p>
+      </div>
+    </div>
   </div>
 
   <div class="alert alert-blue" style="margin-top:1rem;">
     <span class="ai">💡</span>
-    <div>Not sure where to start? A <strong>Target Date Fund</strong> matching your expected retirement year is the simplest, most hands-off option. It automatically gets more conservative as you approach retirement. Find yours at my.vanguardplan.com.</div>
+    <div>Guardian also offers a <strong>tobacco cessation program</strong> through Pelago — free to you and your dependents (age 15+). Access at <a href="https://my.pelagohealth.com/guardian" target="_blank" style="color:#1e40af;font-weight:600;">my.pelagohealth.com/guardian</a></div>
   </div>
 </section>
 
-<!-- READYSAVE APP -->
-<section class="section" id="readysave">
-  <div class="section-label"><span class="bar"></span> Mobile App</div>
-  <h2>ReadySave™ Mobile App</h2>
-  <p class="sub">Manage your 401(k) from your phone. Available for iOS and Android, also in Spanish.</p>
+<!-- ── VISION ── -->
+<section class="section" id="vision">
+  <div class="section-label"><span class="bar"></span> Vision</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Group Vision Service (GVS)</h2>
+    <span class="badge-all">🌎 All Eligible Employees</span>
+  </div>
+  <p class="sub">Vision benefits powered by EyeMed Vision Care — access thousands of independent and retail providers nationwide including LensCrafters, Target Optical, and Pearle Vision.</p>
+
+  <div class="sbox">
+    <div class="sbox-label">What's covered — In-network benefits (every 12 months)</div>
+    <table class="cov-table">
+      <thead><tr><th>Benefit</th><th>Copay</th><th>Coverage</th></tr></thead>
+      <tbody>
+        <tr><td>Vision Exam (includes dilation)</td><td>$10</td><td>Covered — once every 12 months</td></tr>
+        <tr><td>Eyeglass Lenses (single, bifocal, trifocal)</td><td>$25</td><td>Covered — once every 12 months</td></tr>
+        <tr><td>Frames</td><td>—</td><td>Up to $150 retail value — 20% off balance over allowance</td></tr>
+        <tr><td>Contact Lenses (elective)</td><td>—</td><td>Up to $150 allowance — once every 12 months</td></tr>
+        <tr><td>Contact Lenses (medically necessary)</td><td>—</td><td>Up to $250 — fully covered</td></tr>
+        <tr><td>Hearing Exam</td><td>—</td><td>$70 allowance (adults every 24 months; children every 12 months)</td></tr>
+        <tr><td>Hearing Aid (per ear)</td><td>—</td><td>$200 allowance per ear</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="contact-grid" style="margin-top:1.25rem;">
+    <div class="contact-card">
+      <div class="contact-icon">🔍</div>
+      <div>
+        <h4>Find a Provider</h4>
+        <p>Visit <a href="https://www.groupvisionservice.com" target="_blank">groupvisionservice.com</a> to find a provider, review coverage, and more.</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">💳</div>
+      <div>
+        <h4>No Physical Card</h4>
+        <p>GVS does not provide member cards. All plan information is digital — available at <a href="https://www.groupvisionservice.com" target="_blank">groupvisionservice.com</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EAP ── -->
+<section class="section" id="eap">
+  <div class="section-label"><span class="bar"></span> Employee Assistance</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">EAP — ComPsych Guidance Resources</h2>
+    <span class="badge-all">✅ Free to All Lids Employees</span>
+  </div>
+  <p class="sub">Confidential 24/7 wellbeing support for you and your family — at no cost. Provided through New York Life Group Benefit Solutions and ComPsych.</p>
 
   <div class="use-grid">
-    <div class="use-card"><div class="icon">📊</div><p>Check your balance and contribution rate anytime</p></div>
-    <div class="use-card"><div class="icon">🔮</div><p>Project your retirement income with My Forecast</p></div>
-    <div class="use-card"><div class="icon">⚖️</div><p>Adjust your savings rate and rebalance investments</p></div>
-    <div class="use-card"><div class="icon">📬</div><p>Get account updates and messages on the go</p></div>
+    <div class="use-card"><div class="icon">📞</div><p><strong>24/7 Phone Support</strong> — speak with behavioral specialists about work-life balance, stress, and more</p></div>
+    <div class="use-card"><div class="icon">👥</div><p><strong>Face-to-Face Counseling</strong> — 3 sessions per issue, per year for you and your dependents</p></div>
+    <div class="use-card"><div class="icon">💻</div><p><strong>Online Tools &amp; Resources</strong> — family, caregiving, relocation, pet care, aging, grief, and more</p></div>
+    <div class="use-card"><div class="icon">🧘</div><p><strong>Well-Being Coaching</strong> — connect with a certified coach for 5 sessions per year</p></div>
+    <div class="use-card"><div class="icon">📚</div><p><strong>Educational Seminars</strong> — articles, podcasts, videos, and on-demand trainings</p></div>
   </div>
 
-  <div class="sbox" style="margin-top:1.25rem;">
-    <div class="sbox-label">Download ReadySave</div>
-    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;padding:.5rem 0;">
-      <a href="https://apps.apple.com/app/readysave/id1451526901" target="_blank" style="background:#000;color:#fff;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🍎 App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=com.vanguard.readysave" target="_blank" style="background:#000;color:#fff;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">▶ Google Play</a>
-      <span style="font-size:.8rem;color:var(--text-muted);">Log in with the same credentials as my.vanguardplan.com</span>
+  <div class="sbox">
+    <div class="sbox-label">How to register — first-time users</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">Go to <a href="https://www.guidanceresources.com" target="_blank" style="color:var(--green);font-weight:600;">guidanceresources.com</a></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">Click <strong>Register</strong></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">Enter Organization Web ID: <strong style="font-family:monospace;font-size:.95rem;color:var(--navy);">NYLGBS</strong></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body">For Company Name, enter: <strong style="font-family:monospace;color:var(--navy);">Lids</strong> — <span style="color:#dc2626;font-weight:600;">make sure to add a space after "Lids"</span></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body">Click <strong>Submit</strong> and complete your personal information to finish registration</div></div>
+    </div>
+  </div>
+
+  <div class="contact-grid" style="margin-top:1.25rem;">
+    <div class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div>
+        <h4>24/7 Phone Support</h4>
+        <p><strong style="font-size:1rem;color:var(--navy);">(800) 344-9752</strong><br>Employee Assistance &amp; Wellness Support</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🌐</div>
+      <div>
+        <h4>Online Access</h4>
+        <p><a href="https://www.guidanceresources.com" target="_blank">guidanceresources.com</a><br>First time? Click Register → enter <strong>NYLGBS</strong></p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LOANS -->
-<section class="section" id="loan">
-  <div class="section-label"><span class="bar"></span> Loans</div>
-  <h2>Request a 401(k) Loan</h2>
-  <p class="sub">You can borrow from your vested account balance if needed. The loan is repaid through payroll deductions.</p>
+<!-- ── 401K ── -->
+<section class="section" id="401k">
+  <div class="section-label"><span class="bar"></span> Retirement</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Lids 401(k) Plan — Vanguard</h2>
+    <span class="badge-us">🇺🇸 US Employees Only</span>
+  </div>
+  <p class="sub">The Lids 401(k) Salary Deferral Plan is administered by Vanguard. Eligible employees must be at least 18 years old and have worked at least 3 months.</p>
 
-  <div class="info-grid" style="margin-bottom:1.25rem;">
-    <div class="info-card">
-      <div class="ic-label">Maximum Loan</div>
-      <div class="ic-value">$50,000</div>
-      <div class="ic-note">Or 50% of your vested balance, whichever is less</div>
+  <!-- Company match — BIG and visible -->
+  <div style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:16px;padding:1.5rem 1.75rem;color:#fff;margin-bottom:1.25rem;">
+    <div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.6);margin-bottom:.5rem;">Lids Company Match</div>
+    <div style="font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:.5rem;">100% match on the first 3%<br>50% match on 4%–5%</div>
+    <div style="font-size:.88rem;color:rgba(255,255,255,.75);">of your salary deferral contribution &nbsp;·&nbsp; <strong style="color:#7eecd4;">Vesting is immediate</strong></div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="ic-label">2024 Contribution Limit</div><div class="ic-value">$23,000</div><div class="ic-note">Pretax or Roth or both</div></div>
+    <div class="info-card"><div class="ic-label">Catch-Up (Age 50+)</div><div class="ic-value">+$7,500</div><div class="ic-note">Beyond the standard limit</div></div>
+    <div class="info-card"><div class="ic-label">Contribution Range</div><div class="ic-value">1%–100%</div><div class="ic-note">Of your salary per paycheck</div></div>
+    <div class="info-card"><div class="ic-label">Profit Sharing</div><div class="ic-value">Yes</div><div class="ic-note">Lids may make additional contributions</div></div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">How to enroll — takes just a few minutes</div>
+    <div class="cta-box" style="margin-top:0;margin-bottom:1rem;">
+      <div><h3>Enroll at Vanguard</h3><p>Go online or call to get started</p></div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;align-items:flex-start;">
+        <a class="cta-btn" href="https://my.vanguardplan.com" target="_blank">my.vanguardplan.com →</a>
+        <span style="font-size:.78rem;color:rgba(255,255,255,.75);">Or call <strong style="color:#fff;">866-794-2145</strong></span>
+      </div>
     </div>
-    <div class="info-card">
-      <div class="ic-label">Minimum Loan</div>
-      <div class="ic-value">$1,000</div>
-      <div class="ic-note">&nbsp;</div>
-    </div>
-    <div class="info-card">
-      <div class="ic-label">Repayment Term</div>
-      <div class="ic-value">Up to 60 months</div>
-      <div class="ic-note">Repaid via payroll deduction</div>
-    </div>
-    <div class="info-card">
-      <div class="ic-label">Loan Fee</div>
-      <div class="ic-value">$150</div>
-      <div class="ic-note">One-time fee per loan</div>
+    <div style="background:var(--off-white);border:1px solid var(--light-gray);border-radius:10px;padding:1rem 1.1rem;font-size:.85rem;">
+      <div style="font-weight:700;color:var(--navy);margin-bottom:.4rem;">First-time login credentials:</div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <div><span style="color:var(--text-muted);">Username:</span> <strong>Your SSN (no dashes)</strong></div>
+        <div><span style="color:var(--text-muted);">Password:</span> <strong>Your birthday MMDDYYYY</strong></div>
+      </div>
     </div>
   </div>
 
   <div class="sbox">
-    <div class="sbox-label">How to request a loan online</div>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Log in at <strong>my.vanguardplan.com</strong> → click <strong>Shortcuts</strong> in the top navigation → select <strong>Model a New Loan</strong></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">In the Loan Center, click <strong>Loan Modeler</strong> → complete all fields → click <strong>Calculate</strong> to see your estimated payment per paycheck</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Generate &amp; Review Paperwork</strong> to review your loan agreement, then click <strong>Submit Loan / I Accept Loan Terms</strong></div></div>
+    <div class="sbox-label">Investing your money — three approaches</div>
+    <div class="use-grid">
+      <div class="use-card"><div class="icon">🎯</div><p><strong>By Default</strong> — auto-enrolled into a Target Date Fund based on your retirement year. Adjusts automatically.</p></div>
+      <div class="use-card"><div class="icon">🗺️</div><p><strong>By Design</strong> — choose a Target Date Fund or Brighton Jones risk model (Aggressive, Balanced, Moderate, Conservative).</p></div>
+      <div class="use-card"><div class="icon">🔧</div><p><strong>By Myself</strong> — build your own mix from Vanguard, DFA, Fidelity, and PIMCO funds.</p></div>
     </div>
+  </div>
 
-    <!-- Nav mockup showing path -->
-    <div class="nav-mock" style="margin-top:1rem;">
-      <div class="nav-mock-bar">
-        <div class="nav-mock-item">Dashboard</div>
-        <div class="nav-mock-item">My Forecast</div>
-        <div class="nav-mock-item">Financial Wellness</div>
-        <div class="nav-mock-item">Plans</div>
-        <div class="nav-mock-item hi">Shortcuts ▾</div>
+  <div class="sbox">
+    <div class="sbox-label">Profit sharing vesting schedule</div>
+    <div style="border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:.6rem 1rem;background:var(--navy);font-size:.75rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.04em;">
+        <span>Years of Employment</span><span>Vesting %</span>
       </div>
-      <div style="background:#1a1a2e;padding:12px 16px;display:flex;gap:24px;flex-wrap:wrap;">
-        <div>
-          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Make a Request</div>
-          <div style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:6px 12px;font-size:12.5px;color:#fff;font-weight:700;display:inline-block;outline:2px solid #f59e0b;outline-offset:2px;">Model a New Loan</div>
-        </div>
-        <div>
-          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Manage Investments</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,.7);">Explore My Options</div>
-        </div>
-      </div>
+      <div class="vest-row"><span>Less than 1 year</span><span style="color:#dc2626;font-weight:700;">0%</span></div>
+      <div class="vest-row"><span>1 year</span><span style="color:#d97706;font-weight:700;">25%</span></div>
+      <div class="vest-row"><span>2 years</span><span style="color:#d97706;font-weight:700;">50%</span></div>
+      <div class="vest-row"><span>3 years</span><span style="color:#15803d;font-weight:700;">75%</span></div>
+      <div class="vest-row"><span>4+ years</span><span style="color:#15803d;font-weight:700;">100% ✓</span></div>
+    </div>
+    <div class="alert alert-green">
+      <span class="ai">✅</span>
+      <div><strong>Safe harbor match and your own contributions are immediately 100% vested.</strong> The vesting schedule above applies to profit sharing contributions only.</div>
+    </div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">ReadySave™ Mobile App — manage your 401(k) on the go</div>
+    <div class="use-grid" style="margin-bottom:1rem;">
+      <div class="use-card"><div class="icon">📊</div><p>Check balance &amp; contribution rate anytime</p></div>
+      <div class="use-card"><div class="icon">🔮</div><p>Project your retirement income with My Forecast</p></div>
+      <div class="use-card"><div class="icon">⚖️</div><p>Adjust savings rate and rebalance investments</p></div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+      <a href="https://apps.apple.com/app/readysave/id1451526901" target="_blank" style="background:#000;color:#fff;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🍎 App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.vanguard.readysave" target="_blank" style="background:#000;color:#fff;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">▶ Google Play</a>
+      <span style="font-size:.8rem;color:var(--text-muted);">Available in English and Spanish. Same login as my.vanguardplan.com</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOANS ── -->
+<section class="section" id="loan">
+  <div class="section-label"><span class="bar"></span> 401(k) Loans</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Request a 401(k) Loan</h2>
+    <span class="badge-us">🇺🇸 US Employees Only</span>
+  </div>
+  <p class="sub">You can borrow from your vested account balance. The loan is repaid through payroll deductions.</p>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="ic-label">Maximum Loan</div><div class="ic-value">$50,000</div><div class="ic-note">Or 50% of vested balance</div></div>
+    <div class="info-card"><div class="ic-label">Minimum Loan</div><div class="ic-value">$1,000</div></div>
+    <div class="info-card"><div class="ic-label">Max Repayment</div><div class="ic-value">60 months</div><div class="ic-note">Via payroll deduction</div></div>
+    <div class="info-card"><div class="ic-label">One-Time Fee</div><div class="ic-value">$150</div><div class="ic-note">Per loan</div></div>
+  </div>
+
+  <div class="sbox">
+    <div class="sbox-label">How to request a loan at my.vanguardplan.com</div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">Log in → click <strong>Shortcuts</strong> in the top navigation → select <strong>Model a New Loan</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">In the Loan Center, click <strong>Loan Modeler</strong> → complete all fields → click <strong>Calculate</strong> to see your estimated payment per paycheck</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">Click <strong>Generate &amp; Review Paperwork</strong> → then <strong>Submit Loan / I Accept Loan Terms</strong></div></div>
     </div>
   </div>
 
@@ -347,57 +475,39 @@
   </div>
 </section>
 
-<!-- DISTRIBUTIONS -->
+<!-- ── DISTRIBUTIONS ── -->
 <section class="section" id="distribution">
-  <div class="section-label"><span class="bar"></span> Withdrawals</div>
-  <h2>Online Distributions</h2>
-  <p class="sub">You can request withdrawals or rollovers online through your Vanguard account. Eligibility depends on your age and employment status.</p>
+  <div class="section-label"><span class="bar"></span> 401(k) Withdrawals</div>
+  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.3rem;flex-wrap:wrap;">
+    <h2 style="margin-bottom:0;">Online Distributions</h2>
+    <span class="badge-us">🇺🇸 US Employees Only</span>
+  </div>
+  <p class="sub">Request withdrawals or rollovers online through your Vanguard account.</p>
 
   <div class="sbox">
     <div class="sbox-label">How to request a withdrawal or rollover</div>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Log in at <strong>my.vanguardplan.com</strong> → click <strong>Plans</strong> in the top navigation → select <strong>Distributions</strong> → then <strong>Withdrawals</strong></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Review your available options — select <strong>Explore withdrawals</strong> (cash distribution) or <strong>Explore rollovers</strong> (move to another retirement account like an IRA)</div></div>
+      <div class="step"><div class="step-num">1</div><div class="step-body">Log in at <strong>my.vanguardplan.com</strong> → click <strong>Plans</strong> → select <strong>Distributions</strong> → then <strong>Withdrawals</strong></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">Review your options: <strong>Explore withdrawals</strong> (cash distribution) or <strong>Explore rollovers</strong> (move to another retirement account like an IRA)</div></div>
       <div class="step"><div class="step-num">3</div><div class="step-body">Follow the on-screen instructions to complete your request</div></div>
-    </div>
-
-    <!-- Nav mockup -->
-    <div class="nav-mock" style="margin-top:1rem;">
-      <div class="nav-mock-bar">
-        <div class="nav-mock-item act">Dashboard</div>
-        <div class="nav-mock-item">My Forecast</div>
-        <div class="nav-mock-item hi">Plans ▾</div>
-        <div class="nav-mock-item">Shortcuts</div>
-      </div>
-      <div class="nav-mock-sub">
-        <span>Transactions</span>
-        <span>Future Elections</span>
-        <span>Deferrals</span>
-        <span class="hi">Distributions ▾</span>
-        <span>Beneficiaries</span>
-      </div>
-      <div class="nav-mock-sub" style="padding-left:32px;">
-        <span>Loans</span>
-        <span class="hi">Withdrawals</span>
-      </div>
     </div>
   </div>
 
   <div class="alert alert-warn">
     <span class="ai">⚠️</span>
-    <div><strong>Still employed and under 59½?</strong> Online withdrawals may not be available. You may need to complete a <strong>Hardship Distribution Form</strong> — download it from the Forms page on my.vanguardplan.com. Early withdrawals before 59½ are generally subject to a 10% penalty plus income taxes.</div>
+    <div><strong>Still employed and under 59½?</strong> Online withdrawals may not be available. Download the <strong>Hardship Distribution Form</strong> from the Forms page at my.vanguardplan.com. Early withdrawals are generally subject to a <strong>10% penalty</strong> plus income taxes.</div>
   </div>
 
-  <div class="alert alert-blue" style="margin-top:.75rem;">
+  <div class="alert alert-blue">
     <span class="ai">💡</span>
-    <div>Questions about your account? Call Vanguard Participant Services at <strong>866-794-2145</strong>.</div>
+    <div>Questions about your 401(k)? Call Vanguard Participant Services at <strong>866-794-2145</strong>.</div>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <strong>Lids · Benefits &amp; 401(k)</strong> &nbsp;|&nbsp; Powered by Vanguard &nbsp;|&nbsp; Questions? Contact HR or call 866-794-2145
+  <strong>Lids · Employee Benefits</strong> &nbsp;|&nbsp; For internal use only &nbsp;|&nbsp; Questions? Contact HR at hr@lids.com
 </footer>
 </body>
 </html>
