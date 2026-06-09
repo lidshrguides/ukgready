@@ -167,8 +167,13 @@
 <main>
 
 <style>
-  .vstep { font-size:.78rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.07em; margin:1.4rem 0 .35rem; display:flex; align-items:center; gap:.5rem; }
-  .vstep::before { content:''; display:block; width:20px; height:2px; background:var(--accent); border-radius:2px; flex-shrink:0; }
+  .sbox { border:2px solid #e2e8f0; border-radius:14px; padding:1.1rem 1.25rem 1.25rem; margin-top:1.25rem; background:#fafbfd; }
+  .sbox-label { font-size:.72rem; font-weight:800; color:#111827; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; gap:.5rem; margin-bottom:.85rem; }
+  .sbox-label::before { content:''; display:block; width:4px; height:16px; background:#111827; border-radius:2px; flex-shrink:0; }
+  .sbox .mkp { margin-top:0; }
+  .sbox .alert { margin-top:.75rem; }
+  .sbox .modal-wrap { margin-top:0; }
+  .sbox .form-wrap { margin-top:0; }
 </style>
 
 <!-- ── WHEN TO USE ── -->
@@ -192,7 +197,8 @@
   <h2>Open the Preboarding Form</h2>
   <p class="sub">Before starting the hire form, open the candidate's preboarding form in a second window. You'll need their SSN/SIN and Date of Birth from it.</p>
 
-  <div class="vstep">Step 1 — Click your initials (top right) → New Window</div>
+  
+  <div class="sbox"><div class="sbox-label">Step 1 — Click your initials (top right) → New Window</div>
   <div class="mkp">
     <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
       <div style="display:flex;align-items:center;gap:12px;">
@@ -222,7 +228,8 @@
     </div>
   </div>
 
-  <div class="vstep">Step 2 — Click the ☰ menu (top left) → Team → Recruitment → Applicant Checklists</div>
+  
+  <div class="sbox"><div class="sbox-label">Step 2 — Click the ☰ menu (top left) → Team → Recruitment → Applicant Checklists</div>
   <div class="mkp" style="max-width:380px;">
     <!-- Top bar showing hamburger highlighted -->
     <div style="background:#3d6b9e;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;">
@@ -265,7 +272,8 @@
     </div>
   </div>
 
-  <div class="vstep">Step 3 — Find the candidate → click the ✏️ pencil icon</div>
+  
+  <div class="sbox"><div class="sbox-label">Step 3 — Find the candidate → click the ✏️ pencil icon</div>
   <div class="mkp">
     <div style="background:#fff;padding:10px 14px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;">
       <span style="font-size:14px;font-weight:700;color:#1a2a5e;">← Applicant Checklists</span>
@@ -300,7 +308,8 @@
     </div>
   </div>
 
-  <div class="vstep">Step 4 — Click the Preboarding step to open the form</div>
+  
+  <div class="sbox"><div class="sbox-label">Step 4 — Click the Preboarding step to open the form</div>
   <div class="mkp" style="max-width:500px;">
     <div style="padding:14px 18px;background:#fff;">
       <div style="font-size:14px;font-weight:700;color:#1a2a5e;margin-bottom:8px;text-decoration:underline;">Preboarding checklist</div>
@@ -527,7 +536,8 @@
   <h2>Work Information — Position</h2>
   <p class="sub">Click <strong>+ Add</strong> in Position Assignments, search by store number, and fill in the position details.</p>
 
-  <div class="vstep">Before — click + Add in Position Assignments</div>
+  
+  <div class="sbox"><div class="sbox-label">Before — click + Add in Position Assignments</div>
   <div class="mkp" style="margin-bottom:1rem;">
     <div style="background:#f4f6fb;padding:9px 18px;font-size:14px;font-weight:700;color:#1a2a5e;border-bottom:1px solid #e2e8f0;">Work Information</div>
     <div style="padding:14px 18px;background:#fff;">
@@ -542,7 +552,8 @@
     </div>
   </div>
 
-  <div class="vstep">Add Position modal — search by store number, then fill in fields</div>
+  
+  <div class="sbox"><div class="sbox-label">Add Position modal — search by store number, then fill in fields</div>
   <div class="modal-wrap">
     <div class="modal" style="max-width:480px;">
       <div class="modal-title">Add Position <span style="color:#9ca3af;font-weight:400;cursor:pointer;">✕</span></div>
@@ -598,7 +609,8 @@
   <h2>Work Information — Base Compensation</h2>
   <p class="sub">Scroll down to Base Compensation and click <strong>+ Add</strong> to enter the employee's pay rate.</p>
 
-  <div class="vstep">Click + Add in Base Compensation</div>
+  
+  <div class="sbox"><div class="sbox-label">Click + Add in Base Compensation</div>
   <div class="mkp" style="margin-bottom:1rem;">
     <div style="padding:14px 18px;background:#fff;">
       <div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:8px;">Base Compensation</div>
@@ -618,7 +630,8 @@
     </div>
   </div>
 
-  <div class="vstep">Add New Base Compensation modal — fill in highlighted fields only</div>
+  
+  <div class="sbox"><div class="sbox-label">Add New Base Compensation modal — fill in highlighted fields only</div>
   <div class="modal-wrap">
     <div class="modal">
       <div class="modal-title">Add New Base Compensation <span style="color:#9ca3af;cursor:pointer;font-weight:400;">✕</span></div>
@@ -680,7 +693,8 @@
     <div><strong>Canada employees:</strong> Skip this tab. Click <strong>Continue</strong>.</div>
   </div>
 
-  <div class="vstep">Click the State tab → click ✎ Edit under Unemployment State</div>
+  
+  <div class="sbox"><div class="sbox-label">Click the State tab → click ✎ Edit under Unemployment State</div>
   <div class="mkp" style="margin-bottom:1rem;">
     <div style="display:flex;justify-content:flex-end;gap:8px;padding:8px 14px;border-bottom:1px solid #e2e8f0;background:#fff;">
       <div style="border:1px solid #d1d5db;border-radius:6px;padding:4px 12px;font-size:12.5px;">Save</div>
@@ -711,7 +725,8 @@
     </div>
   </div>
 
-  <div class="vstep">Edit modal — select state, check W2, click Save</div>
+  
+  <div class="sbox"><div class="sbox-label">Edit modal — select state, check W2, click Save</div>
   <div class="modal-wrap">
     <div class="modal">
       <div class="modal-title">Edit Unemployment State <span style="color:#9ca3af;font-weight:400;cursor:pointer;">✕</span></div>
