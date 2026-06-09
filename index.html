@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lids UKG Ready Training Guides</title>
+<title>Lids HR Guides</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1a2a5e;--navy-dark:#111c3e;--navy-mid:#243270;--accent:#4f6fd8;--accent-light:#e8ecf8;--teal:#2ec4b6;--text:#1e1e2e;--text-muted:#6b7280;--border:#e2e8f0;--white:#ffffff;--bg:#f0f2f7;}
@@ -37,6 +37,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .card-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
 .card-arrow{color:var(--text-muted);font-size:16px;flex-shrink:0;}
 .card.fr .card-icon{background:#fef3e8;color:#b55b0a;}
+.card.benefits .card-icon{background:#e8f5f0;color:#0a7a5a;}
+.group-icon.green{background:#0a7a5a;}
+.flag-tag{display:inline-block;font-size:10px;font-weight:700;border-radius:999px;padding:2px 7px;margin-top:3px;letter-spacing:.03em;}
+.flag-us{background:#dbeafe;color:#1e40af;}
+.flag-ca{background:#fee2e2;color:#991b1b;}
+.flag-both{background:#f3e8ff;color:#6b21a8;}
 .pdf-note{font-size:12px;color:var(--text-muted);margin-top:10px;padding:10px 14px;background:var(--accent-light);border-radius:8px;}
 .no-results{text-align:center;padding:60px 20px;color:var(--text-muted);display:none;}
 @media(max-width:600px){.cards{grid-template-columns:1fr;}}
@@ -51,9 +57,9 @@ body.fr .fr-section{display:block;}
 <body>
 
 <div class="hero">
-  <div class="badge"><span class="badge-dot"></span> UKG Ready Training</div>
-  <h1>Lids Training Guides</h1>
-  <p>Step-by-step guides for managers and employees. Select your language to get started.</p>
+  <div class="badge"><span class="badge-dot"></span> Lids HR Guides</div>
+  <h1>Lids HR Guides</h1>
+  <p>HR resources, UKG Ready guides, and benefits information for Lids employees and managers.</p>
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('en',this)">English</button>
     <button class="lang-btn" onclick="setLang('fr',this)">Français (Canada)</button>
@@ -149,6 +155,21 @@ body.fr .fr-section{display:block;}
     </div>
     <div class="cards">
       <a class="card" href="ess-guide.html"><div class="card-icon">🖥️</div><div class="card-text"><div class="card-title">Employee Self-Service Guide</div><div class="card-sub">Full ESS walkthrough</div></div><div class="card-arrow">→</div></a>
+    </div>
+  </div>
+
+
+  <!-- BENEFITS -->
+  <div class="section-group en-section" data-group="benefits">
+    <div class="group-header">
+      <div class="group-icon green">🏥</div>
+      <div class="group-title">Benefits &amp; 401(k)</div>
+    </div>
+    <div class="cards">
+      <a class="card benefits" href="benefits-401k.html"><div class="card-icon">💰</div><div class="card-text"><div class="card-title">401(k) Plan Guide</div><div class="card-sub">Enrollment, investments &amp; plan details<br><span class="flag-tag flag-us">🇺🇸 United States Only</span></div></div><div class="card-arrow">→</div></a>
+      <a class="card benefits" href="benefits-401k.html#readysave"><div class="card-icon">📱</div><div class="card-text"><div class="card-title">ReadySave Mobile App</div><div class="card-sub">Access your 401(k) on the go<br><span class="flag-tag flag-us">🇺🇸 United States Only</span></div></div><div class="card-arrow">→</div></a>
+      <a class="card benefits" href="benefits-401k.html#loan"><div class="card-icon">🏦</div><div class="card-text"><div class="card-title">Request a 401(k) Loan</div><div class="card-sub">How to borrow from your account<br><span class="flag-tag flag-us">🇺🇸 United States Only</span></div></div><div class="card-arrow">→</div></a>
+      <a class="card benefits" href="benefits-401k.html#distribution"><div class="card-icon">💸</div><div class="card-text"><div class="card-title">Online Distributions</div><div class="card-sub">Withdrawals and rollovers<br><span class="flag-tag flag-us">🇺🇸 United States Only</span></div></div><div class="card-arrow">→</div></a>
     </div>
   </div>
 
