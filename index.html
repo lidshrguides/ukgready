@@ -52,6 +52,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .fr-section{display:none;}
 body.fr .en-section{display:none;}
 body.fr .fr-section{display:block;}
+
+/* jump nav */
+.jump-nav{background:white;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,42,94,.08);}
+.jump-nav-inner{max-width:1000px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;gap:6px;}
+.jump-link{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--text-muted);text-decoration:none;white-space:nowrap;border-radius:999px;border:1.5px solid var(--border);background:var(--bg);transition:all .18s;}
+.jump-link:hover,.jump-link.active{color:var(--navy);background:white;border-color:var(--accent);box-shadow:0 2px 8px rgba(79,111,216,.12);}
+.jump-link .ji{font-size:15px;}
+.section-group{scroll-margin-top:80px;}
 </style>
 </head>
 <body>
@@ -67,16 +75,25 @@ body.fr .fr-section{display:block;}
   <div class="hero-curve"></div>
 </div>
 
-<div class="content">
-  <div class="search-wrap en-section">
-    <input class="search-input" type="text" placeholder="Search guides... (e.g. compensation, time off, onboarding)" oninput="filterCards(this.value)">
-  </div>
 
+
+<nav class="jump-nav en-section">
+  <div class="jump-nav-inner">
+    <a class="jump-link" href="#hr-actions"><span class="ji">👤</span> HR Actions</a>
+    <a class="jump-link" href="#recruiting"><span class="ji">🔍</span> Recruiting &amp; Onboarding</a>
+    <a class="jump-link" href="#time"><span class="ji">⏱️</span> Time &amp; Attendance</a>
+    <a class="jump-link" href="#direct-deposit"><span class="ji">🏦</span> Direct Deposit &amp; Taxes</a>
+    <a class="jump-link" href="#ess"><span class="ji">🙋</span> Employee Self-Service</a>
+    <a class="jump-link" href="#benefits"><span class="ji">🏥</span> Benefits &amp; 401(k)</a>
+  </div>
+</nav>
+
+<div class="content">
   <div class="no-results" id="no-results">No guides found for that search.</div>
 
   <!-- ENGLISH -->
 
-  <div class="section-group en-section" data-group="hr-actions">
+  <div class="section-group en-section" id="hr-actions" data-group="hr-actions">
     <div class="group-header">
       <div class="group-icon">👤</div>
       <div class="group-title">HR Actions</div>
@@ -93,7 +110,7 @@ body.fr .fr-section{display:block;}
     </div>
   </div>
 
-  <div class="section-group en-section" data-group="recruiting">
+  <div class="section-group en-section" id="recruiting" data-group="recruiting">
     <div class="group-header">
       <div class="group-icon">🔍</div>
       <div class="group-title">Recruiting &amp; Onboarding</div>
@@ -110,33 +127,24 @@ body.fr .fr-section{display:block;}
     </div>
   </div>
 
-  <div class="section-group en-section" data-group="time-attendance">
+  <div class="section-group en-section" id="time" data-group="time">
     <div class="group-header">
       <div class="group-icon">⏱️</div>
-      <div class="group-title">Time &amp; Attendance</div>
+      <div class="group-title">Time, Attendance &amp; Time Off</div>
     </div>
     <div class="cards">
       <a class="card" href="ta-approve-time-off.html"><div class="card-icon">📅</div><div class="card-text"><div class="card-title">Approve Time Off</div><div class="card-sub">Manager approval workflow</div></div><div class="card-arrow">→</div></a>
-      <a class="card" href="ta-approve-timesheet-changes.html"><div class="card-icon">📝</div><div class="card-text"><div class="card-title">Approve Timesheet Change Requests</div><div class="card-sub">Review and approve edits</div></div><div class="card-arrow">→</div></a>
+      <a class="card" href="ta-approve-timesheet-changes.html"><div class="card-icon">📝</div><div class="card-text"><div class="card-title">Approve Timesheet Changes</div><div class="card-sub">Review and approve edits</div></div><div class="card-arrow">→</div></a>
       <a class="card" href="ta-view-pto-balances.html"><div class="card-icon">🏖️</div><div class="card-text"><div class="card-title">View PTO Balances</div><div class="card-sub">Check employee balances</div></div><div class="card-arrow">→</div></a>
+      <a class="card" href="to-requesting-time-off.html"><div class="card-icon">📅</div><div class="card-text"><div class="card-title">Request Time Off</div><div class="card-sub">Corporate and DC employees</div></div><div class="card-arrow">→</div></a>
+      <a class="card" href="to-floating-holiday.html"><div class="card-icon">🎉</div><div class="card-text"><div class="card-title">Floating Holiday Request</div><div class="card-sub">Corporate employees only</div></div><div class="card-arrow">→</div></a>
+      <a class="card" href="to-modify-time-off.html"><div class="card-icon">✏️</div><div class="card-text"><div class="card-title">Modify Time Off Request</div><div class="card-sub">Approved requests only</div></div><div class="card-arrow">→</div></a>
+      <a class="card" href="to-cancel-time-off.html"><div class="card-icon">❌</div><div class="card-text"><div class="card-title">Cancel Time Off Request</div><div class="card-sub">Before or after approval</div></div><div class="card-arrow">→</div></a>
     </div>
     <p class="pdf-note">📎 Additional guides available as PDFs: <strong>Clocking In and Out</strong> (Retail &amp; Distribution Center) and <strong>Missed Punches and Change Requests</strong> — contact HR for access.</p>
   </div>
 
-  <div class="section-group en-section" data-group="time-off">
-    <div class="group-header">
-      <div class="group-icon">🌴</div>
-      <div class="group-title">Time Off (Employee)</div>
-    </div>
-    <div class="cards">
-      <a class="card" href="to-requesting-time-off.html"><div class="card-icon">📅</div><div class="card-text"><div class="card-title">Requesting Time Off</div><div class="card-sub">Corporate and DC employees</div></div><div class="card-arrow">→</div></a>
-      <a class="card" href="to-floating-holiday.html"><div class="card-icon">🎉</div><div class="card-text"><div class="card-title">Request Time Off: Floating Holiday</div><div class="card-sub">Corporate employees only</div></div><div class="card-arrow">→</div></a>
-      <a class="card" href="to-modify-time-off.html"><div class="card-icon">✏️</div><div class="card-text"><div class="card-title">Modify Time Off Request</div><div class="card-sub">Approved requests only</div></div><div class="card-arrow">→</div></a>
-      <a class="card" href="to-cancel-time-off.html"><div class="card-icon">❌</div><div class="card-text"><div class="card-title">Cancel Time Off Request</div><div class="card-sub">Before or after approval</div></div><div class="card-arrow">→</div></a>
-    </div>
-  </div>
-
-  <div class="section-group en-section" data-group="direct-deposit">
+  <div class="section-group en-section" id="direct-deposit" data-group="direct-deposit">
     <div class="group-header">
       <div class="group-icon">🏦</div>
       <div class="group-title">Direct Deposit &amp; Taxes</div>
@@ -148,7 +156,7 @@ body.fr .fr-section{display:block;}
     </div>
   </div>
 
-  <div class="section-group en-section" data-group="ess">
+  <div class="section-group en-section" id="ess" data-group="ess">
     <div class="group-header">
       <div class="group-icon">🙋</div>
       <div class="group-title">Employee Self-Service</div>
@@ -160,7 +168,7 @@ body.fr .fr-section{display:block;}
 
 
   <!-- BENEFITS -->
-  <div class="section-group en-section" data-group="benefits">
+  <div class="section-group en-section" id="benefits" data-group="benefits">
     <div class="group-header">
       <div class="group-icon green">🏥</div>
       <div class="group-title">Benefits &amp; 401(k)</div>
@@ -222,6 +230,19 @@ body.fr .fr-section{display:block;}
 </div>
 
 <script>
+// Highlight active jump link on scroll
+const jumpLinks = document.querySelectorAll('.jump-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      jumpLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.jump-link[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+document.querySelectorAll('.section-group[id]').forEach(s => observer.observe(s));
+
 function setLang(lang, btn) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
